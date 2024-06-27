@@ -33,12 +33,12 @@ namespace Venar.WF
             patient.name = txtNamePat.Text;
             patient.lastName = txtLastNamePat.Text;
             patient.dni = txtDniPat.Text;
-            patient.gender = txtGenderPat.Text;
-            patient.location = txtLocaPat.Text;
+            //patient.gender = txtGenderPat.Text;
+            //patient.location = txtLocaPat.Text;
             patient.DateOfBirth = dateTimePicker1.Value;
-            patient.MedicalCoverage = txtMCovPat.Text;
+            //patient.MedicalCoverage = txtMCovPat.Text;
 
-           if (!validCreatePatient.ValidatePatient(patient))
+            if (!validCreatePatient.ValidatePatient(patient))
             {
                 patientsSVC.CreatePatient(patient);
                 MessageBox.Show("Paciente registrado");
@@ -47,6 +47,16 @@ namespace Venar.WF
             {
                 MessageBox.Show("Error al registrar paciente");
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmCreatePatient_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             groupInicio = new GroupBox();
-            pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             btnLogin = new Button();
             linkForgetPassword = new LinkLabel();
@@ -39,7 +38,6 @@
             labelUser = new Label();
             labelWelcome = new Label();
             groupInicio.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -48,7 +46,6 @@
             groupInicio.AutoSize = true;
             groupInicio.BackColor = Color.MediumAquamarine;
             groupInicio.BackgroundImageLayout = ImageLayout.Center;
-            groupInicio.Controls.Add(pictureBox2);
             groupInicio.Controls.Add(pictureBox1);
             groupInicio.Controls.Add(btnLogin);
             groupInicio.Controls.Add(linkForgetPassword);
@@ -58,33 +55,22 @@
             groupInicio.Controls.Add(labelUser);
             groupInicio.Controls.Add(labelWelcome);
             groupInicio.Dock = DockStyle.Fill;
+            groupInicio.ImeMode = ImeMode.NoControl;
             groupInicio.Location = new Point(0, 0);
-            groupInicio.Margin = new Padding(3, 4, 3, 4);
             groupInicio.Name = "groupInicio";
-            groupInicio.Padding = new Padding(3, 4, 3, 4);
-            groupInicio.Size = new Size(1028, 620);
+            groupInicio.Size = new Size(900, 465);
             groupInicio.TabIndex = 0;
             groupInicio.TabStop = false;
             groupInicio.Text = "Ingreso";
             groupInicio.Enter += groupInicio_Enter;
             // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = Color.White;
-            pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox2.Location = new Point(997, 12);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(31, 30);
-            pictureBox2.TabIndex = 10;
-            pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click;
-            // 
             // pictureBox1
             // 
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(414, 93);
+            pictureBox1.Location = new Point(362, 70);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(190, 108);
+            pictureBox1.Size = new Size(166, 81);
             pictureBox1.TabIndex = 9;
             pictureBox1.TabStop = false;
             // 
@@ -94,11 +80,10 @@
             btnLogin.BackgroundImage = Properties.Resources.acceso;
             btnLogin.BackgroundImageLayout = ImageLayout.Stretch;
             btnLogin.Cursor = Cursors.Hand;
-            btnLogin.Location = new Point(519, 449);
-            btnLogin.Margin = new Padding(3, 4, 3, 4);
+            btnLogin.Location = new Point(454, 337);
             btnLogin.Name = "btnLogin";
             btnLogin.RightToLeft = RightToLeft.Yes;
-            btnLogin.Size = new Size(126, 53);
+            btnLogin.Size = new Size(110, 40);
             btnLogin.TabIndex = 8;
             btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
@@ -109,9 +94,9 @@
             linkForgetPassword.BackColor = Color.Transparent;
             linkForgetPassword.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             linkForgetPassword.LinkColor = Color.Black;
-            linkForgetPassword.Location = new Point(231, 477);
+            linkForgetPassword.Location = new Point(202, 358);
             linkForgetPassword.Name = "linkForgetPassword";
-            linkForgetPassword.Size = new Size(189, 25);
+            linkForgetPassword.Size = new Size(159, 20);
             linkForgetPassword.TabIndex = 7;
             linkForgetPassword.TabStop = true;
             linkForgetPassword.Text = "Olvido su contraseña?";
@@ -119,19 +104,17 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(378, 372);
-            txtPassword.Margin = new Padding(3, 4, 3, 4);
+            txtPassword.Location = new Point(331, 279);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(267, 27);
+            txtPassword.Size = new Size(234, 23);
             txtPassword.TabIndex = 5;
             // 
             // txtUser
             // 
             txtUser.BackColor = Color.LightCyan;
-            txtUser.Location = new Point(378, 309);
-            txtUser.Margin = new Padding(3, 4, 3, 4);
+            txtUser.Location = new Point(331, 232);
             txtUser.Name = "txtUser";
-            txtUser.Size = new Size(267, 27);
+            txtUser.Size = new Size(234, 23);
             txtUser.TabIndex = 4;
             // 
             // labelPassword
@@ -139,9 +122,9 @@
             labelPassword.AutoSize = true;
             labelPassword.BackColor = SystemColors.ButtonFace;
             labelPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelPassword.Location = new Point(231, 372);
+            labelPassword.Location = new Point(202, 279);
             labelPassword.Name = "labelPassword";
-            labelPassword.Size = new Size(114, 28);
+            labelPassword.Size = new Size(92, 21);
             labelPassword.TabIndex = 2;
             labelPassword.Text = "Contraseña:";
             // 
@@ -151,9 +134,9 @@
             labelUser.BackColor = Color.LightCyan;
             labelUser.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             labelUser.ForeColor = SystemColors.ActiveCaptionText;
-            labelUser.Location = new Point(231, 305);
+            labelUser.Location = new Point(202, 229);
             labelUser.Name = "labelUser";
-            labelUser.Size = new Size(83, 28);
+            labelUser.Size = new Size(67, 21);
             labelUser.TabIndex = 1;
             labelUser.Text = "Usuario:";
             labelUser.Click += labelUser_Click;
@@ -163,27 +146,25 @@
             labelWelcome.AutoSize = true;
             labelWelcome.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             labelWelcome.ForeColor = SystemColors.ButtonHighlight;
-            labelWelcome.Location = new Point(423, 227);
+            labelWelcome.Location = new Point(370, 170);
             labelWelcome.Name = "labelWelcome";
-            labelWelcome.Size = new Size(160, 37);
+            labelWelcome.Size = new Size(130, 30);
             labelWelcome.TabIndex = 0;
             labelWelcome.Text = "Bienvenidos";
             // 
             // FrmLogin
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlText;
-            ClientSize = new Size(1028, 620);
+            ClientSize = new Size(900, 465);
             Controls.Add(groupInicio);
-            FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 4, 3, 4);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FrmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmLogin";
             groupInicio.ResumeLayout(false);
             groupInicio.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -200,6 +181,5 @@
         private System.Windows.Forms.Label labelUser;
         private System.Windows.Forms.Label labelWelcome;
         private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
     }
 }

@@ -42,6 +42,11 @@ namespace Venar.WF
 
         }
 
+        private void btnCreatePatient_Click(object sender, EventArgs e)
+        {
+            openFormPanel(new FrmCreatePatient());
+        }
+
         private void btnShowMedic_Click(object sender, EventArgs e)
         {
             List<MedicDto> medics = medicSvc.GetMedics();
