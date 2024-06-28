@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Diagnostics;
-using Venar.SVC;
-using Venar.DTO;
+﻿using Venar.SVC;
 
 namespace Venar.WF
 {
@@ -59,13 +48,13 @@ namespace Venar.WF
                         ResetLoginFields();
                         break;
                 }
-                
+
             }
             else
             {
                 // Mostrar los errores de validación
                 MessageBox.Show("Error de validación");
-            }           
+            }
 
         }
 
