@@ -1,4 +1,6 @@
-﻿using Venar.Entities;
+﻿using System.Xml.Linq;
+using Venar.DTO;
+using Venar.Entities;
 using Venar.SVC;
 
 
@@ -8,11 +10,11 @@ namespace Venar.WF
     {
         ValidCreatePatient validCreatePatient = new ValidCreatePatient();
         PatientsSVC patientsSVC;
+        PatientDto patientDto = new PatientDto();
 
         public FrmCreatePatient()
         {
             InitializeComponent();
-            patientsSVC = new PatientsSVC();
         }
         private void BtnExit_Click(object sender, EventArgs e)
         {
@@ -26,21 +28,21 @@ namespace Venar.WF
         {
 
         }
-        private void btnRegistar_Click(object sender, EventArgs e)
+        private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            Patient patient = new Patient();
-
-            patient.name = txtNamePat.Text;
-            patient.lastName = txtLastNamePat.Text;
-            patient.dni = txtDniPat.Text;
-            //patient.gender = txtGenderPat.Text;
-            //patient.location = txtLocaPat.Text;
-            patient.DateOfBirth = dateTimePicker1.Value;
-            //patient.MedicalCoverage = txtMCovPat.Text;
-
-            if (!validCreatePatient.ValidatePatient(patient))
+            patientDto = new PatientDto
             {
-                patientsSVC.CreatePatient(patient);
+                name = txtNamePat.Text.Trim(),
+                lastName = txtLastNamePat.Text.Trim(),
+                dni = txtDniPat.Text.Trim(),
+                MedicalCoverage = cmbCoverage.SelectedItem.ToString(),
+                DateOfBirth = dateTimePicker1.Value,
+                gender = cmbGender.SelectedItem.ToString(),
+                location = cmbLocation.SelectedItem.ToString()
+            };
+
+            if (!validCreatePatient.ValidatePatient(patientDto))
+            {
                 MessageBox.Show("Paciente registrado");
             }
             else
@@ -55,6 +57,16 @@ namespace Venar.WF
         }
 
         private void FrmCreatePatient_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
         {
 
         }

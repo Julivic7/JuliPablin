@@ -31,7 +31,7 @@
             dateTimePicker1 = new DateTimePicker();
             label1 = new Label();
             label8 = new Label();
-            btnRegistar = new Button();
+            btnRegistrar = new Button();
             txtDniPat = new TextBox();
             txtLastNamePat = new TextBox();
             txtNamePat = new TextBox();
@@ -42,16 +42,16 @@
             label3 = new Label();
             label2 = new Label();
             pictureBox1 = new PictureBox();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
-            comboBox3 = new ComboBox();
+            cmbGender = new ComboBox();
+            cmbLocation = new ComboBox();
+            cmbCoverage = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // dateTimePicker1
             // 
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(172, 229);
+            dateTimePicker1.Location = new Point(171, 209);
             dateTimePicker1.Margin = new Padding(3, 2, 3, 2);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(266, 23);
@@ -76,27 +76,28 @@
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Courier New", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label8.ForeColor = Color.Black;
-            label8.Location = new Point(459, 202);
+            label8.Location = new Point(473, 178);
             label8.Name = "label8";
             label8.Size = new Size(128, 18);
             label8.TabIndex = 21;
             label8.Text = "OBRA SOCIAL:";
+            label8.Click += label8_Click;
             // 
-            // btnRegistar
+            // btnRegistrar
             // 
-            btnRegistar.Location = new Point(370, 265);
-            btnRegistar.Margin = new Padding(3, 2, 3, 2);
-            btnRegistar.Name = "btnRegistar";
-            btnRegistar.Size = new Size(224, 23);
-            btnRegistar.TabIndex = 20;
-            btnRegistar.Text = "REGISTRAR";
-            btnRegistar.UseVisualStyleBackColor = true;
-            btnRegistar.Click += btnRegistar_Click;
+            btnRegistrar.Location = new Point(370, 265);
+            btnRegistrar.Margin = new Padding(3, 2, 3, 2);
+            btnRegistrar.Name = "btnRegistrar";
+            btnRegistrar.Size = new Size(224, 23);
+            btnRegistrar.TabIndex = 20;
+            btnRegistrar.Text = "REGISTRAR";
+            btnRegistrar.UseVisualStyleBackColor = true;
+            btnRegistrar.Click += btnRegistrar_Click;
             // 
             // txtDniPat
             // 
             txtDniPat.BackColor = Color.WhiteSmoke;
-            txtDniPat.Location = new Point(142, 196);
+            txtDniPat.Location = new Point(142, 173);
             txtDniPat.Margin = new Padding(3, 2, 3, 2);
             txtDniPat.Name = "txtDniPat";
             txtDniPat.Size = new Size(295, 23);
@@ -105,7 +106,7 @@
             // txtLastNamePat
             // 
             txtLastNamePat.BackColor = Color.WhiteSmoke;
-            txtLastNamePat.Location = new Point(142, 147);
+            txtLastNamePat.Location = new Point(142, 136);
             txtLastNamePat.Margin = new Padding(3, 2, 3, 2);
             txtLastNamePat.Name = "txtLastNamePat";
             txtLastNamePat.Size = new Size(295, 23);
@@ -126,11 +127,12 @@
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Courier New", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label7.ForeColor = Color.Black;
-            label7.Location = new Point(480, 151);
+            label7.Location = new Point(486, 141);
             label7.Name = "label7";
             label7.Size = new Size(108, 18);
             label7.TabIndex = 13;
             label7.Text = "LOCALIDAD:";
+            label7.Click += label7_Click;
             // 
             // label6
             // 
@@ -138,7 +140,7 @@
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Courier New", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(512, 102);
+            label6.Location = new Point(516, 104);
             label6.Name = "label6";
             label6.Size = new Size(78, 18);
             label6.TabIndex = 12;
@@ -150,7 +152,7 @@
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Courier New", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(10, 229);
+            label5.Location = new Point(17, 211);
             label5.Name = "label5";
             label5.Size = new Size(148, 18);
             label5.TabIndex = 11;
@@ -162,7 +164,7 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Courier New", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(44, 197);
+            label4.Location = new Point(44, 175);
             label4.Name = "label4";
             label4.Size = new Size(48, 18);
             label4.TabIndex = 10;
@@ -174,7 +176,7 @@
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Courier New", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(22, 147);
+            label3.Location = new Point(22, 138);
             label3.Name = "label3";
             label3.Size = new Size(98, 18);
             label3.TabIndex = 9;
@@ -204,33 +206,33 @@
             pictureBox1.TabIndex = 25;
             pictureBox1.TabStop = false;
             // 
-            // comboBox1
+            // cmbGender
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Masculino", "Femenino", "Otro" });
-            comboBox1.Location = new Point(607, 100);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(252, 23);
-            comboBox1.TabIndex = 26;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            cmbGender.FormattingEnabled = true;
+            cmbGender.Items.AddRange(new object[] { "Masculino", "Femenino", "Otro" });
+            cmbGender.Location = new Point(607, 100);
+            cmbGender.Name = "cmbGender";
+            cmbGender.Size = new Size(252, 23);
+            cmbGender.TabIndex = 26;
+            cmbGender.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
-            // comboBox2
+            // cmbLocation
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "Lugano", "Villa Ballester" });
-            comboBox2.Location = new Point(607, 149);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(252, 23);
-            comboBox2.TabIndex = 27;
+            cmbLocation.FormattingEnabled = true;
+            cmbLocation.Items.AddRange(new object[] { "Lugano", "Villa Ballester" });
+            cmbLocation.Location = new Point(607, 138);
+            cmbLocation.Name = "cmbLocation";
+            cmbLocation.Size = new Size(252, 23);
+            cmbLocation.TabIndex = 27;
             // 
-            // comboBox3
+            // cmbCoverage
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "IOMA", "PAMI", "OSDE" });
-            comboBox3.Location = new Point(607, 200);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(252, 23);
-            comboBox3.TabIndex = 28;
+            cmbCoverage.FormattingEnabled = true;
+            cmbCoverage.Items.AddRange(new object[] { "IOMA", "PAMI", "OSDE" });
+            cmbCoverage.Location = new Point(607, 175);
+            cmbCoverage.Name = "cmbCoverage";
+            cmbCoverage.Size = new Size(252, 23);
+            cmbCoverage.TabIndex = 28;
             // 
             // FrmCreatePatient
             // 
@@ -239,9 +241,9 @@
             BackColor = Color.MediumAquamarine;
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(906, 297);
-            Controls.Add(comboBox3);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
+            Controls.Add(cmbCoverage);
+            Controls.Add(cmbLocation);
+            Controls.Add(cmbGender);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
             Controls.Add(dateTimePicker1);
@@ -251,7 +253,7 @@
             Controls.Add(txtDniPat);
             Controls.Add(label3);
             Controls.Add(label4);
-            Controls.Add(btnRegistar);
+            Controls.Add(btnRegistrar);
             Controls.Add(label5);
             Controls.Add(label6);
             Controls.Add(label8);
@@ -271,7 +273,7 @@
         private DateTimePicker dateTimePicker1;
         private Label label1;
         private Label label8;
-        private Button btnRegistar;
+        private Button btnRegistrar;
         private TextBox txtDniPat;
         private TextBox txtLastNamePat;
         private TextBox txtNamePat;
@@ -282,8 +284,8 @@
         private Label label3;
         private Label label2;
         private PictureBox pictureBox1;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
-        private ComboBox comboBox3;
+        private ComboBox cmbGender;
+        private ComboBox cmbLocation;
+        private ComboBox cmbCoverage;
     }
 }
