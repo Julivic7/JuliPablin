@@ -64,24 +64,20 @@ using System.ComponentModel.DataAnnotations;
 
             public Patient SearchPat(int dni)
             {
-                Dictionary<string, string> parts = new Dictionary<string, string>();
+                Dictionary<string, string> pats = new Dictionary<string, string>();
                 string query = "SELECT Name, LastName, MedicalCoverage FROM patients WHERE dni = @Dni";
 
-                parts.Add("@Dni", dni.ToString());
+                pats.Add("@Dni", dni.ToString());
 
-                var dev = dataService.Selection(query, parts).Rows[0];
+                var dev = dataService.Selection(query, pats).Rows[0];
 
                 return new Patient()
-                {
-                   
+                {                   
                     name = dev["@Name"].ToString(),
                     lastName = dev["@LastName"].ToString(),
                     location = dev["@Location"].ToString(),
-                    gender = Convert.ToInt16(dev["Gender"]).ToString(),
+                    gender = Convert.ToInt16(dev["@Gender"]).ToString(),
                     MedicalCoverage = dev["@MedicalCoverage"].ToString(),
-
-
-
                 };
             }
 
