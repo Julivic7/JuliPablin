@@ -26,13 +26,14 @@ namespace Venar.SVC
 
             try
             {
+                // Ejecutar la consulta para insertar en Users y obtener UserId
                 DataTable userResult = dataServices.Selection(userQuery, userParams);
 
                 if (userResult != null && userResult.Rows.Count > 0)
                 {
                     int userId = Convert.ToInt32(userResult.Rows[0]["UserId"]);
 
-                    // Ahora puedes continuar con la inserción en la tabla Medics utilizando userId
+                    // Continuar con la inserción en Medics utilizando userId
                     string medicQuery = @"
                 INSERT INTO Medics (UserId, Name, LastName, Dni, Mail, Specialty, MedicalRegistration)
                 VALUES (@UserId, @Name, @LastName, @Dni, @Mail, @Specialty, @MedicalRegistration);
@@ -49,6 +50,7 @@ namespace Venar.SVC
                 { "@MedicalRegistration", medicDto.MedicalRegistration }
             };
 
+                    // Ejecutar la inserción en Medics
                     dataServices.Execute(medicQuery, medicParams);
                 }
                 else
@@ -62,6 +64,8 @@ namespace Venar.SVC
                 throw new Exception("Error al crear el médico", ex);
             }
         }
+
+
 
         public List<MedicDto> GetMedics()
         {
