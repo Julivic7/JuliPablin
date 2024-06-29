@@ -131,6 +131,7 @@
             btnCreateMedic.TabIndex = 1;
             btnCreateMedic.Text = "Crear Medico";
             btnCreateMedic.UseVisualStyleBackColor = true;
+            btnCreateMedic.Click += btnCreatMedic_Click;
             // 
             // btnModifyMedic
             // 
