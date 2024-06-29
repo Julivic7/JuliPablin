@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
+            txtMedicalRegistration = new TextBox();
             txtSpecialty = new TextBox();
-            txtMedicalRegistration = new Label();
+            taMatricula = new Label();
             label6 = new Label();
             txtUserName = new TextBox();
             label1 = new Label();
@@ -47,13 +47,13 @@
             label2 = new Label();
             SuspendLayout();
             // 
-            // textBox1
+            // txtMedicalRegistration
             // 
-            textBox1.Location = new Point(464, 208);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(303, 27);
-            textBox1.TabIndex = 23;
+            txtMedicalRegistration.Location = new Point(464, 208);
+            txtMedicalRegistration.Margin = new Padding(3, 4, 3, 4);
+            txtMedicalRegistration.Name = "txtMedicalRegistration";
+            txtMedicalRegistration.Size = new Size(303, 27);
+            txtMedicalRegistration.TabIndex = 23;
             // 
             // txtSpecialty
             // 
@@ -63,15 +63,15 @@
             txtSpecialty.Size = new Size(303, 27);
             txtSpecialty.TabIndex = 22;
             // 
-            // txtMedicalRegistration
+            // taMatricula
             // 
-            txtMedicalRegistration.AutoSize = true;
-            txtMedicalRegistration.Font = new Font("Courier New", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            txtMedicalRegistration.Location = new Point(464, 184);
-            txtMedicalRegistration.Name = "txtMedicalRegistration";
-            txtMedicalRegistration.Size = new Size(189, 20);
-            txtMedicalRegistration.TabIndex = 21;
-            txtMedicalRegistration.Text = "Matricula Medica :";
+            taMatricula.AutoSize = true;
+            taMatricula.Font = new Font("Courier New", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            taMatricula.Location = new Point(464, 184);
+            taMatricula.Name = "taMatricula";
+            taMatricula.Size = new Size(189, 20);
+            taMatricula.TabIndex = 21;
+            taMatricula.Text = "Matricula Medica :";
             // 
             // label6
             // 
@@ -213,11 +213,11 @@
             Controls.Add(txtPassword);
             Controls.Add(btnRegister);
             Controls.Add(txtUserName);
-            Controls.Add(textBox1);
+            Controls.Add(txtMedicalRegistration);
             Controls.Add(label7);
             Controls.Add(label1);
             Controls.Add(txtName);
-            Controls.Add(txtMedicalRegistration);
+            Controls.Add(taMatricula);
             Controls.Add(txtSpecialty);
             Controls.Add(label8);
             Controls.Add(txtLastName);
@@ -252,7 +252,8 @@
         private Label label1;
         private TextBox textBox1;
         private TextBox txtSpecialty;
-        private Label txtMedicalRegistration;
         private Label label6;
+        private Label taMatricula;
+        private TextBox txtMedicalRegistration;
     }
 }

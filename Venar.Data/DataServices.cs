@@ -19,10 +19,8 @@ namespace Venar.Data
                 try
                 {
                     connection.Open();
-                    // Crear el SqlCommand
                     using (command = new SqlCommand(SQL, connection))
                     {
-                        // give the SqlCommand object the parameters required for the stored proc/query
                         if (parametros != null)
                         {
                             foreach (var prm in parametros)
