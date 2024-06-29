@@ -227,9 +227,10 @@
             Controls.Add(label3);
             Controls.Add(label4);
             Controls.Add(txtMail);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(3, 4, 3, 4);
             Name = "FrmCreateMedic";
+            StartPosition = FormStartPosition.Manual;
             Text = "FrmSignUp";
             ResumeLayout(false);
             PerformLayout();

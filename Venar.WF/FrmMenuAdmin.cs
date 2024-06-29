@@ -1,66 +1,94 @@
-﻿using Venar.DTO;
-using Venar.SVC;
+﻿using Venar.SVC;
+using Venar.WF;
 
 
-namespace Venar.WF
+namespace StudentSystem.WindowsFormsCliente
 {
+
     public partial class FrmMenuAdmin : Form
     {
         public string LoggedUserName { get; set; }
         DiagnosticSVC diagnosticSvc = new DiagnosticSVC();
-        MedicSVC medicSvc = new MedicSVC();
+        MenuAdminSVC medicSvc = new MenuAdminSVC();
+        FrmCreateMedic frmCreateMedic;
 
-        // Constructor that accepts a username parameter
         public FrmMenuAdmin(string userName)
         {
             InitializeComponent();
+            FillGridMedic();
             LoggedUserName = userName ?? "usuario";
             labelAdmin.Text = "Bienvenido " + LoggedUserName;
         }
-        private void label1_Click(object sender, EventArgs e)
+        private void FillGridMedic()
         {
-
+            DgvMedics.Columns.Clear();
+            DgvMedics.AutoGenerateColumns = true;
+            DgvMedics.DataSource = medicSvc.GetMedics();
+            DgvMedics.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
-        private void button3_Click(object sender, EventArgs e)
+        private void BtnCerrar_Click(object sender, EventArgs e)
         {
-
+            FrmLogin frmLogin = new FrmLogin();
+            this.Close();
+            frmLogin.ShowDialog();
+            
         }
-        private void openFormPanel(object formHijo)
-        {
-            if (this.panelContenedor.Controls.Count > 0)
-                this.panelContenedor.Controls.RemoveAt(0);
-            Form fh = formHijo as Form;
-            fh.TopLevel = false;
-            fh.Dock = DockStyle.Fill;
-            this.panelContenedor.Controls.Add(fh);
-            this.panelContenedor.Tag = fh;
-            fh.Show();
-        }
-        private void btnCreateMedic_Click(object sender, EventArgs e)
-        {
-            openFormPanel(new FrmCreateMedic());
 
+        private void btnModifyMedic_Click_1(object sender, EventArgs e)
+        {
+            if (DgvMedics.SelectedCells.Count > 0)
+            {
+                int columnIndex = 0; // Suponiendo que MedicId está en la primera columna (índice 0)
+                DataGridViewRow selectedRow = DgvMedics.Rows[DgvMedics.SelectedCells[0].RowIndex];
+                int MedicId = int.Parse(selectedRow.Cells[columnIndex].Value.ToString());
+
+                var MedicFound = medicSvc.GetMedicForId(MedicId);
+
+                FrmModifyMedic frmModifyMedic = new FrmModifyMedic(MedicFound);
+                frmModifyMedic.Show();
+
+                FillGridMedic();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un médico");
+            }
+        }
+
+        private void btnDeleatMedic_Click(object sender, EventArgs e)
+        {
+            if (DgvMedics.SelectedCells.Count > 0)
+            {
+                int columnIndex = 0; // Suponiendo que MedicId está en la primera columna (índice 0)
+                DataGridViewRow selectedRow = DgvMedics.Rows[DgvMedics.SelectedCells[0].RowIndex];
+                int MedicId = int.Parse(selectedRow.Cells[columnIndex].Value.ToString());
+
+                if (medicSvc.DeleteMedic(MedicId))
+                {
+                    FillGridMedic();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo dar de baja al Medico");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un Medico");
+            }
+        }
+
+
+        private void btnCreateMedic_Click_1(object sender, EventArgs e)
+        {
+            frmCreateMedic = new FrmCreateMedic();
+            frmCreateMedic.Show();
+            FillGridMedic();
         }
 
         private void btnShowMedic_Click(object sender, EventArgs e)
         {
-            List<MedicDto> medics = medicSvc.GetMedics();
-            openFormPanel(new FrmViewMedics(medics));
+            FillGridMedic();
         }
-
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            FrmLogin frmLogin = new FrmLogin();
-            frmLogin.Show();
-            this.Hide();
-        }
-
-
     }
 }

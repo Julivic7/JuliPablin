@@ -16,7 +16,7 @@
     <Compile Update="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FrmMenuAdmin.cs">
+    <Compile Update="FrmMenuAdmin1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FrmCreateMedic.cs">

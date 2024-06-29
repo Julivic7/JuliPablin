@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Diagnostics;
+﻿using StudentSystem.WindowsFormsCliente;
 using Venar.SVC;
-using Venar.DTO;
 
 namespace Venar.WF
 {
@@ -45,6 +35,7 @@ namespace Venar.WF
                 switch (type)
                 {
                     case "admin":
+
                         FrmMenuAdmin frmMenuAdmin = new FrmMenuAdmin(userName);
                         frmMenuAdmin.Show();
                         this.Hide();
@@ -59,13 +50,13 @@ namespace Venar.WF
                         ResetLoginFields();
                         break;
                 }
-                
+
             }
             else
             {
                 // Mostrar los errores de validación
                 MessageBox.Show("Error de validación");
-            }           
+            }
 
         }
 
