@@ -1,4 +1,5 @@
-﻿using Venar.SVC;
+﻿using StudentSystem.WindowsFormsCliente;
+using Venar.SVC;
 
 namespace Venar.WF
 {
@@ -34,6 +35,7 @@ namespace Venar.WF
                 switch (type)
                 {
                     case "admin":
+
                         FrmMenuAdmin frmMenuAdmin = new FrmMenuAdmin(userName);
                         frmMenuAdmin.Show();
                         this.Hide();

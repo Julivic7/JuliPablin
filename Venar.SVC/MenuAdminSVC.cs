@@ -5,84 +5,102 @@ using Venar.DTO;
 
 namespace Venar.SVC
 {
-    public class MedicSVC
+    public class MenuAdminSVC
     {
         DataServices dataServices = new DataServices();
 
         public void CreateMedic(MedicDto medicDto)
         {
-
             string userQuery = @"
-                    INSERT INTO Users (UserName, Password, UserType, Email)
-                    VALUES (@UserName, @Password, 'MEDIC', @Mail);
-                    SELECT SCOPE_IDENTITY() AS UserId;
-                ";
+        INSERT INTO Users (UserName, Password, UserType, Mail)
+        VALUES (@UserName, @Password, 'MEDIC', @Mail);
+        SELECT SCOPE_IDENTITY() AS UserId;
+    ";
 
             Dictionary<string, string> userParams = new Dictionary<string, string>
-                    {
-                        { "@UserName", medicDto.UserName },
-                        { "@Password", medicDto.Password },
-                        { "@Mail", medicDto.Mail }
-                    };
+    {
+        { "@UserName", medicDto.UserName },
+        { "@Password", medicDto.Password },
+        { "@Mail", medicDto.Mail }
+    };
 
-            DataTable userResult = dataServices.Selection(userQuery, userParams);
-
-            if (userResult.Rows.Count > 0)
+            try
             {
-                int userId = Convert.ToInt32(userResult.Rows[0]["UserId"]);
+                DataTable userResult = dataServices.Selection(userQuery, userParams);
 
+                if (userResult != null && userResult.Rows.Count > 0)
+                {
+                    int userId = Convert.ToInt32(userResult.Rows[0]["UserId"]);
 
-                string medicQuery = @"
-            INSERT INTO Medics (Name, LastName, Dni, Mail, Specialty, MedicalRegistration)
-            VALUES (@Name, @LastName, @Dni, @Mail, @Specialty, @MedicalRegistration);
-        ";
+                    // Ahora puedes continuar con la inserción en la tabla Medics utilizando userId
+                    string medicQuery = @"
+                INSERT INTO Medics (UserId, Name, LastName, Dni, Mail, Specialty, MedicalRegistration)
+                VALUES (@UserId, @Name, @LastName, @Dni, @Mail, @Specialty, @MedicalRegistration);
+            ";
 
-                Dictionary<string, string> medicParams = new Dictionary<string, string>
-        {
-            //{ "@UserId",userId.ToString() },
-            { "@Name", medicDto.Name },
-            { "@LastName", medicDto.LastName },
-            { "@Dni", medicDto.Dni },
-            { "@Mail", medicDto.Mail },
-            { "@Specialty", medicDto.Specialty },
-            { "@MedicalRegistration", medicDto.MedicalRegistration }
-        };
+                    Dictionary<string, string> medicParams = new Dictionary<string, string>
+            {
+                { "@UserId", userId.ToString() },
+                { "@Name", medicDto.Name },
+                { "@LastName", medicDto.LastName },
+                { "@Dni", medicDto.Dni },
+                { "@Mail", medicDto.Mail },
+                { "@Specialty", medicDto.Specialty },
+                { "@MedicalRegistration", medicDto.MedicalRegistration }
+            };
 
-                dataServices.Execute(medicQuery, medicParams);
+                    dataServices.Execute(medicQuery, medicParams);
+                }
+                else
+                {
+                    throw new Exception("No se pudo obtener el UserId después de insertar en Users.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                // Manejar el caso donde no se pudo obtener el UserId
-                throw new Exception("No se pudo obtener el UserId después de insertar en Users.");
+                // Manejar o registrar la excepción
+                throw new Exception("Error al crear el médico", ex);
             }
         }
+
         public List<MedicDto> GetMedics()
         {
-            var medics = new List<MedicDto>();
+            List<MedicDto> listMedics = null;
+            string SqlSelect = @"
+        SELECT M.MedicId, M.Name, M.LastName, M.Dni, M.Mail, M.Specialty, M.MedicalRegistration,
+               U.UserName, U.Password
+        FROM Medics M
+        INNER JOIN Users U ON M.UserId = U.UserId
+        WHERE M.Status = 1";
 
-            DataTable result = dataServices.Selection("SELECT userName, Name, LastName, Dni, Mail, Password, Specialty, MedicalRegistration FROM Medics", null);
+            var result = dataServices.Selection(SqlSelect, null);
 
-            foreach (DataRow row in result.Rows)
+            if (result != null && result.Rows.Count > 0)
             {
-                var medicDto = new MedicDto
+                listMedics = new List<MedicDto>();
+                foreach (DataRow row in result.Rows)
                 {
-                    UserName = row["userName"].ToString(),
-                    Name = row["Name"].ToString(),
-                    LastName = row["LastName"].ToString(),
-                    Dni = row["Dni"].ToString(),
-                    Mail = row["Mail"].ToString(),
-                    Password = row["Password"].ToString(),
-                    Specialty = row["Specialty"].ToString(),
-                    MedicalRegistration = row["MedicalRegistration"].ToString()
-                };
-                medics.Add(medicDto);
+                    listMedics.Add(new MedicDto()
+                    {
+                        MedicId = Convert.ToInt32(row["MedicId"]),
+                        UserName = row["UserName"].ToString(),
+                        Name = row["Name"].ToString(),
+                        LastName = row["LastName"].ToString(),
+                        Dni = row["Dni"].ToString(),
+                        Mail = row["Mail"].ToString(),
+                        Password = row["Password"].ToString(),
+                        Specialty = row["Specialty"].ToString(),
+                        MedicalRegistration = row["MedicalRegistration"].ToString()
+                    });
+                }
             }
-            return medics;
+            return listMedics;
         }
-        public bool DeleteMedic(MedicDto medic)
+
+        public bool DeleteMedic(int medic)
         {
             bool Result = false;
-            string SQLDelete = "UPDATE Materias SET Status = 0 WHERE MedicId = @MedicId";
+            string SQLDelete = "UPDATE Medics SET Status = 0 WHERE MedicId = @MedicId";
 
             //Código para enviar a dar de baja lógica en la capa de datos
             Dictionary<string, string> Parametros = new Dictionary<string, string>();
@@ -109,7 +127,7 @@ namespace Venar.SVC
                 LastName = Result["LastName"].ToString(),
                 Dni = Result["Dni"].ToString(),
                 Mail = Result["Mail"].ToString(),
-                Specialty = Result["Speciality"].ToString(),
+                Specialty = Result["Specialty"].ToString(),
                 MedicalRegistration = Result["MedicalRegistration"].ToString()
             };
         }

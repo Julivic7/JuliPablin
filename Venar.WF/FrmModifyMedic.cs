@@ -3,12 +3,12 @@ using Venar.SVC;
 
 namespace StudentSystem.WindowsFormsCliente
 {
-    public partial class FrmMateria : Form
+    public partial class FrmModifyMedic : Form
     {
         //MateriaService materiaService = new MateriaService();
-        MedicSVC medicSvc = new MedicSVC();
+        MenuAdminSVC medicSvc = new MenuAdminSVC();
         MedicDto medic = null;
-        public FrmMateria(MedicDto medicEdit)
+        public FrmModifyMedic(MedicDto medicEdit)
         {
             InitializeComponent();
             if (medicEdit != null)
@@ -52,27 +52,28 @@ namespace StudentSystem.WindowsFormsCliente
              medic.MedicalRegistration = txtMedicalRegistration.Text;
 
 
-            if (medic.MedicId == 0)
+            try
             {
-                if (!medicSvc.CreateMedic(medic))
+                if (medic.MedicId == 0)
                 {
-                    MessageBox.Show("Algo fallo, por favor revisar");
+                    medicSvc.CreateMedic(medic);
+                    MessageBox.Show("Se agregó el Medico");
                 }
                 else
                 {
-                    MessageBox.Show("Se agrego la Materia");
+                    if (medicSvc.EditMedic(medic))
+                    {
+                        MessageBox.Show("Se modificó el Medico: " , medic.LastName);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Algo falló, por favor revisar");
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                if (medicSvc.ed)
-                {
-                    MessageBox.Show("Se modifico la Materia");
-                }
-                else
-                {
-                    MessageBox.Show("Algo fallo, por favor revisar");
-                }
+                MessageBox.Show($"Algo falló, por favor revisar. Error: {ex.Message}");
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace StudentSystem.WindowsFormsCliente
 {
-    partial class FrmMateria
+    partial class FrmModifyMedic
     {
         /// <summary>
         /// Required designer variable.
@@ -213,7 +213,7 @@
             BtnCancelar.UseVisualStyleBackColor = true;
             BtnCancelar.Click += BtnCancelar_Click;
             // 
-            // FrmMateria
+            // FrmModifyMedic
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -222,9 +222,9 @@
             Controls.Add(BtnGuardar);
             Controls.Add(groupBox1);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "FrmMateria";
+            Name = "FrmModifyMedic";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Materia";
+            Text = "Modicar Medico";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

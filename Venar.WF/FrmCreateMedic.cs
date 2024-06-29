@@ -1,11 +1,12 @@
-﻿using Venar.DTO;
+﻿using StudentSystem.WindowsFormsCliente;
+using Venar.DTO;
 using Venar.SVC;
 
 namespace Venar.WF
 {
     public partial class FrmCreateMedic : Form
     {
-        MedicSVC createMedicSVC = new MedicSVC();
+        MenuAdminSVC createMedicSVC = new MenuAdminSVC();
         ValidCreateMedic validCreateMedicSVC = new ValidCreateMedic();
         MedicDto medicDto = new MedicDto();
 
