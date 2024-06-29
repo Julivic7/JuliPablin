@@ -54,7 +54,7 @@ namespace StudentSystem.WindowsFormsCliente
 
             if (medic.MedicId == 0)
             {
-                if (!medicSvc.CreateMedic(medic))
+                if (medicSvc.CreateMedic(medic))
                 {
                     MessageBox.Show("Algo fallo, por favor revisar");
                 }
