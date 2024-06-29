@@ -1,4 +1,5 @@
-﻿using Venar.DTO;
+﻿using StudentSystem.WindowsFormsCliente;
+using Venar.DTO;
 using Venar.SVC;
 
 
@@ -49,8 +50,7 @@ namespace Venar.WF
 
         private void btnShowMedic_Click(object sender, EventArgs e)
         {
-            List<MedicDto> medics = medicSvc.GetMedics();
-            openFormPanel(new FrmViewMedics(medics));
+            openFormPanel(new FrmListaMaterias(LoggedUserName));
         }
 
 
@@ -66,6 +66,14 @@ namespace Venar.WF
             this.Hide();
         }
 
+        private void label5_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

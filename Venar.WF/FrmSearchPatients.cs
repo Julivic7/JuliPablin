@@ -17,12 +17,12 @@ namespace Venar.WF
     public partial class FrmViewPatients : Form
 
     {
-        PatientsSVC patientsSVC;
+        PatientSVC patientsSVC;
      
         public FrmViewPatients()
         {
             InitializeComponent();
-            patientsSVC = new PatientsSVC();
+            patientsSVC = new PatientSVC();
             
            
 

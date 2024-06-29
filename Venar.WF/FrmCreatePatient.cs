@@ -9,7 +9,7 @@ namespace Venar.WF
     public partial class FrmCreatePatient : Form
     {
         ValidCreatePatient validCreatePatient = new ValidCreatePatient();
-        PatientsSVC patientsSVC;
+        PatientSVC createPatientSVC = new PatientSVC();
         PatientDto patientDto = new PatientDto();
 
         public FrmCreatePatient()
@@ -36,14 +36,22 @@ namespace Venar.WF
                 lastName = txtLastNamePat.Text.Trim(),
                 dni = txtDniPat.Text.Trim(),
                 MedicalCoverage = cmbCoverage.SelectedItem.ToString(),
-                DateOfBirth = dateTimePicker1.Value,
+                DateOfBirth = DateOfBirth.Value,
                 gender = cmbGender.SelectedItem.ToString(),
                 location = cmbLocation.SelectedItem.ToString()
             };
 
-            if (!validCreatePatient.ValidatePatient(patientDto))
+            if (validCreatePatient.ValidatePatient(patientDto))
             {
                 MessageBox.Show("Paciente registrado");
+                try
+                {
+                    createPatientSVC.CreatePatient(patientDto);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Algo falló, por favor revisar. Error: {ex.Message}");
+                }
             }
             else
             {

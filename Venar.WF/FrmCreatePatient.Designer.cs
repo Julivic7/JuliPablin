@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dateTimePicker1 = new DateTimePicker();
+            DateOfBirth = new DateTimePicker();
             label1 = new Label();
             label8 = new Label();
             btnRegistrar = new Button();
@@ -48,15 +48,15 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // dateTimePicker1
+            // DateOfBirth
             // 
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(171, 209);
-            dateTimePicker1.Margin = new Padding(3, 2, 3, 2);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(266, 23);
-            dateTimePicker1.TabIndex = 24;
-            dateTimePicker1.Value = new DateTime(2024, 5, 20, 0, 0, 0, 0);
+            DateOfBirth.Format = DateTimePickerFormat.Short;
+            DateOfBirth.Location = new Point(171, 209);
+            DateOfBirth.Margin = new Padding(3, 2, 3, 2);
+            DateOfBirth.Name = "DateOfBirth";
+            DateOfBirth.Size = new Size(266, 23);
+            DateOfBirth.TabIndex = 24;
+            DateOfBirth.Value = new DateTime(2024, 5, 20, 0, 0, 0, 0);
             // 
             // label1
             // 
@@ -238,7 +238,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.MediumAquamarine;
+            BackColor = Color.FromArgb(102, 179, 255);
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(906, 297);
             Controls.Add(cmbCoverage);
@@ -246,7 +246,7 @@
             Controls.Add(cmbGender);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(DateOfBirth);
             Controls.Add(label2);
             Controls.Add(txtNamePat);
             Controls.Add(txtLastNamePat);
@@ -270,7 +270,7 @@
 
         #endregion
 
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker DateOfBirth;
         private Label label1;
         private Label label8;
         private Button btnRegistrar;

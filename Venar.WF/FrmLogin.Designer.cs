@@ -44,7 +44,7 @@
             // groupInicio
             // 
             groupInicio.AutoSize = true;
-            groupInicio.BackColor = Color.MediumAquamarine;
+            groupInicio.BackColor = Color.FromArgb(102, 179, 255);
             groupInicio.BackgroundImageLayout = ImageLayout.Center;
             groupInicio.Controls.Add(pictureBox1);
             groupInicio.Controls.Add(btnLogin);

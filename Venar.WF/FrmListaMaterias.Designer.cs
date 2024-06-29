@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             DgvMedics = new DataGridView();
             ColIdMateria = new DataGridViewTextBoxColumn();
             ColCod = new DataGridViewTextBoxColumn();
@@ -35,6 +36,7 @@
             ColMinimo = new DataGridViewTextBoxColumn();
             ColAnio = new DataGridViewTextBoxColumn();
             ColCuat = new DataGridViewTextBoxColumn();
+            medicSVCBindingSource = new BindingSource(components);
             btnCreateMedic = new Button();
             btnModifyMedic = new Button();
             btnDeleatMedic = new Button();
@@ -42,22 +44,26 @@
             btnShowMedic = new Button();
             labelAdmin = new Label();
             ((System.ComponentModel.ISupportInitialize)DgvMedics).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)medicSVCBindingSource).BeginInit();
             SuspendLayout();
             // 
             // DgvMedics
             // 
             DgvMedics.AllowUserToAddRows = false;
             DgvMedics.AllowUserToDeleteRows = false;
+            DgvMedics.BackgroundColor = Color.FromArgb(230, 242, 255);
             DgvMedics.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvMedics.Columns.AddRange(new DataGridViewColumn[] { ColIdMateria, ColCod, ColNombre, ColMinimo, ColAnio, ColCuat });
-            DgvMedics.Location = new Point(14, 52);
-            DgvMedics.Margin = new Padding(3, 4, 3, 4);
+            DgvMedics.GridColor = Color.FromArgb(51, 153, 255);
+            DgvMedics.Location = new Point(12, 39);
             DgvMedics.Name = "DgvMedics";
             DgvMedics.ReadOnly = true;
+            DgvMedics.RightToLeft = RightToLeft.No;
             DgvMedics.RowHeadersWidth = 51;
             DgvMedics.RowTemplate.Height = 25;
-            DgvMedics.Size = new Size(760, 343);
+            DgvMedics.Size = new Size(665, 257);
             DgvMedics.TabIndex = 0;
+            DgvMedics.CellContentClick += DgvMedics_CellContentClick;
             // 
             // ColIdMateria
             // 
@@ -113,22 +119,24 @@
             ColCuat.ReadOnly = true;
             ColCuat.Width = 125;
             // 
+            // medicSVCBindingSource
+            // 
+            medicSVCBindingSource.DataSource = typeof(Venar.SVC.MedicSVC);
+            // 
             // btnCreateMedic
             // 
-            btnCreateMedic.Location = new Point(39, 416);
-            btnCreateMedic.Margin = new Padding(3, 4, 3, 4);
+            btnCreateMedic.Location = new Point(34, 312);
             btnCreateMedic.Name = "btnCreateMedic";
-            btnCreateMedic.Size = new Size(125, 30);
+            btnCreateMedic.Size = new Size(109, 22);
             btnCreateMedic.TabIndex = 1;
             btnCreateMedic.Text = "Crear Medico";
             btnCreateMedic.UseVisualStyleBackColor = true;
             // 
             // btnModifyMedic
             // 
-            btnModifyMedic.Location = new Point(301, 416);
-            btnModifyMedic.Margin = new Padding(3, 4, 3, 4);
+            btnModifyMedic.Location = new Point(263, 312);
             btnModifyMedic.Name = "btnModifyMedic";
-            btnModifyMedic.Size = new Size(125, 30);
+            btnModifyMedic.Size = new Size(109, 22);
             btnModifyMedic.TabIndex = 2;
             btnModifyMedic.Text = "Modificar Medico";
             btnModifyMedic.UseVisualStyleBackColor = true;
@@ -136,10 +144,9 @@
             // 
             // btnDeleatMedic
             // 
-            btnDeleatMedic.Location = new Point(441, 416);
-            btnDeleatMedic.Margin = new Padding(3, 4, 3, 4);
+            btnDeleatMedic.Location = new Point(386, 312);
             btnDeleatMedic.Name = "btnDeleatMedic";
-            btnDeleatMedic.Size = new Size(125, 30);
+            btnDeleatMedic.Size = new Size(109, 22);
             btnDeleatMedic.TabIndex = 3;
             btnDeleatMedic.Text = "Eliminar Medico";
             btnDeleatMedic.UseVisualStyleBackColor = true;
@@ -147,10 +154,9 @@
             // 
             // BtnCerrar
             // 
-            BtnCerrar.Location = new Point(689, 415);
-            BtnCerrar.Margin = new Padding(3, 4, 3, 4);
+            BtnCerrar.Location = new Point(603, 311);
             BtnCerrar.Name = "BtnCerrar";
-            BtnCerrar.Size = new Size(86, 31);
+            BtnCerrar.Size = new Size(75, 23);
             BtnCerrar.TabIndex = 4;
             BtnCerrar.Text = "Cerrar";
             BtnCerrar.UseVisualStyleBackColor = true;
@@ -158,10 +164,9 @@
             // 
             // btnShowMedic
             // 
-            btnShowMedic.Location = new Point(170, 416);
-            btnShowMedic.Margin = new Padding(3, 4, 3, 4);
+            btnShowMedic.Location = new Point(149, 312);
             btnShowMedic.Name = "btnShowMedic";
-            btnShowMedic.Size = new Size(125, 30);
+            btnShowMedic.Size = new Size(109, 22);
             btnShowMedic.TabIndex = 7;
             btnShowMedic.Text = "Ver Medico";
             btnShowMedic.UseVisualStyleBackColor = true;
@@ -169,16 +174,17 @@
             // labelAdmin
             // 
             labelAdmin.AutoSize = true;
-            labelAdmin.Location = new Point(39, 17);
+            labelAdmin.Location = new Point(34, 13);
             labelAdmin.Name = "labelAdmin";
-            labelAdmin.Size = new Size(0, 20);
+            labelAdmin.Size = new Size(0, 15);
             labelAdmin.TabIndex = 8;
             // 
             // FrmListaMaterias
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(787, 464);
+            BackColor = Color.FromArgb(102, 179, 255);
+            ClientSize = new Size(689, 348);
             Controls.Add(labelAdmin);
             Controls.Add(btnShowMedic);
             Controls.Add(BtnCerrar);
@@ -186,11 +192,12 @@
             Controls.Add(btnModifyMedic);
             Controls.Add(btnCreateMedic);
             Controls.Add(DgvMedics);
-            Margin = new Padding(3, 4, 3, 4);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "FrmListaMaterias";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu Administrador";
             ((System.ComponentModel.ISupportInitialize)DgvMedics).EndInit();
+            ((System.ComponentModel.ISupportInitialize)medicSVCBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -210,5 +217,6 @@
         private DataGridViewTextBoxColumn ColAnio;
         private DataGridViewTextBoxColumn ColCuat;
         private Label labelAdmin;
+        private BindingSource medicSVCBindingSource;
     }
 }

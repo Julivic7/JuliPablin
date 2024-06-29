@@ -52,27 +52,28 @@ namespace StudentSystem.WindowsFormsCliente
              medic.MedicalRegistration = txtMedicalRegistration.Text;
 
 
-            if (medic.MedicId == 0)
+            try
             {
-                if (!medicSvc.CreateMedic(medic))
+                if (medic.MedicId == 0)
                 {
-                    MessageBox.Show("Algo fallo, por favor revisar");
+                    medicSvc.CreateMedic(medic);
+                    MessageBox.Show("Se agregó la Materia");
                 }
                 else
                 {
-                    MessageBox.Show("Se agrego la Materia");
+                    if (medicSvc.EditMedic(medic))
+                    {
+                        MessageBox.Show("Se modificó la Materia");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Algo falló, por favor revisar");
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                if (medicSvc.ed)
-                {
-                    MessageBox.Show("Se modifico la Materia");
-                }
-                else
-                {
-                    MessageBox.Show("Algo fallo, por favor revisar");
-                }
+                MessageBox.Show($"Algo falló, por favor revisar. Error: {ex.Message}");
             }
         }
     }

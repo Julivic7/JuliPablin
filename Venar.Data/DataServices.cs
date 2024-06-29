@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace Venar.Data
 {
- 
+
     public class DataServices
     {
         SqlConnection connection = null;
@@ -13,7 +13,7 @@ namespace Venar.Data
         DataTable data = null;
         const string ConnectionString = "Data Source = sql.bsite.net\\MSSQL2016; User ID = venar_dx; Password = venar1997; Connect Timeout = 30; Encrypt = True; TrustServerCertificate = True; ";
         public DataTable Selection(string SQL, Dictionary<string, string> parametros)
-        {            
+        {
             using (connection = new SqlConnection(@ConnectionString))
             {
                 try
@@ -45,6 +45,27 @@ namespace Venar.Data
             return data;
         }
         public int Execute(string SQLText, Dictionary<string, string> parametros)
+        {
+            int result = 0;
+            using (connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+                using (command = new SqlCommand(SQLText, connection))
+                {
+                    if (parametros != null)
+                    {
+                        foreach (var p in parametros)
+                        {
+                            command.Parameters.Add(new SqlParameter(p.Key, p.Value));
+                        }
+                    }
+                    result = command.ExecuteNonQuery();
+                }
+            }
+            return result;
+        }
+
+        public int Create(string SQLText, Dictionary<string, object> parametros)
         {
             int result = 0;
             using (connection = new SqlConnection(ConnectionString))

@@ -25,7 +25,6 @@ namespace StudentSystem.WindowsFormsCliente
 
         private void FillGridMedic()
         {
-            DgvMedics.DataSource = null;
             DgvMedics.DataSource = medicSvc.GetMedics();
             //DgvMedics.DataSource = materiaService.ObtenerMaterias();
         }
@@ -75,9 +74,9 @@ namespace StudentSystem.WindowsFormsCliente
             if (DgvMedics.SelectedCells.Count > 0)
             {
                 DataGridViewRow selectedRow = DgvMedics.Rows[DgvMedics.SelectedCells[0].RowIndex];
-                int IdMateria = int.Parse(selectedRow.Cells["ColIdMateria"].Value.ToString());
+                int MedicId = int.Parse(selectedRow.Cells["ColIdMateria"].Value.ToString());
 
-                if (materiaService.BajaMateria(IdMateria))
+                if (medicSvc.DeleteMedic(MedicId))
                 {
                     FillGridMedic();
                 }
@@ -90,6 +89,11 @@ namespace StudentSystem.WindowsFormsCliente
             {
                 MessageBox.Show("Debe seleccionar una Materia");
             }
+        }
+
+        private void DgvMedics_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

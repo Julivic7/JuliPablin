@@ -44,7 +44,7 @@ namespace Venar.SVC
             }
 
            
-            if (string.IsNullOrEmpty(obj.gender) || !(obj.gender == "1" || obj.gender == "2" ))
+            if (string.IsNullOrEmpty(obj.gender) || !(obj.gender == "Masculino" || obj.gender == "Femenino" ))
             {
                 throw new ArgumentException("El Género es obligatorio");
             }
