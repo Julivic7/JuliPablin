@@ -56,81 +56,84 @@
             // 
             // txtBxDniSearch
             // 
-            txtBxDniSearch.Location = new Point(276, 50);
+            txtBxDniSearch.Location = new Point(329, 38);
+            txtBxDniSearch.Margin = new Padding(3, 2, 3, 2);
             txtBxDniSearch.Name = "txtBxDniSearch";
-            txtBxDniSearch.Size = new Size(225, 27);
+            txtBxDniSearch.Size = new Size(197, 23);
             txtBxDniSearch.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(179, 57);
+            label1.Location = new Point(244, 43);
             label1.Name = "label1";
-            label1.Size = new Size(90, 20);
+            label1.Size = new Size(73, 15);
             label1.TabIndex = 1;
             label1.Text = "Dni Patients:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(148, 151);
+            label2.Location = new Point(71, 113);
             label2.Name = "label2";
-            label2.Size = new Size(107, 20);
+            label2.Size = new Size(87, 15);
             label2.TabIndex = 3;
             label2.Text = "Name Patients:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(118, 197);
+            label3.Location = new Point(289, 113);
             label3.Name = "label3";
-            label3.Size = new Size(137, 20);
+            label3.Size = new Size(111, 15);
             label3.TabIndex = 4;
             label3.Text = "LastName  Patients:";
             // 
             // txtNameSearch
             // 
-            txtNameSearch.Location = new Point(276, 144);
+            txtNameSearch.Location = new Point(71, 130);
+            txtNameSearch.Margin = new Padding(3, 2, 3, 2);
             txtNameSearch.Name = "txtNameSearch";
-            txtNameSearch.Size = new Size(225, 27);
+            txtNameSearch.Size = new Size(197, 23);
             txtNameSearch.TabIndex = 5;
             // 
             // txtBxLastNameSearch
             // 
-            txtBxLastNameSearch.Location = new Point(276, 190);
+            txtBxLastNameSearch.Location = new Point(289, 130);
+            txtBxLastNameSearch.Margin = new Padding(3, 2, 3, 2);
             txtBxLastNameSearch.Name = "txtBxLastNameSearch";
-            txtBxLastNameSearch.Size = new Size(225, 27);
+            txtBxLastNameSearch.Size = new Size(197, 23);
             txtBxLastNameSearch.TabIndex = 6;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(148, 235);
+            label4.Location = new Point(502, 113);
             label4.Name = "label4";
-            label4.Size = new Size(105, 20);
+            label4.Size = new Size(86, 15);
             label4.TabIndex = 7;
             label4.Text = "Cover Patients:";
             // 
             // txtBoxCoverSearch
             // 
-            txtBoxCoverSearch.Location = new Point(276, 235);
+            txtBoxCoverSearch.Location = new Point(502, 130);
+            txtBoxCoverSearch.Margin = new Padding(3, 2, 3, 2);
             txtBoxCoverSearch.Name = "txtBoxCoverSearch";
-            txtBoxCoverSearch.Size = new Size(225, 27);
+            txtBoxCoverSearch.Size = new Size(197, 23);
             txtBoxCoverSearch.TabIndex = 8;
             // 
             // btnModifyPatient
             // 
-            btnModifyPatient.BackColor = Color.Teal;
+            btnModifyPatient.BackColor = SystemColors.HotTrack;
             btnModifyPatient.BackgroundImage = Properties.Resources.edicion_de_usuario;
             btnModifyPatient.BackgroundImageLayout = ImageLayout.Zoom;
             btnModifyPatient.Cursor = Cursors.Hand;
             btnModifyPatient.FlatAppearance.BorderSize = 0;
             btnModifyPatient.FlatAppearance.MouseOverBackColor = Color.White;
             btnModifyPatient.FlatStyle = FlatStyle.Flat;
-            btnModifyPatient.Location = new Point(85, 397);
-            btnModifyPatient.Margin = new Padding(3, 4, 3, 4);
+            btnModifyPatient.Location = new Point(120, 298);
             btnModifyPatient.Name = "btnModifyPatient";
-            btnModifyPatient.Size = new Size(150, 40);
+            btnModifyPatient.Size = new Size(131, 30);
             btnModifyPatient.TabIndex = 13;
             btnModifyPatient.UseVisualStyleBackColor = false;
             btnModifyPatient.Click += btnModifyPatient_Click;
@@ -140,25 +143,24 @@
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Courier New", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(56, 373);
+            label5.Location = new Point(95, 280);
             label5.Name = "label5";
-            label5.Size = new Size(199, 20);
+            label5.Size = new Size(160, 17);
             label5.TabIndex = 18;
             label5.Text = "Modificar Pacientes";
             // 
             // btnDeleatPatient
             // 
-            btnDeleatPatient.BackColor = Color.Teal;
+            btnDeleatPatient.BackColor = SystemColors.HotTrack;
             btnDeleatPatient.BackgroundImage = Properties.Resources.eliminarPaciente;
             btnDeleatPatient.BackgroundImageLayout = ImageLayout.Zoom;
             btnDeleatPatient.Cursor = Cursors.Hand;
             btnDeleatPatient.FlatAppearance.BorderSize = 0;
             btnDeleatPatient.FlatAppearance.MouseOverBackColor = Color.White;
             btnDeleatPatient.FlatStyle = FlatStyle.Flat;
-            btnDeleatPatient.Location = new Point(322, 397);
-            btnDeleatPatient.Margin = new Padding(3, 4, 3, 4);
+            btnDeleatPatient.Location = new Point(328, 298);
             btnDeleatPatient.Name = "btnDeleatPatient";
-            btnDeleatPatient.Size = new Size(161, 40);
+            btnDeleatPatient.Size = new Size(141, 30);
             btnDeleatPatient.TabIndex = 19;
             btnDeleatPatient.UseVisualStyleBackColor = false;
             // 
@@ -167,9 +169,9 @@
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Courier New", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(322, 373);
+            label6.Location = new Point(328, 280);
             label6.Name = "label6";
-            label6.Size = new Size(179, 20);
+            label6.Size = new Size(144, 17);
             label6.TabIndex = 20;
             label6.Text = "Eliminar Paciente";
             // 
@@ -178,41 +180,41 @@
             label7.AutoSize = true;
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Courier New", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(606, 373);
+            label7.Location = new Point(576, 280);
             label7.Name = "label7";
-            label7.Size = new Size(69, 20);
+            label7.Size = new Size(56, 17);
             label7.TabIndex = 21;
             label7.Text = "Ver HC";
             // 
             // button1
             // 
-            button1.BackColor = Color.Teal;
+            button1.BackColor = SystemColors.HotTrack;
             button1.BackgroundImageLayout = ImageLayout.Zoom;
             button1.Cursor = Cursors.Hand;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatAppearance.MouseOverBackColor = Color.White;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(558, 397);
-            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Location = new Point(534, 298);
             button1.Name = "button1";
-            button1.Size = new Size(161, 40);
+            button1.Size = new Size(141, 30);
             button1.TabIndex = 22;
             button1.UseVisualStyleBackColor = false;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(257, 9);
+            label8.Location = new Point(281, 7);
             label8.Name = "label8";
-            label8.Size = new Size(265, 20);
+            label8.Size = new Size(209, 15);
             label8.TabIndex = 23;
             label8.Text = "INGRESE DNI PARA BUSCAR PACIENTE";
             // 
             // button2
             // 
-            button2.Location = new Point(312, 83);
+            button2.Location = new Point(317, 62);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(155, 33);
+            button2.Size = new Size(136, 25);
             button2.TabIndex = 24;
             button2.Text = "SEARCH";
             button2.UseVisualStyleBackColor = true;
@@ -222,11 +224,12 @@
             // 
             datagridPatients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             datagridPatients.Columns.AddRange(new DataGridViewColumn[] { name, LastName, Gender, Location, MedicalCoverage, DateOfBirth });
-            datagridPatients.Location = new Point(42, 268);
+            datagridPatients.Location = new Point(34, 158);
+            datagridPatients.Margin = new Padding(3, 2, 3, 2);
             datagridPatients.Name = "datagridPatients";
             datagridPatients.RowHeadersWidth = 51;
             datagridPatients.RowTemplate.Height = 29;
-            datagridPatients.Size = new Size(802, 102);
+            datagridPatients.Size = new Size(702, 120);
             datagridPatients.TabIndex = 25;
             // 
             // name
@@ -278,10 +281,10 @@
             // 
             // FrmViewPatients
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.MediumAquamarine;
-            ClientSize = new Size(880, 450);
+            BackColor = Color.FromArgb(86, 166, 233);
+            ClientSize = new Size(770, 338);
             Controls.Add(datagridPatients);
             Controls.Add(button2);
             Controls.Add(label8);
@@ -300,6 +303,7 @@
             Controls.Add(label1);
             Controls.Add(txtBxDniSearch);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmViewPatients";
             Text = "viewPatients";
             ((System.ComponentModel.ISupportInitialize)datagridPatients).EndInit();

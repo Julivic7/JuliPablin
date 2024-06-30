@@ -35,12 +35,12 @@ namespace Venar.WF
                 Mail = txtMail.Text.Trim(),
                 Password = txtPassword.Text.Trim(),
                 Specialty = txtSpecialty.Text.Trim(),
-                MedicalRegistration = txtMedicalRegistration.Text.Trim()
+                MedicalRegistration = tag8.Text.Trim()
             };
             //VERIFICAR TAMBIEN QUE NO HAYA OTRO MAIL IGUAL EN LA BASE DE DATOS
 
             var isValidMail = validCreateMedicSVC.IsValidEmail(txtMail.Text.Trim());
-           
+
             if (isValidMail != false)
             {
                 ResultDto result = validCreateMedicSVC.CreateReallyUser(medicDto);
@@ -61,6 +61,11 @@ namespace Venar.WF
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
         {
 
         }

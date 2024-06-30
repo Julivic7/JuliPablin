@@ -39,22 +39,27 @@
             // btnCheckSymptoms
             // 
             btnCheckSymptoms.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnCheckSymptoms.BackColor = SystemColors.MenuHighlight;
+            btnCheckSymptoms.FlatStyle = FlatStyle.Flat;
+            btnCheckSymptoms.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCheckSymptoms.ForeColor = SystemColors.ButtonHighlight;
             btnCheckSymptoms.Location = new Point(12, 190);
             btnCheckSymptoms.Name = "btnCheckSymptoms";
             btnCheckSymptoms.Size = new Size(75, 30);
             btnCheckSymptoms.TabIndex = 3;
             btnCheckSymptoms.TabStop = false;
             btnCheckSymptoms.Text = "Enviar";
-            btnCheckSymptoms.UseVisualStyleBackColor = true;
+            btnCheckSymptoms.UseVisualStyleBackColor = false;
             btnCheckSymptoms.Click += btnCheck_symptoms;
             // 
             // lblResult
             // 
             lblResult.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblResult.AutoSize = true;
-            lblResult.Location = new Point(93, 198);
+            lblResult.Font = new Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblResult.Location = new Point(93, 194);
             lblResult.Name = "lblResult";
-            lblResult.Size = new Size(64, 15);
+            lblResult.Size = new Size(75, 22);
             lblResult.TabIndex = 4;
             lblResult.Text = "Resultados";
             lblResult.Click += lblResult_Click;
@@ -62,18 +67,23 @@
             // checkedListBox1
             // 
             checkedListBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            checkedListBox1.BackColor = Color.FromArgb(230, 242, 255);
+            checkedListBox1.BorderStyle = BorderStyle.FixedSingle;
+            checkedListBox1.Font = new Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point);
             checkedListBox1.FormattingEnabled = true;
             checkedListBox1.Location = new Point(12, 12);
             checkedListBox1.Name = "checkedListBox1";
-            checkedListBox1.Size = new Size(498, 166);
+            checkedListBox1.Size = new Size(498, 162);
             checkedListBox1.TabIndex = 5;
             // 
             // FrmSymptoms
             // 
+            BackColor = Color.FromArgb(86, 166, 233);
             ClientSize = new Size(522, 232);
             Controls.Add(btnCheckSymptoms);
             Controls.Add(lblResult);
             Controls.Add(checkedListBox1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "FrmSymptoms";
             Text = "Symptom Checker";
             ResumeLayout(false);

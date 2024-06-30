@@ -84,9 +84,20 @@ namespace Venar.WF
                 MessageBox.Show("Paciente registrado con exito");
 
             }
-            else {
+            else
+            {
                 MessageBox.Show("Paciente no registrado");
-        }  
+            }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

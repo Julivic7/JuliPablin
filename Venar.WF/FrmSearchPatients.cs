@@ -18,37 +18,51 @@ namespace Venar.WF
 
     {
         PatientsSVC patientsSVC;
-     
+
         public FrmViewPatients()
         {
             InitializeComponent();
             patientsSVC = new PatientsSVC();
-            
-           
+
+
 
         }
         private void button2_Click(object sender, EventArgs e)
-
         {
             int dni;
             if (!int.TryParse(txtBxDniSearch.Text, out dni))
             {
                 MessageBox.Show("Por favor, ingrese un DNI válido.");
-
+                return;
             }
+
+            // Clear the existing rows and columns
             datagridPatients.Columns.Clear();
             datagridPatients.Rows.Clear();
 
+            // Retrieve the patient
+            var pat = patientsSVC.SearchPat(dni);
 
-            //datagridPatients.DataSource = patientsSVC.SearchPat(dni);
-            //var pat = patientsSVC.SearchPat(dni);
-            ; }
+            if (pat != null)
+            {
+                // Create a list with the single patient
+                var patientList = new List<PatientViewModel> { pat };
 
-                
+                // Set the DataSource
+                datagridPatients.DataSource = patientList;
+            }
+            else
+            {
+                MessageBox.Show("No se encontró el paciente con el DNI especificado.");
+            }
+        }
 
 
-            
-        
+
+
+
+
+
 
         private void btnModifyPatient_Click(object sender, EventArgs e)
         {

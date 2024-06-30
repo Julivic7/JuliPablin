@@ -36,8 +36,8 @@ namespace Venar.SVC
                 {
                     locations.Add(new Locations()
                     {
-                        idLocation = int.Parse(row["LocationId"].ToString()), 
-                        nameLocation = row["Name"].ToString() 
+                        idLocation = int.Parse(row["LocationId"].ToString()),
+                        nameLocation = row["Name"].ToString()
                     });
                 }
             }
@@ -78,7 +78,7 @@ namespace Venar.SVC
                     coverageMedicals.Add(new CoverageMedical()
                     {
                         IdCover = int.Parse(row["MedicCoveId"].ToString()),
-                        NameCover = row["name"].ToString() 
+                        NameCover = row["name"].ToString()
                     });
                 }
             }
@@ -86,8 +86,8 @@ namespace Venar.SVC
             return coverageMedicals;
         }
 
-        
-        
+
+
 
 
         public int CreatePatient(Patient patient)
@@ -132,29 +132,29 @@ namespace Venar.SVC
         }
 
 
-       // public Patient SearchPat(int dni)
-        //{
-          //  Dictionary<string, string> parts = new Dictionary<string, string>();
-            //string query = "SELECT Name, LastName, MedicalCoverage FROM patients WHERE dni = @Dni";
+        public PatientViewModel SearchPat(int dni)
+        {
+            Dictionary<string, string> parts = new Dictionary<string, string>();
+            string query = @"
+        SELECT p.Name AS PatientName, p.LastName, p.MedicalCoverageId, l.LocationId, l.Name AS LocationName
+        FROM Patients p
+        JOIN Location l ON p.LocationId = l.LocationId
+        WHERE p.Dni = @Dni";
 
-            //pa//rts.Add("@Dni", dni.ToString());
+            parts.Add("@Dni", dni.ToString());
 
-            //var dev = dataService.Selection(query, parts).Rows[0];
+            var dev = dataService.Selection(query, parts).Rows[0];
 
-            //return new Patient()
-            //{
-
-              //  Name = dev["@Name"].ToString(),
-                //LastName = dev["@LastName"].ToString(),
-                //Location = (Locations)dev["@Locations"],
-               // Gender = (Gender)dev["Gender"],
-                //MedicalCoverage = (CoverageMedical)dev["@MedicalCoverage"],
-
-
-
-            //};
+            return new PatientViewModel()
+            {
+                Name = dev["PatientName"].ToString(),
+                LastName = dev["LastName"].ToString(),
+                MedicalCoverageId = Convert.ToInt32(dev["MedicalCoverageId"]),
+                LocationId = Convert.ToInt32(dev["LocationId"]),
+                LocationName = dev["LocationName"].ToString()
+            };
         }
 
-       
-    }
 
+    }
+}
