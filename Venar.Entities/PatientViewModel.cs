@@ -13,5 +13,6 @@ namespace Venar.Entities
         public int MedicalCoverageId { get; set; }
         public int LocationId { get; set; }
         public string LocationName { get; set; }
+        public string Gender { get; set; }
     }
 }

@@ -135,11 +135,21 @@ namespace Venar.SVC
         public PatientViewModel SearchPat(int dni)
         {
             Dictionary<string, string> parts = new Dictionary<string, string>();
-            string query = @"
-        SELECT p.Name AS PatientName, p.LastName, p.MedicalCoverageId, l.LocationId, l.Name AS LocationName
-        FROM Patients p
-        JOIN Location l ON p.LocationId = l.LocationId
-        WHERE p.Dni = @Dni";
+            string query = @"SELECT 
+    p.Name AS PatientName, 
+    p.LastName, 
+    p.MedicalCoverageId, 
+    l.LocationId, 
+    l.Name AS LocationName,
+    g.nombre AS GenderName
+FROM 
+    Patients p
+JOIN 
+    Location l ON p.LocationId = l.LocationId
+JOIN 
+    Gender g ON p.GenderId = g.GenderId
+WHERE 
+    p.Dni = @Dni;";
 
             parts.Add("@Dni", dni.ToString());
 
@@ -149,9 +159,10 @@ namespace Venar.SVC
             {
                 Name = dev["PatientName"].ToString(),
                 LastName = dev["LastName"].ToString(),
+                Gender = dev["GenderName"].ToString(),
                 MedicalCoverageId = Convert.ToInt32(dev["MedicalCoverageId"]),
                 LocationId = Convert.ToInt32(dev["LocationId"]),
-                LocationName = dev["LocationName"].ToString()
+                LocationName = dev["LocationName"].ToString(),
             };
         }
 
