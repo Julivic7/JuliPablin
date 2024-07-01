@@ -10,7 +10,7 @@ public class Patient
     public Gender Gender { get; set; }
     public Location Location { get; set; }
     public MedicalCoverage MedicalCoverage{ get; set; }
-    public string ClinicalHistory { get;set; }
+    public string MedicalHistory { get;set; }
 
 
 }

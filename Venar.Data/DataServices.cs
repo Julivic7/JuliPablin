@@ -4,7 +4,6 @@ using System.Data.SqlClient;
 
 namespace Venar.Data
 {
- 
     public class DataServices
     {
         SqlConnection connection = null;

@@ -61,6 +61,14 @@ namespace Venar.WF
                 Location = (Location)cmbLocations.SelectedItem,
                 MedicalCoverage = new MedicalCoverage { IdCover = (int)cmbCoverMed.SelectedValue }
             };
+            // Imprimir datos para verificar
+            Console.WriteLine($"Name: {patient.Name}");
+            Console.WriteLine($"LastName: {patient.LastName}");
+            Console.WriteLine($"Dni: {patient.Dni}");
+            Console.WriteLine($"DateOfBirth: {patient.DateOfBirth}");
+            Console.WriteLine($"Gender Id: {patient.Gender.IdGender}");
+            Console.WriteLine($"Location Id: {patient.Location.IdLocation}");
+            Console.WriteLine($"MedicalCoverage Id: {patient.MedicalCoverage.IdCover}");
 
             ValidCreatePatient validCreatePatient = new ValidCreatePatient();
 
@@ -75,7 +83,6 @@ namespace Venar.WF
                 MessageBox.Show("Paciente no registrado");
             }
         }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();

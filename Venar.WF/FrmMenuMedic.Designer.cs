@@ -42,7 +42,7 @@
             btnModifyPatient = new Button();
             btnCreatePatient = new Button();
             btnShowPatient = new Button();
-            button1 = new Button();
+            btnClinicalHistory = new Button();
             ((System.ComponentModel.ISupportInitialize)DgvPatients).BeginInit();
             SuspendLayout();
             // 
@@ -189,20 +189,21 @@
             btnShowPatient.UseVisualStyleBackColor = true;
             btnShowPatient.Click += btnShowPatient_Click;
             // 
-            // button1
+            // btnClinicalHistory
             // 
-            button1.Location = new Point(405, 458);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(146, 30);
-            button1.TabIndex = 16;
-            button1.Text = "Ver Historia Clinica";
-            button1.UseVisualStyleBackColor = true;
+            btnClinicalHistory.Location = new Point(405, 458);
+            btnClinicalHistory.Margin = new Padding(3, 4, 3, 4);
+            btnClinicalHistory.Name = "btnClinicalHistory";
+            btnClinicalHistory.Size = new Size(160, 30);
+            btnClinicalHistory.TabIndex = 16;
+            btnClinicalHistory.Text = "Crear Historia Clinica";
+            btnClinicalHistory.UseVisualStyleBackColor = true;
+            btnClinicalHistory.Click += btnClinicalHistory_Click;
             // 
             // FrmMenuMedic
             // 
             ClientSize = new Size(1096, 547);
-            Controls.Add(button1);
+            Controls.Add(btnClinicalHistory);
             Controls.Add(btnShowPatient);
             Controls.Add(btnFinishSession);
             Controls.Add(btnDeleatPatient);
@@ -231,6 +232,6 @@
         private DataGridViewTextBoxColumn colGender;
         private DataGridViewTextBoxColumn colMedicalCoverage;
         private DataGridViewTextBoxColumn colLocation;
-        private Button button1;
+        private Button btnClinicalHistory;
     }
 }

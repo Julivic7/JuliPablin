@@ -1,13 +1,12 @@
 ﻿using System.Data;
 using Venar.Data;
-using Venar.Entities; 
+using Venar.Entities;
 
 namespace Venar.SVC
 {
     public class PatientsSVC
     {
-        private DataServices dataService;
-        
+        private DataServices dataService;       
 
         public PatientsSVC()
         {
@@ -29,7 +28,6 @@ namespace Venar.SVC
             Parts.Add("@GenderId", patient.Gender.IdGender.ToString());
             Parts.Add("@LocationId", patient.Location.IdLocation.ToString());
             Parts.Add("@MedicalCoverageId", patient.MedicalCoverage.IdCover.ToString());
-
             
             int patientId = 0;
             var result = dataService.Selection(query, Parts);
@@ -38,7 +36,6 @@ namespace Venar.SVC
             {
                 patientId = Convert.ToInt32(result.Rows[0][0]);
             }
-
             if (patientId > 0)
             {                
                 string relationshipQuery = @"
@@ -53,10 +50,9 @@ namespace Venar.SVC
 
                 int relationshipResult = dataService.Execute(relationshipQuery, relationshipParams);
 
-                return relationshipResult > 0 ? patientId : 0; // Retorna el ID del paciente insertado si la relación se insertó correctamente
+                return relationshipResult > 0 ? patientId : 0; 
             }
-
-            return 0; // Retorna 0 si no se pudo insertar el paciente correctamente
+            return 0;
         }
         public bool DeletePatient(int dni, int medicId)
         {
@@ -83,56 +79,55 @@ namespace Venar.SVC
 
             return result;
         }
-        public bool UpdatePatient(Patient patient , int medicId)
+        public bool UpdatePatient(Patient patient, int medicId)
         {
-            bool Result = false;
+            bool result = false;
 
-            // Actualización del paciente en la tabla Patients
-            string SQLUpdatePatient = @"
-        UPDATE Patients 
-        SET Name = @Name, 
-            LastName = @LastName, 
-            DateOfBirth = @DateOfBirth, 
-            GenderId = @GenderId, 
-            LocationId = @LocationId, 
-            MedicalCoverageId = @MedicalCoverageId,
-            UpdateAt = GETDATE(),
-            ClinicalHistory = @ClinicalHistory
-        WHERE Dni = @Dni";
+            string sqlUpdatePatient = @"
+                UPDATE Patients 
+                SET Name = @Name, 
+                    LastName = @LastName, 
+                    DateOfBirth = @DateOfBirth, 
+                    Dni = @DniNuevo,
+                    GenderId = @GenderId, 
+                    LocationId = @LocationId, 
+                    MedicalCoverageId = @MedicalCoverageId,
+                    UpdateAt = GETDATE()
+                WHERE Dni = @Dni";
 
-            Dictionary<string, string> ParametrosPatient = new Dictionary<string, string>();
-            ParametrosPatient.Add("@Name", patient.Name);
-            ParametrosPatient.Add("@LastName", patient.LastName);
-            ParametrosPatient.Add("@DateOfBirth", patient.DateOfBirth != null ? patient.DateOfBirth.ToString("yyyy-MM-dd") : null);
-            ParametrosPatient.Add("@GenderId", patient.Gender != null ? patient.Gender.IdGender.ToString() : null);
-            ParametrosPatient.Add("@LocationId", patient.Location != null ? patient.Location.IdLocation.ToString() : null);
-            ParametrosPatient.Add("@MedicalCoverageId", patient.MedicalCoverage != null ? patient.MedicalCoverage.IdCover.ToString() : null);
-            ParametrosPatient.Add("@Dni", patient.Dni.ToString());
-            ParametrosPatient.Add("@ClinicalHistory", patient.ClinicalHistory ?? "");
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("@Name", patient.Name);
+            parameters.Add("@LastName", patient.LastName);
+            parameters.Add("@DateOfBirth", patient.DateOfBirth != null ? patient.DateOfBirth.ToString("yyyy-MM-dd") : null);
+            parameters.Add("@GenderId", patient.Gender != null ? patient.Gender.IdGender.ToString() : null);
+            parameters.Add("@LocationId", patient.Location != null ? patient.Location.IdLocation.ToString() : null);
+            parameters.Add("@MedicalCoverageId", patient.MedicalCoverage != null ? patient.MedicalCoverage.IdCover.ToString() : null);
+            parameters.Add("@Dni", patient.Dni.ToString());
 
-            var rowsAffectedPatient = dataService.Execute(SQLUpdatePatient, ParametrosPatient);
+            int rowsAffected = dataService.Execute(sqlUpdatePatient, parameters);
 
-            Result = rowsAffectedPatient > 0;
+            result = rowsAffected > 0;
 
-            return Result;
+            return result;
         }
         public List<Patient> GetPatients(int medicId)
         {
             List<Patient> patients = new List<Patient>();
             string query = @"
-        SELECT P.PatientId, P.Name, P.LastName, P.Dni, P.DateOfBirth,
-               P.GenderId, G.nombre AS GenderName,
-               P.LocationId, L.Name AS LocationName,
-               P.MedicalCoverageId, MC.name AS MedicalCoverageName,
-               P.Status, P.CreatedAt, P.UpdateAt, P.ClinicalHistory
-        FROM Patients P
-        INNER JOIN PatientMedicRelationship PMR ON P.PatientId = PMR.PatientId
-        INNER JOIN Medics M ON PMR.MedicId = M.MedicId
-        LEFT JOIN Gender G ON P.GenderId = G.GenderId
-        LEFT JOIN Location L ON P.LocationId = L.LocationId
-        LEFT JOIN MedicalCoverage MC ON P.MedicalCoverageId = MC.MedicCoveId
-        WHERE P.Status = 1
-        AND M.MedicId = @MedicId";
+             SELECT P.PatientId, P.Name, P.LastName, P.Dni, P.DateOfBirth,
+                    P.GenderId, G.nombre AS GenderName,
+                    P.LocationId, L.Name AS LocationName,
+                    P.MedicalCoverageId, MC.name AS MedicalCoverageName,
+                    P.Status, P.CreatedAt, P.UpdateAt, P.MedicalHistoryId
+             FROM Patients P
+             INNER JOIN PatientMedicRelationship PMR ON P.PatientId = PMR.PatientId
+             INNER JOIN Medics M ON PMR.MedicId = M.MedicId
+             LEFT JOIN Gender G ON P.GenderId = G.GenderId
+             LEFT JOIN Location L ON P.LocationId = L.LocationId
+             LEFT JOIN MedicalCoverage MC ON P.MedicalCoverageId = MC.MedicCoveId
+             LEFT JOIN MedicalHistory MH ON P.MedicalHistoryId = MH.MedicalHistoryId
+             WHERE P.Status = 1
+             AND M.MedicId = @MedicId";
 
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             parameters.Add("@MedicId", medicId.ToString());
@@ -150,7 +145,7 @@ namespace Venar.SVC
                         Name = row["Name"].ToString(),
                         LastName = row["LastName"].ToString(),
                         DateOfBirth = Convert.ToDateTime(row["DateOfBirth"]),
-                        ClinicalHistory = row["ClinicalHistory"].ToString()
+                        MedicalHistory = row["MedicalHistoryId"].ToString()
                     };
 
                     // Gender
@@ -189,44 +184,54 @@ namespace Venar.SVC
 
             return patients;
         }
-
         public Patient SearchPat(int dni)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
-            string query = "SELECT Name, LastName, MedicalCoverageId, GenderId, LocationId FROM Patients WHERE Dni = @Dni";
+            string query = "SELECT PatientId, Name, LastName, DateOfBirth, MedicalCoverageId, GenderId, LocationId FROM Patients WHERE Dni = @Dni";
 
             parameters.Add("@Dni", dni.ToString());
 
-            var result = dataService.Selection(query, parameters);
-
-            if (result != null && result.Rows.Count > 0)
+            try
             {
-                var row = result.Rows[0];
+                var result = dataService.Selection(query, parameters);
 
-                Patient patient = new Patient()
+                if (result != null && result.Rows.Count > 0)
                 {
-                    Name = row["Name"].ToString(),
-                    LastName = row["LastName"].ToString(),
-                    MedicalCoverage = new MedicalCoverage()
-                    {
-                        IdCover = row.IsNull("MedicalCoverageId") ? 0 : Convert.ToInt32(row["MedicalCoverageId"])
-                    },
-                    Gender = new Gender()
-                    {
-                        IdGender = row.IsNull("GenderId") ? 0 : Convert.ToInt32(row["GenderId"])
-                    },
-                    Location = new Location()
-                    {
-                        IdLocation = row.IsNull("LocationId") ? 0 : Convert.ToInt32(row["LocationId"])
-                    }
-                };
+                    var row = result.Rows[0];
 
-                return patient;
+                    Patient patient = new Patient()
+                    {
+                        PatientId = Convert.ToInt32(row["PatientId"]),
+                        Name = row["Name"].ToString(),
+                        LastName = row["LastName"].ToString(),
+                        DateOfBirth = row.IsNull("DateOfBirth") ? DateTime.MinValue : Convert.ToDateTime(row["DateOfBirth"]),
+                        Dni = dni,
+                        MedicalCoverage = new MedicalCoverage()
+                        {
+                            IdCover = row.IsNull("MedicalCoverageId") ? 0 : Convert.ToInt32(row["MedicalCoverageId"])
+                        },
+                        Gender = new Gender()
+                        {
+                            IdGender = row.IsNull("GenderId") ? 0 : Convert.ToInt32(row["GenderId"])
+                        },
+                        Location = new Location()
+                        {
+                            IdLocation = row.IsNull("LocationId") ? 0 : Convert.ToInt32(row["LocationId"])
+                        }
+                    };
+
+                    return patient;
+                }
+                else
+                {
+                    return null;
+                }
             }
-
-            return null;
+            catch (Exception ex)
+            {
+                throw new Exception("Error al buscar paciente por DNI", ex);
+            }
         }
-
         public List<Location> GetLocation()
         {
             string query = "SELECT * FROM Location";
@@ -244,7 +249,6 @@ namespace Venar.SVC
                     });
                 }
             }
-
             return Location;
         }
         public List<Gender> GetGender()
