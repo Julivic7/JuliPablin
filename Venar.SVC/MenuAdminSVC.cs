@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using System.Xml.Linq;
 using Venar.Data;
 using Venar.DTO;
 
@@ -14,7 +13,7 @@ namespace Venar.SVC
             string userQuery = @"
         INSERT INTO Users (UserName, Password, UserType, Mail)
         VALUES (@UserName, @Password, 'MEDIC', @Mail);
-        SELECT SCOPE_IDENTITY() AS UserId;
+        SELECT CAST(SCOPE_IDENTITY() AS int) AS UserId;
     ";
 
             Dictionary<string, string> userParams = new Dictionary<string, string>
@@ -34,20 +33,19 @@ namespace Venar.SVC
 
                     // Ahora puedes continuar con la inserción en la tabla Medics utilizando userId
                     string medicQuery = @"
-                INSERT INTO Medics (UserId, Name, LastName, Dni, Mail, Specialty, MedicalRegistration)
-                VALUES (@UserId, @Name, @LastName, @Dni, @Mail, @Specialty, @MedicalRegistration);
+                INSERT INTO Medics (UserId, Name, LastName, Dni, Specialty, MedicalRegistration)
+                VALUES (@UserId, @Name, @LastName, @Dni, @Specialty, @MedicalRegistration);
             ";
 
                     Dictionary<string, string> medicParams = new Dictionary<string, string>
-            {
-                { "@UserId", userId.ToString() },
-                { "@Name", medicDto.Name },
-                { "@LastName", medicDto.LastName },
-                { "@Dni", medicDto.Dni },
-                { "@Mail", medicDto.Mail },
-                { "@Specialty", medicDto.Specialty },
-                { "@MedicalRegistration", medicDto.MedicalRegistration }
-            };
+                     {
+                        { "@UserId", userId.ToString() },
+                        { "@Name", medicDto.Name },
+                        { "@LastName", medicDto.LastName },
+                        { "@Dni", medicDto.Dni },
+                        { "@Specialty", medicDto.Specialty },
+                        { "@MedicalRegistration", medicDto.MedicalRegistration }
+                    };
 
                     dataServices.Execute(medicQuery, medicParams);
                 }
@@ -62,13 +60,12 @@ namespace Venar.SVC
                 throw new Exception("Error al crear el médico", ex);
             }
         }
-
         public List<MedicDto> GetMedics()
         {
             List<MedicDto> listMedics = null;
             string SqlSelect = @"
-        SELECT M.MedicId, M.Name, M.LastName, M.Dni, M.Mail, M.Specialty, M.MedicalRegistration,
-               U.UserName, U.Password
+        SELECT M.MedicId, M.Name, M.LastName,M.Dni, M.Specialty, M.MedicalRegistration,
+               U.UserName, U.Password, U.Mail
         FROM Medics M
         INNER JOIN Users U ON M.UserId = U.UserId
         WHERE M.Status = 1";
@@ -96,7 +93,6 @@ namespace Venar.SVC
             }
             return listMedics;
         }
-
         public bool DeleteMedic(int medic)
         {
             bool Result = false;
@@ -114,24 +110,30 @@ namespace Venar.SVC
         }
         public MedicDto GetMedicForId(int idMedic)
         {
-            Dictionary<string, string> Parametros = new Dictionary<string, string>();
-            string SQLSelect = "SELECT * FROM MEDICS WHERE MedicId = @MedicId";
-            Parametros.Add("@MedicId", idMedic.ToString());
+            Dictionary<string, string> parametros = new Dictionary<string, string>();
+            string sqlSelect = @"
+        SELECT M.*, U.Mail, U.UserName 
+        FROM Medics M
+        INNER JOIN Users U ON M.UserId = U.UserId
+        WHERE M.MedicId = @MedicId";
 
-            var Result = dataServices.Selection(SQLSelect, Parametros).Rows[0];
+            parametros.Add("@MedicId", idMedic.ToString());
+
+            var result = dataServices.Selection(sqlSelect, parametros).Rows[0];
 
             return new MedicDto()
             {
-                MedicId = int.Parse(Result["MedicId"].ToString()),
-                Name = Result["Name"].ToString(),
-                LastName = Result["LastName"].ToString(),
-                Dni = Result["Dni"].ToString(),
-                Mail = Result["Mail"].ToString(),
-                Specialty = Result["Specialty"].ToString(),
-                MedicalRegistration = Result["MedicalRegistration"].ToString()
+                MedicId = int.Parse(result["MedicId"].ToString()),
+                Name = result["Name"].ToString(),
+                LastName = result["LastName"].ToString(),
+                Dni = result["Dni"].ToString(),
+                Specialty = result["Specialty"].ToString(),
+                MedicalRegistration = result["MedicalRegistration"].ToString(),
+                Mail = result["Mail"].ToString(), // Agregar Mail desde Users
+                UserName = result["UserName"].ToString() // Agregar UserName desde Users
             };
         }
-        public bool EditMedic(MedicDto medic)
+        public bool UpdateMedic(MedicDto medic)
         {
             bool Result = false;
 
@@ -140,7 +142,7 @@ namespace Venar.SVC
         UPDATE Medics 
         SET Name = @Name, 
             LastName = @LastName, 
-            Dni = @Dni, 
+            Dni = @Dni,
             Specialty = @Specialty, 
             MedicalRegistration = @MedicalRegistration,
             UpdatedAt = GETDATE()
@@ -156,17 +158,18 @@ namespace Venar.SVC
 
             var rowsAffectedMedic = dataServices.Execute(SQLUpdateMedic, ParametrosMedic);
 
-            // Actualización del nombre de usuario en la tabla Users
+            
             string SQLUpdateUser = @"
-        UPDATE Users 
-        SET UserName = @UserName
-        WHERE UserId = (
-            SELECT UserId FROM Medics WHERE MedicId = @MedicId
-        )";
+                UPDATE Users 
+                SET UserName = @UserName, Mail = @Mail
+                WHERE UserId = (
+                    SELECT UserId FROM Medics WHERE MedicId = @MedicId
+                )";
 
             Dictionary<string, string> ParametrosUser = new Dictionary<string, string>();
             ParametrosUser.Add("@MedicId", medic.MedicId.ToString());
-            ParametrosUser.Add("@UserName", medic.UserName); // Nuevo nombre de usuario
+            ParametrosUser.Add("@UserName", medic.UserName);
+            ParametrosUser.Add("@Mail", medic.Mail);
 
             var rowsAffectedUser = dataServices.Execute(SQLUpdateUser, ParametrosUser);
 

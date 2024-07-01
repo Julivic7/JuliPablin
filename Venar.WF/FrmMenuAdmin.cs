@@ -1,18 +1,16 @@
 ﻿using Venar.SVC;
-using Venar.WF;
 
 
-namespace StudentSystem.WindowsFormsCliente
+namespace Venar.WF
 {
-
     public partial class FrmMenuAdmin : Form
     {
         public string LoggedUserName { get; set; }
         DiagnosticSVC diagnosticSvc = new DiagnosticSVC();
-        MenuAdminSVC medicSvc = new MenuAdminSVC();
+        MenuAdminSVC menuAdminSvc = new MenuAdminSVC();
         FrmCreateMedic frmCreateMedic;
 
-        public FrmMenuAdmin(string userName)
+        public FrmMenuAdmin(string userName , int adminId)
         {
             InitializeComponent();
             FillGridMedic();
@@ -23,7 +21,7 @@ namespace StudentSystem.WindowsFormsCliente
         {
             DgvMedics.Columns.Clear();
             DgvMedics.AutoGenerateColumns = true;
-            DgvMedics.DataSource = medicSvc.GetMedics();
+            DgvMedics.DataSource = menuAdminSvc.GetMedics();
             DgvMedics.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
         private void BtnCerrar_Click(object sender, EventArgs e)
@@ -31,7 +29,7 @@ namespace StudentSystem.WindowsFormsCliente
             FrmLogin frmLogin = new FrmLogin();
             this.Close();
             frmLogin.ShowDialog();
-            
+
         }
 
         private void btnModifyMedic_Click_1(object sender, EventArgs e)
@@ -42,7 +40,7 @@ namespace StudentSystem.WindowsFormsCliente
                 DataGridViewRow selectedRow = DgvMedics.Rows[DgvMedics.SelectedCells[0].RowIndex];
                 int MedicId = int.Parse(selectedRow.Cells[columnIndex].Value.ToString());
 
-                var MedicFound = medicSvc.GetMedicForId(MedicId);
+                var MedicFound = menuAdminSvc.GetMedicForId(MedicId);
 
                 FrmModifyMedic frmModifyMedic = new FrmModifyMedic(MedicFound);
                 frmModifyMedic.Show();
@@ -63,13 +61,18 @@ namespace StudentSystem.WindowsFormsCliente
                 DataGridViewRow selectedRow = DgvMedics.Rows[DgvMedics.SelectedCells[0].RowIndex];
                 int MedicId = int.Parse(selectedRow.Cells[columnIndex].Value.ToString());
 
-                if (medicSvc.DeleteMedic(MedicId))
+                DialogResult result = MessageBox.Show("¿Está seguro de eliminar este médico?", "Confirmar Eliminación", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (result == DialogResult.OK)
                 {
-                    FillGridMedic();
-                }
-                else
-                {
-                    MessageBox.Show("No se pudo dar de baja al Medico");
+                    if (menuAdminSvc.DeleteMedic(MedicId))
+                    {
+                        FillGridMedic();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo dar de baja al Medico");
+                    }
                 }
             }
             else
@@ -77,8 +80,6 @@ namespace StudentSystem.WindowsFormsCliente
                 MessageBox.Show("Debe seleccionar un Medico");
             }
         }
-
-
         private void btnCreateMedic_Click_1(object sender, EventArgs e)
         {
             frmCreateMedic = new FrmCreateMedic();
@@ -89,6 +90,24 @@ namespace StudentSystem.WindowsFormsCliente
         private void btnShowMedic_Click(object sender, EventArgs e)
         {
             FillGridMedic();
+        }
+
+        private void btnCreateLocation_Click(object sender, EventArgs e)
+        {
+            //string nombre = txtNombreLocalidad.Text;
+            //int codigoPostal = int.Parse(txtCodigoPostal.Text);
+
+            //bool resultado = locationService.AddLocation(nombre, codigoPostal);
+
+            //if (resultado)
+            //{
+            //    MessageBox.Show("Localidad agregada correctamente.");
+            //    // Lógica adicional después de agregar la localidad
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Error al agregar la localidad.");
+            //}
         }
     }
 }

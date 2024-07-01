@@ -10,9 +10,8 @@ namespace Venar.Entities
     {
         public Guid idMedico { get; set; }
         public Guid IdPaciente { get; set; }
-        public string fecha { get; set; }
-        public string motivo { get; set; }
-        public string descripcionMotivo { get; set; }
+        public string Date { get; set; }
+        public string Reason { get; set; }
 
     }
 }

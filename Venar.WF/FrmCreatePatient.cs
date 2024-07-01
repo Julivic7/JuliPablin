@@ -6,13 +6,36 @@ namespace Venar.WF
 {
     public partial class FrmCreatePatient : Form
     {
-        ValidCreatePatient validCreatePatient = new ValidCreatePatient();
+        ValidCreatePatient validPatient = new ValidCreatePatient();
         PatientsSVC patientsSVC;
+        private int medicId;
 
-        public FrmCreatePatient()
+        public FrmCreatePatient(int medicId)
         {
             InitializeComponent();
             patientsSVC = new PatientsSVC();
+            this.medicId = medicId;
+            cmbLocation();
+            cmbGender();
+            cmbCoverMedical();
+        }
+        private void cmbLocation()
+        {
+            cmbLocations.DataSource = patientsSVC.GetLocation();
+            cmbLocations.DisplayMember = "LocationName";
+            cmbLocations.ValueMember = "IdLocation";
+        }
+        private void cmbGender()
+        {
+            cmbGenders.DataSource = patientsSVC.GetGender();
+            cmbGenders.DisplayMember = "NameGender";
+            cmbGenders.ValueMember = "IdGender";
+        }
+        private void cmbCoverMedical()
+        {
+            cmbCoverMed.DataSource = patientsSVC.GetCover();
+            cmbCoverMed.DisplayMember = "NameCover";
+            cmbCoverMed.ValueMember = "IdCover";
         }
         private void BtnExit_Click(object sender, EventArgs e)
         {
@@ -28,28 +51,34 @@ namespace Venar.WF
         }
         private void btnRegistar_Click(object sender, EventArgs e)
         {
-            Patient patient = new Patient();
-
-            patient.name = txtNamePat.Text;
-            patient.lastName = txtLastNamePat.Text;
-            patient.dni = txtDniPat.Text;
-            patient.gender = txtGenderPat.Text;
-            patient.location = txtLocaPat.Text;
-            patient.DateOfBirth = dateTimePicker1.Value;
-            patient.MedicalCoverage = txtMCovPat.Text;
-
-           if (!validCreatePatient.ValidatePatient(patient))
+            Patient patient = new Patient
             {
-                patientsSVC.CreatePatient(patient);
-                MessageBox.Show("Paciente registrado");
+                Name = txtNamePat.Text,
+                LastName = txtLastNamePat.Text,
+                Dni = Convert.ToInt32(txtDniPat.Text),
+                DateOfBirth = dateTimePicker1.Value,
+                Gender = new Gender { IdGender = (int)cmbGenders.SelectedValue },
+                Location = (Location)cmbLocations.SelectedItem,
+                MedicalCoverage = new MedicalCoverage { IdCover = (int)cmbCoverMed.SelectedValue }
+            };
+
+            ValidCreatePatient validCreatePatient = new ValidCreatePatient();
+
+            if (validCreatePatient.ValidPatient(patient))
+            {
+                int patientId = patientsSVC.CreatePatient(patient, medicId);
+                MessageBox.Show("Paciente registrado con éxito");
+                this.Close();
             }
             else
             {
-                MessageBox.Show("Error al registrar paciente");
+                MessageBox.Show("Paciente no registrado");
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
-
-
-

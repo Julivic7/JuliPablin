@@ -32,12 +32,14 @@
             txtMail = new TextBox();
             label1 = new Label();
             btnAceptar = new Button();
+            btnCancelar = new Button();
             SendMail.SuspendLayout();
             SuspendLayout();
             // 
             // SendMail
             // 
             SendMail.BackColor = Color.Transparent;
+            SendMail.Controls.Add(btnCancelar);
             SendMail.Controls.Add(txtMail);
             SendMail.Controls.Add(label1);
             SendMail.Controls.Add(btnAceptar);
@@ -81,6 +83,18 @@
             btnAceptar.UseVisualStyleBackColor = false;
             btnAceptar.Click += btnAceptar_Click;
             // 
+            // btnCancelar
+            // 
+            btnCancelar.BackColor = SystemColors.HotTrack;
+            btnCancelar.ForeColor = SystemColors.HighlightText;
+            btnCancelar.Location = new Point(161, 215);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(117, 36);
+            btnCancelar.TabIndex = 3;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
             // FrmForgetPassword
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -102,5 +116,6 @@
         private Label label1;
         private Button btnAceptar;
         private TextBox txtMail;
+        private Button btnCancelar;
     }
 }
