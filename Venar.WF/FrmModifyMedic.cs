@@ -1,12 +1,12 @@
 ﻿using Venar.DTO;
 using Venar.SVC;
 
-namespace StudentSystem.WindowsFormsCliente
+namespace Venar.WF
 {
     public partial class FrmModifyMedic : Form
     {
-        //MateriaService materiaService = new MateriaService();
-        MenuAdminSVC medicSvc = new MenuAdminSVC();
+        
+        MenuAdminSVC menuAdminSvc = new MenuAdminSVC();
         MedicDto medic = null;
         public FrmModifyMedic(MedicDto medicEdit)
         {
@@ -36,9 +36,7 @@ namespace StudentSystem.WindowsFormsCliente
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            //Validar los Datos
-
-            //Si la validación pasos
+            
             if (medic == null)
             {
                 medic = new MedicDto();
@@ -56,14 +54,15 @@ namespace StudentSystem.WindowsFormsCliente
             {
                 if (medic.MedicId == 0)
                 {
-                    medicSvc.CreateMedic(medic);
+                    menuAdminSvc.CreateMedic(medic);
                     MessageBox.Show("Se agregó el Medico");
                 }
                 else
                 {
-                    if (medicSvc.EditMedic(medic))
+                    if (menuAdminSvc.UpdateMedic(medic))
                     {
-                        MessageBox.Show("Se modificó el Medico: " , medic.LastName);
+                        MessageBox.Show("Se modificó el Medico: " + medic.LastName);
+                        this.Close();
                     }
                     else
                     {
@@ -73,7 +72,7 @@ namespace StudentSystem.WindowsFormsCliente
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Algo falló, por favor revisar. Error: {ex.Message}");
+                MessageBox.Show($"El nombre de Usuario ya se encunetra en Uso");
             }
         }
     }

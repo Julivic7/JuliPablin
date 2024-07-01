@@ -12,13 +12,13 @@
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+{
+    if (disposing && (components != null))
+    {
+        components.Dispose();
+    }
+    base.Dispose(disposing);
+}
 
         #region Windows Form Designer generated code
 
@@ -28,178 +28,209 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label7 = new Label();
-            label4 = new Label();
-            button1 = new Button();
-            btnShowPatient = new Button();
+            DgvPatients = new DataGridView();
+            colPatientId = new DataGridViewTextBoxColumn();
+            colName = new DataGridViewTextBoxColumn();
+            colLastname = new DataGridViewTextBoxColumn();
+            colDni = new DataGridViewTextBoxColumn();
+            colDateOfBirth = new DataGridViewTextBoxColumn();
+            colGender = new DataGridViewTextBoxColumn();
+            colMedicalCoverage = new DataGridViewTextBoxColumn();
+            colLocation = new DataGridViewTextBoxColumn();
             btnFinishSession = new Button();
+            btnDeleatPatient = new Button();
+            btnModifyPatient = new Button();
             btnCreatePatient = new Button();
-            label1 = new Label();
-            panel1 = new Panel();
-            panelContenedor = new Panel();
-            label2 = new Label();
-            panel1.SuspendLayout();
+            btnShowPatient = new Button();
+            button1 = new Button();
+            ((System.ComponentModel.ISupportInitialize)DgvPatients).BeginInit();
             SuspendLayout();
             // 
-            // label7
+            // DgvPatients
             // 
-            label7.AutoSize = true;
-            label7.BackColor = Color.Transparent;
-            label7.Font = new Font("Courier New", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(21, 237);
-            label7.Name = "label7";
-            label7.Size = new Size(179, 20);
-            label7.TabIndex = 19;
-            label7.Text = "Buscar  Pacientes";
+            DgvPatients.AllowUserToAddRows = false;
+            DgvPatients.AllowUserToDeleteRows = false;
+            DgvPatients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DgvPatients.Columns.AddRange(new DataGridViewColumn[] { colPatientId, colName, colLastname, colDni, colDateOfBirth, colGender, colMedicalCoverage, colLocation });
+            DgvPatients.Location = new Point(12, 78);
+            DgvPatients.Margin = new Padding(3, 4, 3, 4);
+            DgvPatients.Name = "DgvPatients";
+            DgvPatients.ReadOnly = true;
+            DgvPatients.RowHeadersWidth = 51;
+            DgvPatients.RowTemplate.Height = 25;
+            DgvPatients.Size = new Size(986, 343);
+            DgvPatients.TabIndex = 1;
+            DgvPatients.CellContentClick += DgvPatients_CellContentClick;
             // 
-            // label4
+            // colPatientId
             // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.Transparent;
-            label4.Font = new Font("Courier New", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(12, 379);
-            label4.Name = "label4";
-            label4.Size = new Size(179, 20);
-            label4.TabIndex = 16;
-            label4.Text = "Analizar Sintomas";
+            colPatientId.DataPropertyName = "colPatientId";
+            colPatientId.HeaderText = "Id Paciente";
+            colPatientId.MinimumWidth = 6;
+            colPatientId.Name = "colPatientId";
+            colPatientId.ReadOnly = true;
+            colPatientId.Width = 80;
             // 
-            // button1
+            // colName
             // 
-            button1.BackColor = Color.Teal;
-            button1.BackgroundImage = Properties.Resources.analizar;
-            button1.BackgroundImageLayout = ImageLayout.Zoom;
-            button1.Cursor = Cursors.Hand;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseOverBackColor = Color.White;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(3, 403);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(209, 44);
-            button1.TabIndex = 13;
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            colName.DataPropertyName = "Name";
+            colName.HeaderText = "Nombre";
+            colName.MinimumWidth = 6;
+            colName.Name = "colName";
+            colName.ReadOnly = true;
+            colName.Width = 125;
             // 
-            // btnShowPatient
+            // colLastname
             // 
-            btnShowPatient.BackColor = Color.Teal;
-            btnShowPatient.BackgroundImage = Properties.Resources.optometrista;
-            btnShowPatient.BackgroundImageLayout = ImageLayout.Zoom;
-            btnShowPatient.Cursor = Cursors.Hand;
-            btnShowPatient.FlatAppearance.BorderSize = 0;
-            btnShowPatient.FlatAppearance.MouseOverBackColor = Color.White;
-            btnShowPatient.FlatStyle = FlatStyle.Flat;
-            btnShowPatient.Location = new Point(6, 282);
-            btnShowPatient.Margin = new Padding(3, 4, 3, 4);
-            btnShowPatient.Name = "btnShowPatient";
-            btnShowPatient.Size = new Size(209, 44);
-            btnShowPatient.TabIndex = 10;
-            btnShowPatient.UseVisualStyleBackColor = false;
-            btnShowPatient.Click += btnShowPatient_Click;
+            colLastname.DataPropertyName = "LastName";
+            colLastname.HeaderText = "Apellido";
+            colLastname.MinimumWidth = 6;
+            colLastname.Name = "colLastname";
+            colLastname.ReadOnly = true;
+            colLastname.Width = 125;
+            // 
+            // colDni
+            // 
+            colDni.DataPropertyName = "Dni";
+            colDni.HeaderText = "Dni";
+            colDni.MinimumWidth = 6;
+            colDni.Name = "colDni";
+            colDni.ReadOnly = true;
+            colDni.Width = 120;
+            // 
+            // colDateOfBirth
+            // 
+            colDateOfBirth.DataPropertyName = "Fecha Nacimiento";
+            colDateOfBirth.HeaderText = "Fecha Naciemiento";
+            colDateOfBirth.MinimumWidth = 6;
+            colDateOfBirth.Name = "colDateOfBirth";
+            colDateOfBirth.ReadOnly = true;
+            colDateOfBirth.Width = 130;
+            // 
+            // colGender
+            // 
+            colGender.DataPropertyName = "Gender";
+            colGender.HeaderText = "Genero";
+            colGender.MinimumWidth = 6;
+            colGender.Name = "colGender";
+            colGender.ReadOnly = true;
+            colGender.Width = 125;
+            // 
+            // colMedicalCoverage
+            // 
+            colMedicalCoverage.DataPropertyName = "Obra Social";
+            colMedicalCoverage.HeaderText = "Obra Social";
+            colMedicalCoverage.MinimumWidth = 6;
+            colMedicalCoverage.Name = "colMedicalCoverage";
+            colMedicalCoverage.ReadOnly = true;
+            colMedicalCoverage.Width = 125;
+            // 
+            // colLocation
+            // 
+            colLocation.DataPropertyName = "Direccion";
+            colLocation.HeaderText = "Direccion";
+            colLocation.MinimumWidth = 6;
+            colLocation.Name = "colLocation";
+            colLocation.ReadOnly = true;
+            colLocation.Width = 125;
             // 
             // btnFinishSession
             // 
-            btnFinishSession.BackColor = Color.Teal;
-            btnFinishSession.Location = new Point(44, 477);
+            btnFinishSession.Location = new Point(912, 459);
             btnFinishSession.Margin = new Padding(3, 4, 3, 4);
             btnFinishSession.Name = "btnFinishSession";
-            btnFinishSession.Size = new Size(115, 29);
-            btnFinishSession.TabIndex = 9;
-            btnFinishSession.Text = "Cerrar Sesion";
-            btnFinishSession.UseVisualStyleBackColor = false;
-            btnFinishSession.Click += btnFinishSession_Click;
+            btnFinishSession.Size = new Size(86, 31);
+            btnFinishSession.TabIndex = 13;
+            btnFinishSession.Text = "Cerrar";
+            btnFinishSession.UseVisualStyleBackColor = true;
+            btnFinishSession.Click += btnFinishSession_Click_1;
+            // 
+            // btnDeleatPatient
+            // 
+            btnDeleatPatient.Location = new Point(274, 458);
+            btnDeleatPatient.Margin = new Padding(3, 4, 3, 4);
+            btnDeleatPatient.Name = "btnDeleatPatient";
+            btnDeleatPatient.Size = new Size(125, 30);
+            btnDeleatPatient.TabIndex = 12;
+            btnDeleatPatient.Text = "Eliminar Paciente";
+            btnDeleatPatient.UseVisualStyleBackColor = true;
+            btnDeleatPatient.Click += btnDeleatPatient_Click;
+            // 
+            // btnModifyPatient
+            // 
+            btnModifyPatient.Location = new Point(143, 459);
+            btnModifyPatient.Margin = new Padding(3, 4, 3, 4);
+            btnModifyPatient.Name = "btnModifyPatient";
+            btnModifyPatient.Size = new Size(125, 30);
+            btnModifyPatient.TabIndex = 11;
+            btnModifyPatient.Text = "Modificar Paciente";
+            btnModifyPatient.UseVisualStyleBackColor = true;
+            btnModifyPatient.Click += btnModifyPatient_Click_1;
             // 
             // btnCreatePatient
             // 
-            btnCreatePatient.BackColor = Color.Teal;
-            btnCreatePatient.BackgroundImage = Properties.Resources.paciente;
-            btnCreatePatient.BackgroundImageLayout = ImageLayout.Zoom;
-            btnCreatePatient.Cursor = Cursors.Hand;
-            btnCreatePatient.FlatAppearance.BorderSize = 0;
-            btnCreatePatient.FlatAppearance.MouseOverBackColor = Color.White;
-            btnCreatePatient.FlatStyle = FlatStyle.Flat;
-            btnCreatePatient.Location = new Point(9, 161);
+            btnCreatePatient.Location = new Point(12, 459);
             btnCreatePatient.Margin = new Padding(3, 4, 3, 4);
             btnCreatePatient.Name = "btnCreatePatient";
-            btnCreatePatient.Size = new Size(209, 41);
-            btnCreatePatient.TabIndex = 5;
-            btnCreatePatient.UseVisualStyleBackColor = false;
-            btnCreatePatient.Click += btnCreatePatient_Click;
+            btnCreatePatient.Size = new Size(125, 30);
+            btnCreatePatient.TabIndex = 10;
+            btnCreatePatient.Text = "Crear Paciente";
+            btnCreatePatient.UseVisualStyleBackColor = true;
+            btnCreatePatient.Click += btnCreatePatient_Click_1;
             // 
-            // label1
+            // btnShowPatient
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Courier New", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(75, 28);
-            label1.Name = "label1";
-            label1.Size = new Size(75, 20);
-            label1.TabIndex = 0;
-            label1.Text = "MEDICO";
+            btnShowPatient.Location = new Point(1014, 78);
+            btnShowPatient.Margin = new Padding(3, 4, 3, 4);
+            btnShowPatient.Name = "btnShowPatient";
+            btnShowPatient.Size = new Size(70, 30);
+            btnShowPatient.TabIndex = 15;
+            btnShowPatient.Text = "Refresh";
+            btnShowPatient.UseVisualStyleBackColor = true;
+            btnShowPatient.Click += btnShowPatient_Click;
             // 
-            // panel1
+            // button1
             // 
-            panel1.BackColor = Color.Teal;
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(btnFinishSession);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(btnCreatePatient);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(label7);
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(btnShowPatient);
-            panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(221, 524);
-            panel1.TabIndex = 20;
-            // 
-            // panelContenedor
-            // 
-            panelContenedor.Dock = DockStyle.Fill;
-            panelContenedor.Location = new Point(221, 0);
-            panelContenedor.Name = "panelContenedor";
-            panelContenedor.Size = new Size(1022, 524);
-            panelContenedor.TabIndex = 24;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Courier New", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(42, 120);
-            label2.Name = "label2";
-            label2.Size = new Size(149, 20);
-            label2.TabIndex = 14;
-            label2.Text = "Nuevo Paciente";
+            button1.Location = new Point(405, 458);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(146, 30);
+            button1.TabIndex = 16;
+            button1.Text = "Ver Historia Clinica";
+            button1.UseVisualStyleBackColor = true;
             // 
             // FrmMenuMedic
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.MediumAquamarine;
-            ClientSize = new Size(1243, 524);
-            Controls.Add(panelContenedor);
-            Controls.Add(panel1);
-            FormBorderStyle = FormBorderStyle.None;
+            ClientSize = new Size(1096, 547);
+            Controls.Add(button1);
+            Controls.Add(btnShowPatient);
+            Controls.Add(btnFinishSession);
+            Controls.Add(btnDeleatPatient);
+            Controls.Add(btnModifyPatient);
+            Controls.Add(btnCreatePatient);
+            Controls.Add(DgvPatients);
             Name = "FrmMenuMedic";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "FrmMenuMedic";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DgvPatients).EndInit();
             ResumeLayout(false);
         }
 
+
         #endregion
-        private Button btnShowPatient;
+
+        private DataGridView DgvPatients;
         private Button btnFinishSession;
+        private Button btnDeleatPatient;
+        private Button btnModifyPatient;
         private Button btnCreatePatient;
-        private Label label1;
+        private Button btnShowPatient;
+        private DataGridViewTextBoxColumn colPatientId;
+        private DataGridViewTextBoxColumn colName;
+        private DataGridViewTextBoxColumn colLastname;
+        private DataGridViewTextBoxColumn colDni;
+        private DataGridViewTextBoxColumn colDateOfBirth;
+        private DataGridViewTextBoxColumn colGender;
+        private DataGridViewTextBoxColumn colMedicalCoverage;
+        private DataGridViewTextBoxColumn colLocation;
         private Button button1;
-        private Label label7;
-        private Label label4;
-        private Panel panel1;
-        private Panel panelContenedor;
-        private Label label2;
     }
 }

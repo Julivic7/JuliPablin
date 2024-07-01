@@ -1,5 +1,4 @@
-﻿using StudentSystem.WindowsFormsCliente;
-using Venar.DTO;
+﻿using Venar.DTO;
 using Venar.SVC;
 
 namespace Venar.WF

@@ -1,11 +1,11 @@
-﻿using StudentSystem.WindowsFormsCliente;
-using Venar.SVC;
+﻿using Venar.SVC;
 
 namespace Venar.WF
 {
     public partial class FrmLogin : Form
     {
         private LoginSVC loginSVC;
+        GetUserId getUserId = new GetUserId();
 
         public FrmLogin()
         {
@@ -35,13 +35,14 @@ namespace Venar.WF
                 switch (type)
                 {
                     case "admin":
-
-                        FrmMenuAdmin frmMenuAdmin = new FrmMenuAdmin(userName);
+                        var adminId = getUserId.GetAdminId(userType.UserId);
+                        FrmMenuAdmin frmMenuAdmin = new FrmMenuAdmin(userName, adminId);
                         frmMenuAdmin.Show();
                         this.Hide();
                         break;
                     case "medic":
-                        FrmMenuMedic frmMenuMedic = new FrmMenuMedic();
+                        var medicId = getUserId.GetMedicId(userType.UserId);
+                        FrmMenuMedic frmMenuMedic = new FrmMenuMedic(userName, medicId);
                         frmMenuMedic.Show();
                         this.Hide();
                         break;

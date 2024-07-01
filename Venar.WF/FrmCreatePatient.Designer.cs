@@ -30,11 +30,8 @@
         {
             dateTimePicker1 = new DateTimePicker();
             label1 = new Label();
-            txtGenderPat = new TextBox();
             label8 = new Label();
             btnRegistar = new Button();
-            txtMCovPat = new TextBox();
-            txtLocaPat = new TextBox();
             txtDniPat = new TextBox();
             txtLastNamePat = new TextBox();
             txtNamePat = new TextBox();
@@ -45,17 +42,20 @@
             label3 = new Label();
             label2 = new Label();
             pictureBox1 = new PictureBox();
-            label9 = new Label();
             label10 = new Label();
+            cmbLocations = new ComboBox();
+            cmbCoverMed = new ComboBox();
+            cmbGenders = new ComboBox();
+            btnCancel = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // dateTimePicker1
             // 
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(196, 305);
+            dateTimePicker1.Location = new Point(209, 305);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(303, 27);
+            dateTimePicker1.Size = new Size(290, 27);
             dateTimePicker1.TabIndex = 24;
             dateTimePicker1.Value = new DateTime(2024, 5, 20, 0, 0, 0, 0);
             // 
@@ -71,21 +71,13 @@
             label1.TabIndex = 6;
             label1.Text = "REGISTRAR PACIENTE";
             // 
-            // txtGenderPat
-            // 
-            txtGenderPat.BackColor = Color.WhiteSmoke;
-            txtGenderPat.Location = new Point(704, 131);
-            txtGenderPat.Name = "txtGenderPat";
-            txtGenderPat.Size = new Size(288, 27);
-            txtGenderPat.TabIndex = 22;
-            // 
             // label8
             // 
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Courier New", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label8.ForeColor = Color.Black;
-            label8.Location = new Point(525, 270);
+            label8.Location = new Point(525, 269);
             label8.Name = "label8";
             label8.Size = new Size(154, 22);
             label8.TabIndex = 21;
@@ -93,52 +85,36 @@
             // 
             // btnRegistar
             // 
-            btnRegistar.Location = new Point(423, 353);
+            btnRegistar.Location = new Point(841, 337);
             btnRegistar.Name = "btnRegistar";
-            btnRegistar.Size = new Size(256, 31);
+            btnRegistar.Size = new Size(120, 31);
             btnRegistar.TabIndex = 20;
             btnRegistar.Text = "REGISTRAR";
             btnRegistar.UseVisualStyleBackColor = true;
             btnRegistar.Click += btnRegistar_Click;
             // 
-            // txtMCovPat
-            // 
-            txtMCovPat.BackColor = Color.WhiteSmoke;
-            txtMCovPat.Location = new Point(704, 268);
-            txtMCovPat.Name = "txtMCovPat";
-            txtMCovPat.Size = new Size(288, 27);
-            txtMCovPat.TabIndex = 19;
-            // 
-            // txtLocaPat
-            // 
-            txtLocaPat.BackColor = Color.WhiteSmoke;
-            txtLocaPat.Location = new Point(694, 201);
-            txtLocaPat.Name = "txtLocaPat";
-            txtLocaPat.Size = new Size(288, 27);
-            txtLocaPat.TabIndex = 18;
-            // 
             // txtDniPat
             // 
             txtDniPat.BackColor = Color.WhiteSmoke;
-            txtDniPat.Location = new Point(162, 261);
+            txtDniPat.Location = new Point(209, 261);
             txtDniPat.Name = "txtDniPat";
-            txtDniPat.Size = new Size(337, 27);
+            txtDniPat.Size = new Size(290, 27);
             txtDniPat.TabIndex = 16;
             // 
             // txtLastNamePat
             // 
             txtLastNamePat.BackColor = Color.WhiteSmoke;
-            txtLastNamePat.Location = new Point(162, 196);
+            txtLastNamePat.Location = new Point(209, 196);
             txtLastNamePat.Name = "txtLastNamePat";
-            txtLastNamePat.Size = new Size(337, 27);
+            txtLastNamePat.Size = new Size(290, 27);
             txtLastNamePat.TabIndex = 15;
             // 
             // txtNamePat
             // 
             txtNamePat.BackColor = Color.WhiteSmoke;
-            txtNamePat.Location = new Point(162, 134);
+            txtNamePat.Location = new Point(209, 133);
             txtNamePat.Name = "txtNamePat";
-            txtNamePat.Size = new Size(337, 27);
+            txtNamePat.Size = new Size(290, 27);
             txtNamePat.TabIndex = 14;
             // 
             // label7
@@ -171,7 +147,7 @@
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Courier New", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(12, 305);
+            label5.Location = new Point(25, 305);
             label5.Name = "label5";
             label5.Size = new Size(178, 22);
             label5.TabIndex = 11;
@@ -183,7 +159,7 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Courier New", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(50, 263);
+            label4.Location = new Point(25, 261);
             label4.Name = "label4";
             label4.Size = new Size(58, 22);
             label4.TabIndex = 10;
@@ -217,32 +193,58 @@
             // 
             pictureBox1.BackgroundImage = Properties.Resources.unnamed_removebg_preview;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(465, 2);
+            pictureBox1.Location = new Point(465, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(132, 81);
+            pictureBox1.Size = new Size(133, 81);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 25;
             pictureBox1.TabStop = false;
             // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Tempus Sans ITC", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(710, 163);
-            label9.Name = "label9";
-            label9.Size = new Size(177, 17);
-            label9.TabIndex = 26;
-            label9.Text = "INGRESE 1 PARA FEMENINO";
-            // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new Font("Tempus Sans ITC", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
             label10.Location = new Point(710, 180);
             label10.Name = "label10";
-            label10.Size = new Size(186, 17);
+            label10.Size = new Size(0, 16);
             label10.TabIndex = 27;
-            label10.Text = "INGRESE 2 PARA MASCULINO";
+            // 
+            // cmbLocations
+            // 
+            cmbLocations.FormattingEnabled = true;
+            cmbLocations.Location = new Point(694, 204);
+            cmbLocations.Margin = new Padding(3, 4, 3, 4);
+            cmbLocations.Name = "cmbLocations";
+            cmbLocations.Size = new Size(267, 28);
+            cmbLocations.TabIndex = 28;
+            // 
+            // cmbCoverMed
+            // 
+            cmbCoverMed.FormattingEnabled = true;
+            cmbCoverMed.Location = new Point(694, 261);
+            cmbCoverMed.Margin = new Padding(3, 4, 3, 4);
+            cmbCoverMed.Name = "cmbCoverMed";
+            cmbCoverMed.Size = new Size(267, 28);
+            cmbCoverMed.TabIndex = 30;
+            // 
+            // cmbGenders
+            // 
+            cmbGenders.FormattingEnabled = true;
+            cmbGenders.Location = new Point(694, 129);
+            cmbGenders.Margin = new Padding(3, 4, 3, 4);
+            cmbGenders.Name = "cmbGenders";
+            cmbGenders.Size = new Size(267, 28);
+            cmbGenders.TabIndex = 31;
+            // 
+            // btnCancel
+            // 
+            btnCancel.Location = new Point(694, 337);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(120, 31);
+            btnCancel.TabIndex = 32;
+            btnCancel.Text = "CANCELAR";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // FrmCreatePatient
             // 
@@ -250,9 +252,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumAquamarine;
             BackgroundImageLayout = ImageLayout.Center;
-            ClientSize = new Size(1036, 396);
+            ClientSize = new Size(1035, 396);
+            Controls.Add(btnCancel);
+            Controls.Add(cmbGenders);
+            Controls.Add(cmbCoverMed);
+            Controls.Add(cmbLocations);
             Controls.Add(label10);
-            Controls.Add(label9);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
             Controls.Add(dateTimePicker1);
@@ -261,18 +266,15 @@
             Controls.Add(txtLastNamePat);
             Controls.Add(txtDniPat);
             Controls.Add(label3);
-            Controls.Add(txtGenderPat);
             Controls.Add(label4);
             Controls.Add(btnRegistar);
-            Controls.Add(txtLocaPat);
             Controls.Add(label5);
             Controls.Add(label6);
             Controls.Add(label8);
-            Controls.Add(txtMCovPat);
             Controls.Add(label7);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FrmCreatePatient";
-            StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.Manual;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -282,11 +284,8 @@
 
         private DateTimePicker dateTimePicker1;
         private Label label1;
-        private TextBox txtGenderPat;
         private Label label8;
         private Button btnRegistar;
-        private TextBox txtMCovPat;
-        private TextBox txtLocaPat;
         private TextBox txtDniPat;
         private TextBox txtLastNamePat;
         private TextBox txtNamePat;
@@ -297,7 +296,11 @@
         private Label label3;
         private Label label2;
         private PictureBox pictureBox1;
-        private Label label9;
         private Label label10;
+        private ComboBox cmbLocations;
+      
+        private ComboBox cmbCoverMed;
+        private ComboBox cmbGenders;
+        private Button btnCancel;
     }
 }

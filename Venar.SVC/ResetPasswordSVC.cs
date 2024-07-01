@@ -1,32 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Venar.Data;
-using Xceed.Wpf.Toolkit;
+﻿using Venar.Data;
+using Venar.Entities;
 
 namespace Venar.SVC
 {
     public class ResetPasswordSVC
     {
-
         DataServices dataServices = new DataServices();
-
-        public string ResetPass(string temporal, string password, string newPassword, string newPasswordConfirm, string setMail)
+        public string ResetPass(ResetPassword resetPassword)
         {
-            if (password == temporal)
+            if (resetPassword.Password == resetPassword.Temporal)
             {
-                if (newPassword == newPasswordConfirm)
+                if (resetPassword.NewPassword == resetPassword.NewPasswordConfirm)
                 {
                     Dictionary<string, string> parameters = new Dictionary<string, string>
-            {
-                { "@Password", newPassword },
-                { "@setMail", setMail }
-            };
+                    {
+                        { "@Password", resetPassword.NewPassword },
+                        { "@setMail", resetPassword.SetMail }
+                    };
+                    string resetQuery = "UPDATE Users SET Password = @Password,  UpdatedAt = getdate() WHERE Mail = @setMail";
 
-                    dataServices.Execute("UPDATE Users SET Password = @Password,  UpdatedAt = getdate() WHERE mail = @setMail", parameters);
+                    dataServices.Execute(resetQuery, parameters);
 
                     string message1 = "Contraseña actualizada correctamente.";
 

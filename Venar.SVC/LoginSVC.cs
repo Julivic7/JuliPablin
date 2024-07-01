@@ -12,10 +12,10 @@ namespace Venar.SVC
         {
             string query = "SELECT UserId, UserName, UserType FROM Users WHERE UserName = @UserName AND Password = @Password";
             Dictionary<string, string> parameters = new Dictionary<string, string>
-        {
-            { "@UserName", userName },
-            { "@Password", password }
-        };
+    {
+        { "@UserName", userName },
+        { "@Password", password }
+    };
 
             DataTable result = dataService.Selection(query, parameters);
 

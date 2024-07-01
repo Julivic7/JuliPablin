@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupInicio = new GroupBox();
+            GroupBox groupInicio;
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             btnLogin = new Button();
@@ -38,6 +38,7 @@
             labelPassword = new Label();
             labelUser = new Label();
             labelWelcome = new Label();
+            groupInicio = new GroupBox();
             groupInicio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -45,7 +46,6 @@
             // 
             // groupInicio
             // 
-            groupInicio.AutoSize = true;
             groupInicio.BackColor = Color.MediumAquamarine;
             groupInicio.BackgroundImageLayout = ImageLayout.Center;
             groupInicio.Controls.Add(pictureBox2);
@@ -57,7 +57,6 @@
             groupInicio.Controls.Add(labelPassword);
             groupInicio.Controls.Add(labelUser);
             groupInicio.Controls.Add(labelWelcome);
-            groupInicio.Dock = DockStyle.Fill;
             groupInicio.Location = new Point(0, 0);
             groupInicio.Margin = new Padding(3, 4, 3, 4);
             groupInicio.Name = "groupInicio";
@@ -72,9 +71,10 @@
             // 
             pictureBox2.BackColor = Color.White;
             pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox2.Location = new Point(997, 12);
+            pictureBox2.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox2.Location = new Point(973, 27);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(31, 30);
+            pictureBox2.Size = new Size(43, 43);
             pictureBox2.TabIndex = 10;
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox2_Click;
@@ -186,7 +186,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
