@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Venar.DTO;
+﻿using Venar.DTO;
 
 namespace Venar.SVC
 {
     public class ValidCreateMedic
     {
-       MedicSVC createMedicSVC = new MedicSVC();
+        MenuAdminSVC createMedicSVC = new MenuAdminSVC();
 
         public void ValidatedUser(ResultDto result, MedicDto obj)
         {
@@ -23,15 +18,15 @@ namespace Venar.SVC
             }
             else if (string.IsNullOrEmpty(obj.Dni))
             {
-                result.Errors.Add("El Dni es obligatorio.");                
+                result.Errors.Add("El Dni es obligatorio.");
             }
             else if (string.IsNullOrEmpty(obj.Mail))
             {
                 result.Errors.Add("Debe ingresar el Mail.");
             }
-            else if (string.IsNullOrEmpty(obj.Specialty))
+            else if (obj.SpecialtyId == 0)
             {
-                result.Errors.Add("Debe ingresar una especialidad.");
+                result.Errors.Add("Debe seleccionar una especialidad.");
             }
             else if (string.IsNullOrEmpty(obj.MedicalRegistration))
             {

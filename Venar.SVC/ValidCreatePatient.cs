@@ -1,73 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Venar.DTO;
-using Venar.Entities;
-using Xceed.Wpf.Toolkit;
-
-namespace Venar.SVC
+﻿namespace Venar.SVC
 {
     public class ValidCreatePatient
     {
-        Patient Patient = new Patient();
-
-
-        public bool ValidatePatient(PatientDto obj)
+        public bool ValidPatient(Patient patient)
         {
-            
-            var result = false;
+            if (patient == null)
+                throw new ArgumentNullException(nameof(patient));
 
-            
-            if (string.IsNullOrEmpty(obj.name))
-            {
+            if (string.IsNullOrEmpty(patient.Name))
                 throw new ArgumentException("El Nombre es obligatorio.");
-            }
 
-        
-            if (string.IsNullOrEmpty(obj.lastName))
-            {
+            if (string.IsNullOrEmpty(patient.LastName))
                 throw new ArgumentException("El Apellido es obligatorio.");
-            }
 
-          
-            if (string.IsNullOrEmpty(obj.dni) || !obj.dni.All(char.IsDigit))
-            {
+            if (string.IsNullOrEmpty(patient.Dni.ToString()) || !patient.Dni.ToString().All(char.IsDigit))
                 throw new ArgumentException("El DNI es obligatorio y debe contener solo números.");
-            }
 
-            
-            if (obj.DateOfBirth == default)
-            {
+            if (patient.DateOfBirth == default)
                 throw new ArgumentException("La Fecha de Nacimiento es obligatoria.");
-            }
 
-           
-            if (string.IsNullOrEmpty(obj.gender) || !(obj.gender == "1" || obj.gender == "2" ))
-            {
-                throw new ArgumentException("El Género es obligatorio");
-            }
+            if (patient.Gender == null)
+                throw new ArgumentException("El Género es obligatorio.");
 
-           
-            if (string.IsNullOrEmpty(obj.location))
-            {
+            if (patient.Location == null)
                 throw new ArgumentException("La Localización es obligatoria.");
-            }
 
-           
-            if (string.IsNullOrEmpty(obj.MedicalCoverage))
-            {
+            if (patient.MedicalCoverage == null)
                 throw new ArgumentException("La Cobertura Médica es obligatoria.");
-            }
 
-           
-            return result=true;
+            return true;
         }
     }
-
-
 }
-    
-
-

@@ -34,6 +34,7 @@
             btnCheckSymptoms = new Button();
             lblResult = new Label();
             checkedListBox1 = new CheckedListBox();
+            btnSend = new Button();
             SuspendLayout();
             // 
             // btnCheckSymptoms
@@ -41,10 +42,10 @@
             btnCheckSymptoms.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnCheckSymptoms.Location = new Point(12, 190);
             btnCheckSymptoms.Name = "btnCheckSymptoms";
-            btnCheckSymptoms.Size = new Size(75, 30);
+            btnCheckSymptoms.Size = new Size(96, 30);
             btnCheckSymptoms.TabIndex = 3;
             btnCheckSymptoms.TabStop = false;
-            btnCheckSymptoms.Text = "Enviar";
+            btnCheckSymptoms.Text = "Calcular";
             btnCheckSymptoms.UseVisualStyleBackColor = true;
             btnCheckSymptoms.Click += btnCheck_symptoms;
             // 
@@ -52,9 +53,9 @@
             // 
             lblResult.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblResult.AutoSize = true;
-            lblResult.Location = new Point(93, 198);
+            lblResult.Location = new Point(123, 198);
             lblResult.Name = "lblResult";
-            lblResult.Size = new Size(64, 15);
+            lblResult.Size = new Size(81, 20);
             lblResult.TabIndex = 4;
             lblResult.Text = "Resultados";
             lblResult.Click += lblResult_Click;
@@ -65,12 +66,24 @@
             checkedListBox1.FormattingEnabled = true;
             checkedListBox1.Location = new Point(12, 12);
             checkedListBox1.Name = "checkedListBox1";
-            checkedListBox1.Size = new Size(498, 166);
+            checkedListBox1.Size = new Size(498, 158);
             checkedListBox1.TabIndex = 5;
+            // 
+            // btnSend
+            // 
+            btnSend.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnSend.Location = new Point(435, 193);
+            btnSend.Name = "btnSend";
+            btnSend.Size = new Size(75, 30);
+            btnSend.TabIndex = 6;
+            btnSend.TabStop = false;
+            btnSend.Text = "Enviar";
+            btnSend.UseVisualStyleBackColor = true;
             // 
             // FrmSymptoms
             // 
             ClientSize = new Size(522, 232);
+            Controls.Add(btnSend);
             Controls.Add(btnCheckSymptoms);
             Controls.Add(lblResult);
             Controls.Add(checkedListBox1);
@@ -83,5 +96,6 @@
         #endregion
 
         private CheckedListBox checkedListBox1;
+        private Button btnSend;
     }
 }

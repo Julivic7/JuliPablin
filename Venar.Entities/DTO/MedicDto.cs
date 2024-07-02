@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Venar.Entities;
 
 namespace Venar.DTO
 {
@@ -16,10 +17,9 @@ namespace Venar.DTO
         public string Dni { get; set; }
         public string Mail { get; set; }        
         public string Password { get; set; }
-        public string Specialty { get; set; }
+        public int SpecialtyId { get; set; }
         public string MedicalRegistration { get; set; }
         public DateTime CreatedAt { get; set; }
-        //public int UserType { get; set; }
 
         public MedicDto()
         {

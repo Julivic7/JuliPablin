@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-using Venar.DTO;
-using Venar.Entities;
+﻿using Venar.Entities;
 using Venar.SVC;
 
 
@@ -8,13 +6,36 @@ namespace Venar.WF
 {
     public partial class FrmCreatePatient : Form
     {
-        ValidCreatePatient validCreatePatient = new ValidCreatePatient();
+        ValidCreatePatient validPatient = new ValidCreatePatient();
         PatientsSVC patientsSVC;
-        PatientDto patientDto = new PatientDto();
+        private int medicId;
 
-        public FrmCreatePatient()
+        public FrmCreatePatient(int medicId)
         {
             InitializeComponent();
+            patientsSVC = new PatientsSVC();
+            this.medicId = medicId;
+            cmbLocation();
+            cmbGender();
+            cmbCoverMedical();
+        }
+        private void cmbLocation()
+        {
+            cmbLocations.DataSource = patientsSVC.GetLocation();
+            cmbLocations.DisplayMember = "LocationName";
+            cmbLocations.ValueMember = "IdLocation";
+        }
+        private void cmbGender()
+        {
+            cmbGenders.DataSource = patientsSVC.GetGender();
+            cmbGenders.DisplayMember = "NameGender";
+            cmbGenders.ValueMember = "IdGender";
+        }
+        private void cmbCoverMedical()
+        {
+            cmbCoverMed.DataSource = patientsSVC.GetCover();
+            cmbCoverMed.DisplayMember = "NameCover";
+            cmbCoverMed.ValueMember = "IdCover";
         }
         private void BtnExit_Click(object sender, EventArgs e)
         {
@@ -28,50 +49,43 @@ namespace Venar.WF
         {
 
         }
-        private void btnRegistrar_Click(object sender, EventArgs e)
+        private void btnRegistar_Click(object sender, EventArgs e)
         {
-            patientDto = new PatientDto
+            Patient patient = new Patient
             {
-                name = txtNamePat.Text.Trim(),
-                lastName = txtLastNamePat.Text.Trim(),
-                dni = txtDniPat.Text.Trim(),
-                MedicalCoverage = cmbCoverage.SelectedItem.ToString(),
+                Name = txtNamePat.Text,
+                LastName = txtLastNamePat.Text,
+                Dni = Convert.ToInt32(txtDniPat.Text),
                 DateOfBirth = dateTimePicker1.Value,
-                gender = cmbGender.SelectedItem.ToString(),
-                location = cmbLocation.SelectedItem.ToString()
+                Gender = new Gender { IdGender = (int)cmbGenders.SelectedValue },
+                Location = (Location)cmbLocations.SelectedItem,
+                MedicalCoverage = new MedicalCoverage { IdCover = (int)cmbCoverMed.SelectedValue }
             };
+            // Imprimir datos para verificar
+            Console.WriteLine($"Name: {patient.Name}");
+            Console.WriteLine($"LastName: {patient.LastName}");
+            Console.WriteLine($"Dni: {patient.Dni}");
+            Console.WriteLine($"DateOfBirth: {patient.DateOfBirth}");
+            Console.WriteLine($"Gender Id: {patient.Gender.IdGender}");
+            Console.WriteLine($"Location Id: {patient.Location.IdLocation}");
+            Console.WriteLine($"MedicalCoverage Id: {patient.MedicalCoverage.IdCover}");
 
-            if (!validCreatePatient.ValidatePatient(patientDto))
+            ValidCreatePatient validCreatePatient = new ValidCreatePatient();
+
+            if (validCreatePatient.ValidPatient(patient))
             {
-                MessageBox.Show("Paciente registrado");
+                int patientId = patientsSVC.CreatePatient(patient, medicId);
+                MessageBox.Show("Paciente registrado con éxito");
+                this.Close();
             }
             else
             {
-                MessageBox.Show("Error al registrar paciente");
+                MessageBox.Show("Paciente no registrado");
             }
         }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void FrmCreatePatient_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
+            this.Close();
         }
     }
 }
-
-
-

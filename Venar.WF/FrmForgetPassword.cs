@@ -14,7 +14,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Venar.WF
 {
-   
+
     public partial class FrmForgetPassword : Form
     {
         LoginSVC securityServices = new LoginSVC();
@@ -24,7 +24,7 @@ namespace Venar.WF
         public FrmForgetPassword()
         {
             InitializeComponent();
-           
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -52,15 +52,21 @@ namespace Venar.WF
                 mailService.SendMail(mailData);
 
                 MessageBox.Show("Revisa la casilla del mail: " + mail);
-
+                this.Close();
                 FrmResetPassword frmResetPassword = new FrmResetPassword(mail, temporalPass);
-
                 frmResetPassword.ShowDialog();
 
                 this.Hide();
             }
 
-           
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FrmLogin frmLogin = new FrmLogin();
+            frmLogin.Show();
         }
     }
 }
