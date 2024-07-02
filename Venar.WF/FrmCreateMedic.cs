@@ -36,7 +36,7 @@ namespace Venar.WF
         //
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            medicDto = new MedicDto
+            MedicDto medicDto = new MedicDto
             {
                 UserName = txtUserName.Text,
                 Name = txtName.Text.Trim(),
@@ -48,14 +48,15 @@ namespace Venar.WF
                 MedicalRegistration = txtMedicalRegistration.Text.Trim()
             };
 
-            var isValidMail = validCreateMedicSVC.IsValidEmail(txtMail.Text.Trim());
+            ValidCreateMedic validCreateMedicSVC = new ValidCreateMedic();
+            bool isValidMail = validCreateMedicSVC.IsValidEmail(txtMail.Text.Trim());
 
-            if (isValidMail != false)
+            if (isValidMail)
             {
                 ResultDto result = validCreateMedicSVC.CreateReallyUser(medicDto);
                 if (result.IsSuccess)
                 {
-                    MessageBox.Show("El médico ha sido registrado con éxito.");
+                    MessageBox.Show(result.Message, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 else
@@ -64,7 +65,12 @@ namespace Venar.WF
                     MessageBox.Show(errorMessage, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            else
+            {
+                MessageBox.Show("El correo electrónico no es válido.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {

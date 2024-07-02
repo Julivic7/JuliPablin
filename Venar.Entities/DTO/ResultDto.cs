@@ -9,16 +9,10 @@ namespace Venar.DTO
 {
     public class ResultDto
     {
+        public bool IsSuccess => Errors.Count == 0;
         public List<string> Errors { get; set; } = new List<string>();
+        public string Message { get; set; }
         public MedicDto MedicDto { get; set; }
-
-        public bool IsSuccess
-        {
-            get
-            {
-                return Errors.Count == 0;
-            }
-        }
     }
 
 }

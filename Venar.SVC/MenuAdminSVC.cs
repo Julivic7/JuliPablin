@@ -12,29 +12,36 @@ namespace Venar.SVC
         public void CreateMedic(MedicDto medicDto)
         {
             string userQuery = @"
-        INSERT INTO Users (UserName, Password, UserType, Mail)
-        VALUES (@UserName, @Password, 'MEDIC', @Mail);
-        SELECT SCOPE_IDENTITY() AS UserId;
-    ";
+            INSERT INTO Users (UserName, Password, UserType, Mail)
+            VALUES (@UserName, @Password, 'MEDIC', @Mail);
+            SELECT SCOPE_IDENTITY() AS UserId;
+            ";
 
             Dictionary<string, string> userParams = new Dictionary<string, string>
-    {
-        { "@UserName", medicDto.UserName },
-        { "@Password", medicDto.Password },
-        { "@Mail", medicDto.Mail }
-    };
+            {
+                { "@UserName", medicDto.UserName },
+                { "@Password", medicDto.Password },
+                { "@Mail", medicDto.Mail }
+            };
 
             try
             {
+                List<string> validationErrors = new List<string>();
+
                 DataTable userResult = dataServices.Selection(userQuery, userParams);
 
                 if (userResult != null && userResult.Rows.Count > 0)
                 {
                     int userId = Convert.ToInt32(userResult.Rows[0]["UserId"]);
+                    if (userId == 0)
+                    {
+                        throw new Exception("SCOPE_IDENTITY() returned 0.");
+                    }
+
                     string medicQuery = @"
-                INSERT INTO Medics (UserId, Name, LastName, Dni, SpecialtyId, MedicalRegistration)
-                VALUES (@UserId, @Name, @LastName, @Dni, @SpecialtyId, @MedicalRegistration);
-            ";
+        INSERT INTO Medics (UserId, Name, LastName, Dni, SpecialtyId, MedicalRegistration)
+        VALUES (@UserId, @Name, @LastName, @Dni, @SpecialtyId, @MedicalRegistration);
+        ";
 
                     Dictionary<string, string> medicParams = new Dictionary<string, string>
             {
@@ -53,45 +60,51 @@ namespace Venar.SVC
                     throw new Exception("No se obtuvo el UserId después de insertar en Users o la consulta no devolvió resultados.");
                 }
             }
+            catch (ArgumentException ex)
+            {
+                throw new ArgumentException("Validation failed: " + ex.Message, ex);
+            }
             catch (Exception ex)
             {
                 throw new Exception("Error al crear el médico: " + ex.Message, ex);
             }
         }
-        public List<MedicDto> GetMedics()
+
+        public List<MedicViewModel> GetMedics()
         {
-            List<MedicDto> listMedics = null;
+            List<MedicViewModel> listMedics = new List<MedicViewModel>();
+
             string SqlSelect = @"
-             SELECT M.MedicId, M.Name, M.LastName, M.Dni, M.SpecialtyId, M.MedicalRegistration,
-                    U.UserName, U.Password, U.Mail, S.SpecialtyName
-             FROM Medics M
-             INNER JOIN Users U ON M.UserId = U.UserId
-             INNER JOIN Specialty S ON M.SpecialtyId = S.SpecialtyId
-             WHERE M.Status = 1";
+    SELECT M.MedicId, M.Name, M.LastName, M.SpecialtyId, M.MedicalRegistration,
+           U.UserName, U.Mail, S.SpecialityName
+    FROM Medics M
+    INNER JOIN Users U ON M.UserId = U.UserId
+    INNER JOIN Specialty S ON M.SpecialtyId = S.SpecialtyId
+    WHERE M.Status = 1";
+
 
             var result = dataServices.Selection(SqlSelect, null);
 
             if (result != null && result.Rows.Count > 0)
             {
-                listMedics = new List<MedicDto>();
                 foreach (DataRow row in result.Rows)
                 {
-                    listMedics.Add(new MedicDto()
-                    {
-                        MedicId = Convert.ToInt32(row["MedicId"]),
-                        UserName = row["UserName"].ToString(),
-                        Name = row["Name"].ToString(),
-                        LastName = row["LastName"].ToString(),
-                        Dni = row["Dni"].ToString(),
-                        Mail = row["Mail"].ToString(),
-                        Password = row["Password"].ToString(),
-                        SpecialtyId = Convert.ToInt32(row["SpecialtyId"]),
-                        MedicalRegistration = row["MedicalRegistration"].ToString()
-                    });
+
+                    MedicViewModel medic = new MedicViewModel();
+
+                    medic.Name = row["Name"].ToString();
+                    medic.LastName = row["LastName"].ToString();
+
+                    medic.SpecialtyName = row["SpecialityName"].ToString();
+
+                    listMedics.Add(medic);
                 }
             }
+
             return listMedics;
         }
+
+
         public bool DeleteMedic(int medic)
         {
             bool Result = false;

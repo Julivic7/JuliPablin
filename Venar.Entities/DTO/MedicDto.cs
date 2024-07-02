@@ -7,23 +7,18 @@ using Venar.Entities;
 
 namespace Venar.DTO
 {
-    public class MedicDto 
-
-    {       
-        public int MedicId { get; set; } 
+    public class MedicDto
+    {
+        public int MedicId { get; set; }
         public string UserName { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Dni { get; set; }
-        public string Mail { get; set; }        
+        public string Mail { get; set; }
         public string Password { get; set; }
         public int SpecialtyId { get; set; }
+        public string SpecialtyName { get; set; }  // Assuming this is needed
         public string MedicalRegistration { get; set; }
-        public DateTime CreatedAt { get; set; }
-
-        public MedicDto()
-        {
-            CreatedAt = DateTime.Now;
-        }
     }
+
 }

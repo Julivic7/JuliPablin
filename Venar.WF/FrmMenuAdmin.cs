@@ -21,18 +21,24 @@ namespace Venar.WF
         }
         private void FillGridMedic()
         {
-            DgvMedics.DataSource = null; 
-            DgvMedics.AutoGenerateColumns = false; 
-            DgvMedics.Columns.Clear(); 
+            DgvMedics.DataSource = null;
+            DgvMedics.AutoGenerateColumns = true;
+            DgvMedics.Columns.Clear();
 
+            // Retrieve medics from the service
             var medics = menuAdminSvc.GetMedics();
+
+            // Debug output to check if medics is populated
+            System.Diagnostics.Debug.WriteLine($"Medics count: {medics.Count}");
 
             if (medics != null)
             {
+                // Bind medics to DataGridView
                 DgvMedics.DataSource = medics;
-                DgvMedics.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells); 
+                DgvMedics.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
         }
+
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
             FrmLogin frmLogin = new FrmLogin();

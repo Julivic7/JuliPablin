@@ -12,56 +12,60 @@ namespace Venar.SVC
             {
                 result.Errors.Add("El Nombre es obligatorio.");
             }
-            else if (string.IsNullOrEmpty(obj.LastName))
+            if (string.IsNullOrEmpty(obj.LastName))
             {
                 result.Errors.Add("El Apellido es obligatorio.");
             }
-            else if (string.IsNullOrEmpty(obj.Dni))
+            if (string.IsNullOrEmpty(obj.Dni))
             {
                 result.Errors.Add("El Dni es obligatorio.");
             }
-            else if (string.IsNullOrEmpty(obj.Mail))
+            if (string.IsNullOrEmpty(obj.Mail))
             {
                 result.Errors.Add("Debe ingresar el Mail.");
             }
-            else if (obj.SpecialtyId == 0)
+            if (obj.SpecialtyId == 0)
             {
                 result.Errors.Add("Debe seleccionar una especialidad.");
             }
-            else if (string.IsNullOrEmpty(obj.MedicalRegistration))
+            if (string.IsNullOrEmpty(obj.MedicalRegistration))
             {
                 result.Errors.Add("Debe ingresar una Matricula medica.");
             }
-            else if (string.IsNullOrEmpty(obj.UserName))
+            if (string.IsNullOrEmpty(obj.UserName))
             {
                 result.Errors.Add("El Nombre de usuario es Obligatorio.");
             }
-            else if (string.IsNullOrEmpty(obj.Password))
+            if (string.IsNullOrEmpty(obj.Password))
             {
                 result.Errors.Add("Debe ingresar una contraseña.");
             }
         }
+
         public ResultDto CreateReallyUser(MedicDto obj)
         {
-            try
+            var resultDto = new ResultDto();
+
+            // Perform validation
+            ValidatedUser(resultDto, obj);
+
+            if (resultDto.IsSuccess)
             {
-                var resultDto = new ResultDto();
-
-                ValidatedUser(resultDto, obj);
-
-                if (resultDto.IsSuccess)
+                try
                 {
+                    // Attempt to create the medic if validation passed
                     createMedicSVC.CreateMedic(obj);
+                    resultDto.Message = "Medic created successfully.";
                 }
-                return resultDto;
-            }
-            catch (Exception ex)
-            {
-                throw;
+                catch (Exception ex)
+                {
+                    resultDto.Errors.Add("Error al crear el médico: " + ex.Message);
+                }
             }
 
-
+            return resultDto;
         }
+
         public bool IsValidEmail(string email)
         {
             try
