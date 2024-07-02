@@ -8,6 +8,7 @@ namespace Venar.Entities
 {
     public class MedicViewModel
     {
+        public string MedicId { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public string SpecialtyName { get; set; }

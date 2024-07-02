@@ -91,11 +91,11 @@ namespace Venar.SVC
                 {
 
                     MedicViewModel medic = new MedicViewModel();
-
+                    medic.MedicId = row["MedicId"].ToString();
                     medic.Name = row["Name"].ToString();
                     medic.LastName = row["LastName"].ToString();
-
                     medic.SpecialtyName = row["SpecialityName"].ToString();
+                    medic.MedicalRegistration = row["MedicalRegistration"].ToString();
 
                     listMedics.Add(medic);
                 }
@@ -139,7 +139,7 @@ namespace Venar.SVC
                 Name = result["Name"].ToString(),
                 LastName = result["LastName"].ToString(),
                 Dni = result["Dni"].ToString(),
-                SpecialtyId = int.Parse(result["Specialty"].ToString()),
+                SpecialtyId = int.Parse(result["SpecialtyId"].ToString()),
                 MedicalRegistration = result["MedicalRegistration"].ToString(),
                 Mail = result["Mail"].ToString(), // Agregar Mail desde Users
                 UserName = result["UserName"].ToString() // Agregar UserName desde Users
