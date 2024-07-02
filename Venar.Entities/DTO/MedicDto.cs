@@ -17,7 +17,7 @@ namespace Venar.DTO
         public string Mail { get; set; }
         public string Password { get; set; }
         public int SpecialtyId { get; set; }
-        public string SpecialtyName { get; set; }  // Assuming this is needed
+        public string SpecialtyName { get; set; }
         public string MedicalRegistration { get; set; }
     }
 

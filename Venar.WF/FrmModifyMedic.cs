@@ -34,12 +34,12 @@ namespace Venar.WF
         }
         private void LlenarDatosMedic()
         {
-            txtUsername.Text = medic.UserName;
-            txtName.Text = medic.Name;
-            txtLastName.Text = medic.LastName;
-            txtDni.Text = medic.Dni.ToString();
-            txtMail.Text = medic.Mail;
-            txtMedicalRegistration.Text = medic.MedicalRegistration;
+            txtUsername.Text = medic.UserName.Trim();
+            txtName.Text = medic.Name.Trim();
+            txtLastName.Text = medic.LastName.Trim();
+            txtDni.Text = medic.Dni.ToString().Trim();
+            txtMail.Text = medic.Mail.Trim();
+            txtMedicalRegistration.Text = medic.MedicalRegistration.Trim();
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)

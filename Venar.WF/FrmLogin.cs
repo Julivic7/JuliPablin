@@ -91,5 +91,15 @@ namespace Venar.WF
         {
             this.Close();
         }
+
+        private void labelPassword_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelWelcome_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

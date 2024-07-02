@@ -8,6 +8,14 @@ namespace Venar.SVC
 
         public void ValidatedUser(ResultDto result, MedicDto obj)
         {
+            obj.Name = obj.Name.Trim();
+            obj.LastName = obj.LastName.Trim();
+            obj.Dni = obj.Dni.Trim();
+            obj.Mail = obj.Mail.Trim();
+            obj.MedicalRegistration = obj.MedicalRegistration.Trim();
+            obj.UserName = obj.UserName.Trim();
+            obj.Password = obj.Password.Trim();
+
             if (string.IsNullOrEmpty(obj.Name))
             {
                 result.Errors.Add("El Nombre es obligatorio.");

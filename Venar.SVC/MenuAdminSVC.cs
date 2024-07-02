@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Diagnostics;
 using Venar.Data;
 using Venar.DTO;
 using Venar.Entities;
@@ -11,6 +12,17 @@ namespace Venar.SVC
 
         public void CreateMedic(MedicDto medicDto)
         {
+
+            medicDto.UserName = medicDto.UserName.Trim();
+            medicDto.Password = medicDto.Password.Trim();
+            medicDto.Mail = medicDto.Mail.Trim();
+            medicDto.Name = medicDto.Name.Trim();
+            medicDto.LastName = medicDto.LastName.Trim();
+            medicDto.Dni = medicDto.Dni.Trim();
+            medicDto.MedicalRegistration = medicDto.MedicalRegistration.Trim();
+
+            Debug.WriteLine("Trimmed UserName", medicDto.UserName);
+
             string userQuery = @"
             INSERT INTO Users (UserName, Password, UserType, Mail)
             VALUES (@UserName, @Password, 'MEDIC', @Mail);

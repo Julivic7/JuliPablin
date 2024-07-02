@@ -43,22 +43,25 @@
             // 
             DgvMedics.AllowUserToAddRows = false;
             DgvMedics.AllowUserToDeleteRows = false;
+            DgvMedics.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             DgvMedics.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvMedics.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvMedics.Location = new Point(12, 39);
+            DgvMedics.Location = new Point(12, 12);
             DgvMedics.MultiSelect = false;
             DgvMedics.Name = "DgvMedics";
             DgvMedics.ReadOnly = true;
             DgvMedics.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             DgvMedics.RowTemplate.Height = 25;
-            DgvMedics.Size = new Size(858, 257);
+            DgvMedics.Size = new Size(858, 294);
             DgvMedics.TabIndex = 0;
             // 
             // btnCreateMedic
             // 
-            btnCreateMedic.Location = new Point(34, 312);
+            btnCreateMedic.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnCreateMedic.Font = new Font("Poppins", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCreateMedic.Location = new Point(11, 312);
             btnCreateMedic.Name = "btnCreateMedic";
-            btnCreateMedic.Size = new Size(109, 22);
+            btnCreateMedic.Size = new Size(109, 31);
             btnCreateMedic.TabIndex = 1;
             btnCreateMedic.Text = "Crear Medico";
             btnCreateMedic.UseVisualStyleBackColor = true;
@@ -66,9 +69,11 @@
             // 
             // btnModifyMedic
             // 
-            btnModifyMedic.Location = new Point(149, 312);
+            btnModifyMedic.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnModifyMedic.Font = new Font("Poppins", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnModifyMedic.Location = new Point(126, 312);
             btnModifyMedic.Name = "btnModifyMedic";
-            btnModifyMedic.Size = new Size(109, 22);
+            btnModifyMedic.Size = new Size(109, 31);
             btnModifyMedic.TabIndex = 2;
             btnModifyMedic.Text = "Modificar Medico";
             btnModifyMedic.UseVisualStyleBackColor = true;
@@ -76,9 +81,11 @@
             // 
             // btnDeleatMedic
             // 
-            btnDeleatMedic.Location = new Point(263, 311);
+            btnDeleatMedic.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnDeleatMedic.Font = new Font("Poppins", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDeleatMedic.Location = new Point(240, 312);
             btnDeleatMedic.Name = "btnDeleatMedic";
-            btnDeleatMedic.Size = new Size(109, 22);
+            btnDeleatMedic.Size = new Size(109, 31);
             btnDeleatMedic.TabIndex = 3;
             btnDeleatMedic.Text = "Eliminar Medico";
             btnDeleatMedic.UseVisualStyleBackColor = true;
@@ -86,9 +93,11 @@
             // 
             // BtnCerrar
             // 
-            BtnCerrar.Location = new Point(794, 311);
+            BtnCerrar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            BtnCerrar.Font = new Font("Poppins", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnCerrar.Location = new Point(755, 313);
             BtnCerrar.Name = "BtnCerrar";
-            BtnCerrar.Size = new Size(75, 23);
+            BtnCerrar.Size = new Size(115, 30);
             BtnCerrar.TabIndex = 4;
             BtnCerrar.Text = "Cerrar";
             BtnCerrar.UseVisualStyleBackColor = true;
@@ -96,9 +105,12 @@
             // 
             // btnShowMedic
             // 
-            btnShowMedic.Location = new Point(892, 39);
+            btnShowMedic.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnShowMedic.Font = new Font("Poppins", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnShowMedic.Location = new Point(876, 12);
+            btnShowMedic.Margin = new Padding(0);
             btnShowMedic.Name = "btnShowMedic";
-            btnShowMedic.Size = new Size(61, 22);
+            btnShowMedic.Size = new Size(83, 31);
             btnShowMedic.TabIndex = 7;
             btnShowMedic.Text = "Refresh";
             btnShowMedic.UseVisualStyleBackColor = true;
@@ -114,9 +126,11 @@
             // 
             // btnCreateLocation
             // 
-            btnCreateLocation.Location = new Point(378, 312);
+            btnCreateLocation.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnCreateLocation.Font = new Font("Poppins", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCreateLocation.Location = new Point(355, 312);
             btnCreateLocation.Name = "btnCreateLocation";
-            btnCreateLocation.Size = new Size(118, 22);
+            btnCreateLocation.Size = new Size(118, 31);
             btnCreateLocation.TabIndex = 9;
             btnCreateLocation.Text = "Cargar Localidad";
             btnCreateLocation.UseVisualStyleBackColor = true;
