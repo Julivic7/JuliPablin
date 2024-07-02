@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             txtMedicalRegistration = new TextBox();
-            txtSpecialty = new TextBox();
             taMatricula = new Label();
             label6 = new Label();
             txtUserName = new TextBox();
@@ -45,6 +44,7 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
+            boxSpecialty = new ComboBox();
             SuspendLayout();
             // 
             // txtMedicalRegistration
@@ -54,14 +54,6 @@
             txtMedicalRegistration.Name = "txtMedicalRegistration";
             txtMedicalRegistration.Size = new Size(303, 27);
             txtMedicalRegistration.TabIndex = 23;
-            // 
-            // txtSpecialty
-            // 
-            txtSpecialty.Location = new Point(464, 133);
-            txtSpecialty.Margin = new Padding(3, 4, 3, 4);
-            txtSpecialty.Name = "txtSpecialty";
-            txtSpecialty.Size = new Size(303, 27);
-            txtSpecialty.TabIndex = 22;
             // 
             // taMatricula
             // 
@@ -204,12 +196,23 @@
             label2.TabIndex = 1;
             label2.Text = "Apellido :";
             // 
+            // boxSpecialty
+            // 
+            boxSpecialty.FormattingEnabled = true;
+            boxSpecialty.Location = new Point(464, 137);
+            boxSpecialty.Margin = new Padding(3, 4, 3, 4);
+            boxSpecialty.Name = "boxSpecialty";
+            boxSpecialty.Size = new Size(303, 28);
+            boxSpecialty.TabIndex = 33;
+            boxSpecialty.SelectedIndexChanged += boxSpecialty_SelectedIndexChanged;
+            // 
             // FrmCreateMedic
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumAquamarine;
             ClientSize = new Size(882, 547);
+            Controls.Add(boxSpecialty);
             Controls.Add(txtPassword);
             Controls.Add(btnRegister);
             Controls.Add(txtUserName);
@@ -218,7 +221,6 @@
             Controls.Add(label1);
             Controls.Add(txtName);
             Controls.Add(taMatricula);
-            Controls.Add(txtSpecialty);
             Controls.Add(label8);
             Controls.Add(txtLastName);
             Controls.Add(label6);
@@ -251,9 +253,9 @@
         private TextBox txtUserName;
         private Label label1;
         private TextBox textBox1;
-        private TextBox txtSpecialty;
         private Label label6;
         private Label taMatricula;
         private TextBox txtMedicalRegistration;
+        private ComboBox boxSpecialty;
     }
 }

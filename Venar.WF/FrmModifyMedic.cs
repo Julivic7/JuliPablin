@@ -15,9 +15,23 @@ namespace Venar.WF
             {
                 this.medic = medicEdit;
                 LlenarDatosMedic();
+                cmbSpecialty();
+
             }
         }
+        private void cmbSpecialty()
+        {
+            var specialties = menuAdminSvc.GetSpecialty();
 
+            boxSpecialty.DataSource = specialties;
+            boxSpecialty.DisplayMember = "SpecialtyName";
+            boxSpecialty.ValueMember = "SpecialtyId";
+
+            if (medic != null && specialties != null)
+            {
+                boxSpecialty.SelectedValue = medic.SpecialtyId;
+            }
+        }
         private void LlenarDatosMedic()
         {
             txtUsername.Text = medic.UserName;
@@ -25,7 +39,6 @@ namespace Venar.WF
             txtLastName.Text = medic.LastName;
             txtDni.Text = medic.Dni.ToString();
             txtMail.Text = medic.Mail;
-            txtSpecialty.Text = medic.Specialty;
             txtMedicalRegistration.Text = medic.MedicalRegistration;
         }
 
@@ -46,7 +59,7 @@ namespace Venar.WF
              medic.LastName = txtLastName.Text;
              medic.Dni = txtDni.Text;
              medic.Mail = txtMail.Text;
-             medic.Specialty = txtSpecialty.Text;
+             medic.SpecialtyId = (int)boxSpecialty.SelectedValue;
              medic.MedicalRegistration = txtMedicalRegistration.Text;
 
 

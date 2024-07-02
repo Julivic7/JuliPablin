@@ -40,7 +40,7 @@ namespace Venar.WF
                     medic.Name,
                     medic.LastName,                   
                     medic.Mail,
-                    medic.Specialty
+                    medic.SpecialtyId
                 );
             }
         }

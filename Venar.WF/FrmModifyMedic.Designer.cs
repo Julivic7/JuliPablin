@@ -32,7 +32,6 @@
             label6 = new Label();
             txtMedicalRegistration = new TextBox();
             label7 = new Label();
-            txtSpecialty = new TextBox();
             label5 = new Label();
             txtMail = new TextBox();
             label4 = new Label();
@@ -45,15 +44,16 @@
             txtUsername = new TextBox();
             BtnGuardar = new Button();
             BtnCancelar = new Button();
+            boxSpecialty = new ComboBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(boxSpecialty);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(txtMedicalRegistration);
             groupBox1.Controls.Add(label7);
-            groupBox1.Controls.Add(txtSpecialty);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(txtMail);
             groupBox1.Controls.Add(label4);
@@ -97,14 +97,6 @@
             label7.Size = new Size(96, 20);
             label7.TabIndex = 11;
             label7.Text = "Especialidad:";
-            // 
-            // txtSpecialty
-            // 
-            txtSpecialty.Location = new Point(128, 230);
-            txtSpecialty.Margin = new Padding(3, 4, 3, 4);
-            txtSpecialty.Name = "txtSpecialty";
-            txtSpecialty.Size = new Size(257, 27);
-            txtSpecialty.TabIndex = 10;
             // 
             // label5
             // 
@@ -213,6 +205,15 @@
             BtnCancelar.UseVisualStyleBackColor = true;
             BtnCancelar.Click += BtnCancelar_Click;
             // 
+            // boxSpecialty
+            // 
+            boxSpecialty.FormattingEnabled = true;
+            boxSpecialty.Location = new Point(128, 233);
+            boxSpecialty.Margin = new Padding(3, 4, 3, 4);
+            boxSpecialty.Name = "boxSpecialty";
+            boxSpecialty.Size = new Size(257, 28);
+            boxSpecialty.TabIndex = 34;
+            // 
             // FrmModifyMedic
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -248,6 +249,6 @@
         private Label label6;
         private TextBox txtMedicalRegistration;
         private Label label7;
-        private TextBox txtSpecialty;
+        private ComboBox boxSpecialty;
     }
 }

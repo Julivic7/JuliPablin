@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Venar.Entities
+﻿namespace Venar.Entities
 {
     public class Specialty
     {
-        public string SpcialityId { get; set; }
-        public string SpecialityName { get; set; }
+        public int SpecialtyId { get; set; }
+        public string SpecialtyName { get; set; }
         public string Description { get; set; }
     }
 }

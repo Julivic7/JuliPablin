@@ -24,9 +24,9 @@ namespace Venar.SVC
             {
                 result.Errors.Add("Debe ingresar el Mail.");
             }
-            else if (string.IsNullOrEmpty(obj.Specialty))
+            else if (obj.SpecialtyId == 0)
             {
-                result.Errors.Add("Debe ingresar una especialidad.");
+                result.Errors.Add("Debe seleccionar una especialidad.");
             }
             else if (string.IsNullOrEmpty(obj.MedicalRegistration))
             {

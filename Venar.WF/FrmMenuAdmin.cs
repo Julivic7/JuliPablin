@@ -9,6 +9,7 @@ namespace Venar.WF
         DiagnosticSVC diagnosticSvc = new DiagnosticSVC();
         MenuAdminSVC menuAdminSvc = new MenuAdminSVC();
         FrmCreateMedic frmCreateMedic;
+        private int adminId;
 
         public FrmMenuAdmin(string userName , int adminId)
         {
@@ -16,13 +17,21 @@ namespace Venar.WF
             FillGridMedic();
             LoggedUserName = userName ?? "usuario";
             labelAdmin.Text = "Bienvenido " + LoggedUserName;
+            this.adminId = adminId;
         }
         private void FillGridMedic()
         {
-            DgvMedics.Columns.Clear();
-            DgvMedics.AutoGenerateColumns = true;
-            DgvMedics.DataSource = menuAdminSvc.GetMedics();
-            DgvMedics.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            DgvMedics.DataSource = null; 
+            DgvMedics.AutoGenerateColumns = false; 
+            DgvMedics.Columns.Clear(); 
+
+            var medics = menuAdminSvc.GetMedics();
+
+            if (medics != null)
+            {
+                DgvMedics.DataSource = medics;
+                DgvMedics.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells); 
+            }
         }
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
@@ -31,7 +40,6 @@ namespace Venar.WF
             frmLogin.ShowDialog();
 
         }
-
         private void btnModifyMedic_Click_1(object sender, EventArgs e)
         {
             if (DgvMedics.SelectedCells.Count > 0)
@@ -52,7 +60,6 @@ namespace Venar.WF
                 MessageBox.Show("Seleccione un médico");
             }
         }
-
         private void btnDeleatMedic_Click(object sender, EventArgs e)
         {
             if (DgvMedics.SelectedCells.Count > 0)
@@ -82,16 +89,14 @@ namespace Venar.WF
         }
         private void btnCreateMedic_Click_1(object sender, EventArgs e)
         {
-            frmCreateMedic = new FrmCreateMedic();
+            frmCreateMedic = new FrmCreateMedic(adminId);
             frmCreateMedic.Show();
             FillGridMedic();
         }
-
         private void btnShowMedic_Click(object sender, EventArgs e)
         {
             FillGridMedic();
         }
-
         private void btnCreateLocation_Click(object sender, EventArgs e)
         {
             //string nombre = txtNombreLocalidad.Text;

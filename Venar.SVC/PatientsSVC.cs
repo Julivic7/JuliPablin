@@ -39,7 +39,7 @@ namespace Venar.SVC
             if (patientId > 0)
             {                
                 string relationshipQuery = @"
-                        INSERT INTO PatientMedicRelationship (PatientId, MedicId) 
+                        INSERT INTO Patient_Medic (PatientId, MedicId) 
                         VALUES (@PatientId, @MedicId)";
 
                 Dictionary<string, string> relationshipParams = new Dictionary<string, string>()
@@ -64,7 +64,7 @@ namespace Venar.SVC
              WHERE Dni = @Dni 
              AND PatientId IN (
              SELECT PM.PatientId
-             FROM PatientMedicRelationship PM
+             FROM Patient_Medic PM
              WHERE PM.PatientId = Patients.PatientId
              AND PM.MedicId = @MedicId
             )";
@@ -87,8 +87,7 @@ namespace Venar.SVC
                 UPDATE Patients 
                 SET Name = @Name, 
                     LastName = @LastName, 
-                    DateOfBirth = @DateOfBirth, 
-                    Dni = @DniNuevo,
+                    DateOfBirth = @DateOfBirth,
                     GenderId = @GenderId, 
                     LocationId = @LocationId, 
                     MedicalCoverageId = @MedicalCoverageId,
@@ -120,7 +119,7 @@ namespace Venar.SVC
                     P.MedicalCoverageId, MC.name AS MedicalCoverageName,
                     P.Status, P.CreatedAt, P.UpdateAt, P.MedicalHistoryId
              FROM Patients P
-             INNER JOIN PatientMedicRelationship PMR ON P.PatientId = PMR.PatientId
+             INNER JOIN Patient_Medic PMR ON P.PatientId = PMR.PatientId
              INNER JOIN Medics M ON PMR.MedicId = M.MedicId
              LEFT JOIN Gender G ON P.GenderId = G.GenderId
              LEFT JOIN Location L ON P.LocationId = L.LocationId
