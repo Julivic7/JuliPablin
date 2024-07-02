@@ -11,7 +11,7 @@ namespace Venar.WF
         FrmCreateMedic frmCreateMedic;
         private int adminId;
 
-        public FrmMenuAdmin(string userName , int adminId)
+        public FrmMenuAdmin(string userName, int adminId)
         {
             InitializeComponent();
             FillGridMedic();
@@ -119,6 +119,11 @@ namespace Venar.WF
             //{
             //    MessageBox.Show("Error al agregar la localidad.");
             //}
+        }
+
+        private void labelAdmin_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
