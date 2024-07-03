@@ -54,6 +54,8 @@
             btnDiagnostic = new Button();
             btnSend = new Button();
             btnCancel = new Button();
+            txtEnfermedad = new TextBox();
+            label4 = new Label();
             boxPatientInfo.SuspendLayout();
             groupBox1.SuspendLayout();
             boxCalculator.SuspendLayout();
@@ -248,6 +250,8 @@
             // 
             // boxCalculator
             // 
+            boxCalculator.Controls.Add(txtEnfermedad);
+            boxCalculator.Controls.Add(label4);
             boxCalculator.Controls.Add(txtSymtoms);
             boxCalculator.Controls.Add(lblSintomas);
             boxCalculator.Controls.Add(btnDiagnostic);
@@ -260,7 +264,7 @@
             // 
             // txtSymtoms
             // 
-            txtSymtoms.Location = new Point(187, 143);
+            txtSymtoms.Location = new Point(187, 109);
             txtSymtoms.Name = "txtSymtoms";
             txtSymtoms.Size = new Size(231, 27);
             txtSymtoms.TabIndex = 14;
@@ -269,11 +273,11 @@
             // 
             lblSintomas.AutoSize = true;
             lblSintomas.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblSintomas.Location = new Point(37, 146);
+            lblSintomas.Location = new Point(37, 112);
             lblSintomas.Name = "lblSintomas";
-            lblSintomas.Size = new Size(144, 20);
+            lblSintomas.Size = new Size(73, 20);
             lblSintomas.TabIndex = 14;
-            lblSintomas.Text = "Posible Enfermedad:";
+            lblSintomas.Text = "Sintomas:";
             // 
             // btnDiagnostic
             // 
@@ -306,6 +310,23 @@
             btnCancel.Text = "Cancelar";
             btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += btnCancel_Click;
+            // 
+            // txtEnfermedad
+            // 
+            txtEnfermedad.Location = new Point(187, 161);
+            txtEnfermedad.Name = "txtEnfermedad";
+            txtEnfermedad.Size = new Size(231, 27);
+            txtEnfermedad.TabIndex = 15;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(37, 164);
+            label4.Name = "label4";
+            label4.Size = new Size(144, 20);
+            label4.TabIndex = 16;
+            label4.Text = "Posible Enfermedad:";
             // 
             // FrmMedicalRecord
             // 
@@ -359,5 +380,7 @@
         private Label lblSintomas;
         private TextBox txtTicket;
         private Label lblTicket;
+        private TextBox txtEnfermedad;
+        private Label label4;
     }
 }

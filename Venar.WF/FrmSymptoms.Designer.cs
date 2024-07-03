@@ -40,7 +40,7 @@
             // btnCheckSymptoms
             // 
             btnCheckSymptoms.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnCheckSymptoms.Location = new Point(12, 190);
+            btnCheckSymptoms.Location = new Point(12, 205);
             btnCheckSymptoms.Name = "btnCheckSymptoms";
             btnCheckSymptoms.Size = new Size(96, 30);
             btnCheckSymptoms.TabIndex = 3;
@@ -53,7 +53,7 @@
             // 
             lblResult.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblResult.AutoSize = true;
-            lblResult.Location = new Point(123, 198);
+            lblResult.Location = new Point(27, 254);
             lblResult.Name = "lblResult";
             lblResult.Size = new Size(81, 20);
             lblResult.TabIndex = 4;
@@ -66,23 +66,24 @@
             checkedListBox1.FormattingEnabled = true;
             checkedListBox1.Location = new Point(12, 12);
             checkedListBox1.Name = "checkedListBox1";
-            checkedListBox1.Size = new Size(498, 158);
+            checkedListBox1.Size = new Size(558, 158);
             checkedListBox1.TabIndex = 5;
             // 
             // btnSend
             // 
             btnSend.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnSend.Location = new Point(435, 193);
+            btnSend.Location = new Point(452, 291);
             btnSend.Name = "btnSend";
-            btnSend.Size = new Size(75, 30);
+            btnSend.Size = new Size(97, 31);
             btnSend.TabIndex = 6;
             btnSend.TabStop = false;
             btnSend.Text = "Enviar";
             btnSend.UseVisualStyleBackColor = true;
+            btnSend.Click += btnSend_Click;
             // 
             // FrmSymptoms
             // 
-            ClientSize = new Size(522, 232);
+            ClientSize = new Size(582, 364);
             Controls.Add(btnSend);
             Controls.Add(btnCheckSymptoms);
             Controls.Add(lblResult);

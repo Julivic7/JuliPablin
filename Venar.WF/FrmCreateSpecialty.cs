@@ -20,18 +20,17 @@ namespace Venar.WF
                 Description = txtDescription.Text
             };
 
-
             try
             {
                 specialtySvc.InsertSpecialty(newSpecialty);
                 MessageBox.Show("Especialidad insertada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al insertar especialidad: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();

@@ -4,6 +4,7 @@ namespace Venar.WF
 {
     public partial class FrmSymptoms : Form
     {
+        public event EventHandler<List<string>> SymptomsSelected;
         private SymptomsServices symptomsServices;
         DiagnosticSVC diagnosticSVC = new DiagnosticSVC();
         public FrmSymptoms()
@@ -65,6 +66,19 @@ namespace Venar.WF
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            List<string> selectedSymptoms = new List<string>();
+
+            foreach (int index in checkedListBox1.CheckedIndices)
+            {
+                selectedSymptoms.Add(checkedListBox1.Items[index].ToString().Trim());
+            }
+
+            SymptomsSelected?.Invoke(this, selectedSymptoms);
+
+            this.Close(); 
         }
     }
 }

@@ -48,7 +48,6 @@ namespace Venar.WF
             if (medicalHistoryId > 0)
             {
                 MessageBox.Show("Historia clínica creada y asociada al paciente correctamente.");
-                // Actualizar el DataGridView u otra lógica de actualización necesaria
                 FillGridPatients();
             }
             else
@@ -65,7 +64,13 @@ namespace Venar.WF
         private void btnDiagnostic_Click(object sender, EventArgs e)
         {
             FrmSymptoms frmSymptoms = new FrmSymptoms();
+            frmSymptoms.SymptomsSelected += FrmSymptoms_SymptomsSelected;
             frmSymptoms.Show();
+        }
+        private void FrmSymptoms_SymptomsSelected(object sender, List<string> selectedSymptoms)
+        {
+            // Actualizar el cuadro de texto txtSymptoms con los síntomas seleccionados
+            txtSymtoms.Text = string.Join(", ", selectedSymptoms);
         }
     }
 }
