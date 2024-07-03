@@ -21,8 +21,6 @@ namespace Venar.SVC
             medicDto.Dni = medicDto.Dni.Trim();
             medicDto.MedicalRegistration = medicDto.MedicalRegistration.Trim();
 
-            Debug.WriteLine("Trimmed UserName", medicDto.UserName);
-
             string userQuery = @"
             INSERT INTO Users (UserName, Password, UserType, Mail)
             VALUES (@UserName, @Password, 'MEDIC', @Mail);

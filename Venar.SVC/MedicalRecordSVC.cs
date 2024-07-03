@@ -10,61 +10,82 @@ namespace Venar.SVC
         MedicalHistory medicalHistory;
         private int medicalHistoryId = 0;
 
-        public string GetInfoMedic(int medicId)
-        {
-            string query = @"
-            SELECT Name, LastName
-            FROM Medics
-            WHERE MedicId = @MedicId
-            ";
+        //public string GetInfoMedic(int medicId)
+        //{
+        //    string query = @"
+        //    SELECT Name, LastName
+        //    FROM Medics
+        //    WHERE MedicId = @MedicId
+        //    ";
 
-            Dictionary<string, string> parameters = new Dictionary<string, string>
-                {
-                    { "@MedicId", medicId.ToString() }
-                };
+        //    Dictionary<string, string> parameters = new Dictionary<string, string>
+        //        {
+        //            { "@MedicId", medicId.ToString() }
+        //        };
 
-            DataTable result = dataService.Selection(query, parameters);
+        //    DataTable result = dataService.Selection(query, parameters);
 
-            if (result != null && result.Rows.Count > 0)
-            {
-                string name = result.Rows[0]["Name"].ToString();
-                string lastName = result.Rows[0]["LastName"].ToString();
+        //    if (result != null && result.Rows.Count > 0)
+        //    {
+        //        string name = result.Rows[0]["Name"].ToString().Trim();
+        //        string lastName = result.Rows[0]["LastName"].ToString().Trim();
 
-                return $"{name} {lastName}";
-            }
-            else
-            {
-                throw new Exception($"No se encontró información para el MedicId {medicId}");
-            }
-        }
+        //        return $"{name} {lastName}";
+        //    }
+        //    else
+        //    {
+        //        throw new Exception($"No se encontró información para el MedicId {medicId}");
+        //    }
+        //}
 
         public int CreateMedicalHistory(MedicalHistory medicalHistory)
         {
-            string query = @"
-            INSERT INTO MedicalHistory (IdMedic, IdPatient, Date, Diagnosis, Reason, CreatAt)
-            VALUES (@IdMedic, @IdPatient, @Date, @Diagnosis, @Reason, GETDATE());
-            SELECT SCOPE_IDENTITY();";
+            string queryHistory = @"
+                INSERT INTO MedicalHistory (MedicId, PatientsId, Diagnosis, Reason)
+                VALUES (@IdMedic, @IdPatient, @Diagnosis, @Reason);
+                SELECT SCOPE_IDENTITY();";
 
             Dictionary<string, string> parameters = new Dictionary<string, string>
             {
-                { "@IdMedic", medicalHistory.IdMedic.ToString() },
-                { "@IdPatient", medicalHistory.IdPatient.ToString() },
-                { "@Date", medicalHistory.Date.ToString() },
-                { "@Diagnosis", medicalHistory.Diagnosis },
-                { "@Reason", medicalHistory.Reason }
+                { "@IdMedic", medicalHistory.MedicId.ToString() },
+                { "@IdPatient", medicalHistory.PatientsId.ToString() },
+                { "@Diagnosis", medicalHistory.Diagnosis.Trim() },
+                { "@Reason", medicalHistory.Reason.Trim() }
             };
-            var result = dataService.Selection(query, parameters);
-            if (result != null && result.Rows.Count > 0)
+
+            // Debugging output to check parameter values
+            foreach (var param in parameters)
             {
-                medicalHistoryId = Convert.ToInt32(result.Rows[0][0]);
+                System.Diagnostics.Debug.WriteLine($"{param.Key}: '{param.Value}'");
             }
 
-            bool success = MedicalHistoryToPatient(medicalHistory.IdPatient, medicalHistoryId);
-            if (!success)
+            // Execute the query and get the result
+            var historyResult = dataService.Selection(queryHistory, parameters);
+
+            // Check if the result is not null and has at least one row
+            if (historyResult != null && historyResult.Rows.Count > 0)
             {
-                medicalHistoryId = 0;
+                var firstColumnValue = historyResult.Rows[0][0];
+                System.Diagnostics.Debug.WriteLine($"First column value: {firstColumnValue}");
+
+                if (int.TryParse(firstColumnValue.ToString(), out int medicalHistoryId))
+                {
+                    bool success = MedicalHistoryToPatient(medicalHistory.PatientsId, medicalHistoryId);
+                    if (!success)
+                    {
+                        medicalHistoryId = 0;
+                    }
+                    return medicalHistoryId;
+                }
+                else
+                {
+                    throw new InvalidCastException($"Cannot convert '{firstColumnValue}' to an integer.");
+                }
             }
-            return medicalHistoryId;
+            else
+            {
+                throw new Exception("No result returned from database.");
+            }
         }
 
         private bool MedicalHistoryToPatient(int patientId, int medicalHistoryId)

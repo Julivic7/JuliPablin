@@ -27,8 +27,8 @@ namespace Venar.WF
             txtMedicalCoverage.Text = patient.MedicalCoverage.ToString();
             txtDateOfBirth.Text = patient.DateOfBirth.ToString();
             txtGender.Text = patient.Gender.ToString();
-            string medicName = medicalRecordSVC.GetInfoMedic(medicId);
-            txtMedicName.Text = medicName.Trim();
+            //string medicName = medicalRecordSVC.GetInfoMedic(medicId);
+            //txtMedicName.Text = medicName.Trim();
             txtTicket.Text = null;
         }
 
@@ -36,8 +36,8 @@ namespace Venar.WF
         {
             medicalHistory = new MedicalHistory()
             {
-                IdMedic = medicId,
-                IdPatient = patient.PatientId,
+                MedicId = medicId,
+                PatientsId = patient.PatientId,
                 Date = dateTimePicker1.Value,
                 Reason = txtReason.Text,
                 Diagnosis = txtDiagnosis.Text
