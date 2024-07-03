@@ -11,6 +11,7 @@ namespace Venar.WF
         {
             InitializeComponent();
             loginSVC = new LoginSVC();
+            this.FormClosing += FrmLogin_FormClosing;
         }
 
         //Modificado por mi
@@ -87,11 +88,6 @@ namespace Venar.WF
 
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void labelPassword_Click(object sender, EventArgs e)
         {
 
@@ -101,5 +97,24 @@ namespace Venar.WF
         {
 
         }
+        private void FrmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                DialogResult result = MessageBox.Show("¿Está seguro de que desea salir?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true; // Cancel the form closing event
+                }
+                else
+                {
+                    // Optionally perform any cleanup or additional logic before closing
+
+                    // Exit the application
+                    Application.Exit();
+                }
+            }
+        }
+
     }
 }
