@@ -104,13 +104,10 @@ namespace Venar.WF
                 DialogResult result = MessageBox.Show("¿Está seguro de que desea salir?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.No)
                 {
-                    e.Cancel = true; // Cancel the form closing event
+                    e.Cancel = true;
                 }
                 else
                 {
-                    // Optionally perform any cleanup or additional logic before closing
-
-                    // Exit the application
                     Application.Exit();
                 }
             }
