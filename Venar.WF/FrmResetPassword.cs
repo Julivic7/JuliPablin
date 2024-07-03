@@ -6,8 +6,6 @@ namespace Venar.WF
 {
     public partial class FrmResetPassword : Form
     {
-
-
         DataServices dataServices = new DataServices();
         ResetPasswordSVC resetPasswordSVC = new ResetPasswordSVC();
         ResetPassword resetPassword;
@@ -25,7 +23,6 @@ namespace Venar.WF
             LoggedUserMail = mail ?? "usuario";
             label7.Text = LoggedUserMail;
         }
-
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             resetPassword = new ResetPassword()

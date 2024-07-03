@@ -1,6 +1,5 @@
 ﻿using Venar.DTO;
 using Venar.SVC;
-using Venar.Entities;
 
 namespace Venar.WF
 {
@@ -33,7 +32,6 @@ namespace Venar.WF
         private void label5_Click(object sender, EventArgs e)
         {
         }
-        //
         private void btnRegister_Click(object sender, EventArgs e)
         {
             MedicDto medicDto = new MedicDto
@@ -70,18 +68,14 @@ namespace Venar.WF
                 MessageBox.Show("El correo electrónico no es válido.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }
-
         private void boxSpecialty_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmbSpecialty();
         }
-
         private void label8_Click(object sender, EventArgs e)
         {
 

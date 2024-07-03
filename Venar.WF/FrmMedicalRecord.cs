@@ -20,7 +20,6 @@ namespace Venar.WF
             this.userName = userName;
             FillGridPatients();
         }
-
         private void FillGridPatients()
         {
             txtPatientName.Text = $"{patient.Name} {patient.LastName}";
@@ -32,7 +31,6 @@ namespace Venar.WF
             txtMedicName.Text = medicName.Trim();
             txtTicket.Text = null;
         }
-
         private void btnSend_Click(object sender, EventArgs e)
         {
             medicalHistory = new MedicalHistory()
@@ -58,14 +56,12 @@ namespace Venar.WF
                 MessageBox.Show("No se pudo crear o asociar la historia clínica al paciente.");
             }
         }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             FrmMenuMedic frmMenuMedic = new FrmMenuMedic(userName, medicId);
             frmMenuMedic.Show();
             this.Close();
         }
-
         private void btnDiagnostic_Click(object sender, EventArgs e)
         {
             FrmSymptoms frmSymptoms = new FrmSymptoms();

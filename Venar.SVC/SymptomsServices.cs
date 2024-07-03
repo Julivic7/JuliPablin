@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using Venar.Data;
 
 namespace Venar.SVC
@@ -32,7 +25,6 @@ namespace Venar.SVC
 
             return symptomId;
         }
-
         public List<string> GetSymptoms()
         {
             List<string> symptoms = new List<string>();

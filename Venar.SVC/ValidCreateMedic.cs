@@ -49,7 +49,6 @@ namespace Venar.SVC
                 result.Errors.Add("Debe ingresar una contraseña.");
             }
         }
-
         public ResultDto CreateReallyUser(MedicDto obj)
         {
             var resultDto = new ResultDto();
@@ -73,7 +72,6 @@ namespace Venar.SVC
 
             return resultDto;
         }
-
         public bool IsValidEmail(string email)
         {
             try

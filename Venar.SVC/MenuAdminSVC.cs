@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using System.Diagnostics;
 using Venar.Data;
 using Venar.DTO;
 using Venar.Entities;
@@ -9,7 +8,6 @@ namespace Venar.SVC
     public class MenuAdminSVC
     {
         DataServices dataServices = new DataServices();
-        
         public void CreateMedic(MedicDto medicDto)
         {
             medicDto.UserName = medicDto.UserName.Trim();
@@ -52,7 +50,7 @@ namespace Venar.SVC
                      VALUES (@UserId, @Name, @LastName, @Dni, @SpecialtyId, @MedicalRegistration, @CreatedAt);
                      ";
 
-                     Dictionary<string, string> medicParams = new Dictionary<string, string>
+                    Dictionary<string, string> medicParams = new Dictionary<string, string>
                      {
                          { "@UserId", userId.ToString() },
                          { "@Name", medicDto.Name },

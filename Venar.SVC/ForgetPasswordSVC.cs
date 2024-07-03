@@ -43,9 +43,7 @@ namespace Venar.SVC
 
             result.MedicDto = new MedicDto { Mail = email, Password = temporalPass };
             return result;
-        }
-
-     
+        }     
         private string GenerateTemporalPassword()
         {
             return Guid.NewGuid().ToString().Substring(0, 8);

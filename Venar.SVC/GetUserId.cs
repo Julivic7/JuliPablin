@@ -11,7 +11,6 @@ namespace Venar.SVC
         {
             dataService = new DataServices();
         }
-
         public int GetAdminId(int userId)
         {
             int adminId = 0;
@@ -30,7 +29,6 @@ namespace Venar.SVC
 
             return adminId;
         }
-
         public int GetMedicId(int userId)
         {
             int medicId = 0;

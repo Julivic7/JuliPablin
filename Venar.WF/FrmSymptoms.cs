@@ -22,18 +22,6 @@ namespace Venar.WF
             }
 
         }
-
-        //private void CreateCheckBox(string symptomName, int yPosition)
-        //{
-        //    CheckBox checkBox = new CheckBox();
-        //    checkBox.Text = symptomName;
-        //    checkBox.Location = new System.Drawing.Point(10, yPosition);
-        //    checkBox.AutoSize = true;
-        //    this.Controls.Add(checkBox);
-        //}
-
-
-        // LA PARTE DIFICIL DEL CODIGO
         private void btnCheck_symptoms(object sender, EventArgs e)
         {
             lblResult.Text = "Resultados: ";
@@ -70,7 +58,6 @@ namespace Venar.WF
                 lblResult.Text = "No se encontraron enfermedades coincidentes.";
             }
         }
-
         private void lblResult_Click(object sender, EventArgs e)
         {
 

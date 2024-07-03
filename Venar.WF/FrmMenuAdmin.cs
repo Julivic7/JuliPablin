@@ -8,7 +8,9 @@ namespace Venar.WF
         public string LoggedUserName { get; set; }
         DiagnosticSVC diagnosticSvc = new DiagnosticSVC();
         MenuAdminSVC menuAdminSvc = new MenuAdminSVC();
+        FrmCreateLocation frmCreateLocation = new FrmCreateLocation();
         FrmCreateMedic frmCreateMedic;
+        FrmCreateSpecialty frmCreateSpecialty = new FrmCreateSpecialty();
         private int adminId;
 
         public FrmMenuAdmin(string userName, int adminId)
@@ -38,7 +40,6 @@ namespace Venar.WF
                 DgvMedics.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
         }
-
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
             FrmLogin frmLogin = new FrmLogin();
@@ -105,25 +106,16 @@ namespace Venar.WF
         }
         private void btnCreateLocation_Click(object sender, EventArgs e)
         {
-            //string nombre = txtNombreLocalidad.Text;
-            //int codigoPostal = int.Parse(txtCodigoPostal.Text);
+            frmCreateLocation.Show();
 
-            //bool resultado = locationService.AddLocation(nombre, codigoPostal);
-
-            //if (resultado)
-            //{
-            //    MessageBox.Show("Localidad agregada correctamente.");
-            //    // Lógica adicional después de agregar la localidad
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Error al agregar la localidad.");
-            //}
         }
-
         private void labelAdmin_Click(object sender, EventArgs e)
         {
 
+        }
+        private void btnCreateSpecialty_Click(object sender, EventArgs e)
+        {
+            frmCreateSpecialty.Show();
         }
     }
 }

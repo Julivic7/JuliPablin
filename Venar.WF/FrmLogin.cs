@@ -4,7 +4,7 @@ namespace Venar.WF
 {
     public partial class FrmLogin : Form
     {
-        private LoginSVC loginSVC;
+        LoginSVC loginSVC;
         GetUserId getUserId = new GetUserId();
 
         public FrmLogin()
@@ -13,9 +13,6 @@ namespace Venar.WF
             loginSVC = new LoginSVC();
             this.FormClosing += FrmLogin_FormClosing;
         }
-
-        //Modificado por mi
-
         private void txtUser_Text(object sender, EventArgs e)
         {
         }
@@ -61,19 +58,15 @@ namespace Venar.WF
             }
 
         }
-
         private void ResetLoginFields()
         {
             txtUser.Text = string.Empty;
             txtPassword.Text = string.Empty;
             txtUser.Focus(); // Opcional: para poner el foco en el campo del usuario
         }
-
-
         private void labelUser_Click(object sender, EventArgs e)
         {
         }
-
         private void linkForgetPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
@@ -82,17 +75,14 @@ namespace Venar.WF
             this.Hide();
 
         }
-
         private void groupInicio_Enter(object sender, EventArgs e)
         {
 
         }
-
         private void labelPassword_Click(object sender, EventArgs e)
         {
 
         }
-
         private void labelWelcome_Click(object sender, EventArgs e)
         {
 

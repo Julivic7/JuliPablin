@@ -18,7 +18,6 @@ namespace Venar.SVC
                 section["FromEmail"], section["UserName"], section["Password"]
             );
         }
-
         public void SendMail(MailData dataMail)
         {
             var mail = new MailMessage();

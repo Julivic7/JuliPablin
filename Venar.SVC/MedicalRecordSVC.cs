@@ -29,8 +29,7 @@ namespace Venar.SVC
             {
                 string name = result.Rows[0]["Name"].ToString().Trim();
                 string lastName = result.Rows[0]["LastName"].ToString().Trim();
-                string medicName = $"{name}";//{" "}{lastName}";
-                return medicName;
+                return $"{name}{" "}{lastName}";
             }
             else
             {
@@ -38,9 +37,7 @@ namespace Venar.SVC
             }
         }
         public int CreateMedicalHistory(MedicalHistory medicalHistory)
-        {
-            
-
+        { 
             string query = @"
         INSERT INTO MedicalHistory (MedicId, PatientsId, Diagnosis, Reason, CreatedAt)
         VALUES (@MedicId, @PatientsId, @Diagnosis, @Reason, GETDATE());
@@ -90,7 +87,6 @@ namespace Venar.SVC
                 throw new Exception("Error al crear la historia clínica: " + ex.Message, ex);
             }
         }
-
         private bool MedicalHistoryToPatient(int patientId, int medicalHistoryId)
         {
             bool success = false;
@@ -113,8 +109,5 @@ namespace Venar.SVC
             }
             return success;
         }
-
-
-
     }
 }

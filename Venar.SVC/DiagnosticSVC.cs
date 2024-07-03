@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using Venar.Entities;
-using System.Data;
+﻿using System.Data;
 using Venar.Data;
-using Venar.DTO;
 
 
 namespace Venar.SVC
@@ -16,12 +7,11 @@ namespace Venar.SVC
     public class DiagnosticSVC
     {
         DataServices dataService = new DataServices();
-   
-         
+
         public DiagnosticSVC()
         {
 
-          
+
         }
         public List<string> GetDiagnostic(List<int> symptomIds)
         {
@@ -58,11 +48,6 @@ namespace Venar.SVC
 
             return diagnostic;
         }
-
-     
-
-
-
     }
 }
 

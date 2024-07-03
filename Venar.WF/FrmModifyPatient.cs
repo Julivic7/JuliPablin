@@ -26,7 +26,6 @@ namespace Venar.WF
                 cmbCoverMedical();
             }
         }
-
         private void LlenarDatosPatient()
         {
             txtName.Text = patient.Name;
@@ -59,7 +58,6 @@ namespace Venar.WF
         {
             this.Close();
         }
-
         private void BtnGuardar_Click(object sender, EventArgs e)
         {             
             if (patient == null)

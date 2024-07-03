@@ -4,8 +4,7 @@ using Venar.SVC;
 namespace Venar.WF
 {
     public partial class FrmModifyMedic : Form
-    {
-        
+    {        
         MenuAdminSVC menuAdminSvc = new MenuAdminSVC();
         MedicDto medic = null;
         public FrmModifyMedic(MedicDto medicEdit)
@@ -41,12 +40,10 @@ namespace Venar.WF
             txtMail.Text = medic.Mail.Trim();
             txtMedicalRegistration.Text = medic.MedicalRegistration.Trim();
         }
-
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
             

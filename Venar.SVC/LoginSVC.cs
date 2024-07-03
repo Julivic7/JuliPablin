@@ -33,10 +33,6 @@ namespace Venar.SVC
                 return null;
             }
         }
-
-
-
-
         public string RedirectUser(User user)
         {
             if (user.UserType == "ADMIN")
@@ -52,7 +48,6 @@ namespace Venar.SVC
                 return null;
             }
         }
-
         public bool VerifyMail(string mail)
         {
             bool loginSuccessful = false;
@@ -86,7 +81,6 @@ namespace Venar.SVC
 
             return loginSuccessful;
         }
-
         public string TemporalPassword()
         {
             var clave = new Random().Next().ToString();
