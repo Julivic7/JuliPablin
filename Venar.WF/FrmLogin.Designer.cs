@@ -43,7 +43,7 @@
             // 
             btnLogin.AccessibleName = "Login";
             btnLogin.Anchor = AnchorStyles.None;
-            btnLogin.BackColor = Color.FromArgb(51, 133, 255);
+            btnLogin.BackColor = Color.FromArgb(77, 100, 141);
             btnLogin.BackgroundImageLayout = ImageLayout.Stretch;
             btnLogin.Cursor = Cursors.Hand;
             btnLogin.FlatStyle = FlatStyle.Flat;
@@ -78,7 +78,7 @@
             // txtPassword
             // 
             txtPassword.Anchor = AnchorStyles.None;
-            txtPassword.BackColor = Color.FromArgb(230, 242, 255);
+            txtPassword.BackColor = Color.White;
             txtPassword.Location = new Point(398, 287);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(234, 23);
@@ -87,7 +87,7 @@
             // txtUser
             // 
             txtUser.Anchor = AnchorStyles.None;
-            txtUser.BackColor = Color.FromArgb(230, 242, 255);
+            txtUser.BackColor = Color.White;
             txtUser.Location = new Point(398, 240);
             txtUser.Name = "txtUser";
             txtUser.Size = new Size(234, 23);
@@ -147,7 +147,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(102, 179, 255);
+            BackColor = Color.FromArgb(31, 58, 95);
             ClientSize = new Size(900, 465);
             Controls.Add(pictureBox1);
             Controls.Add(txtUser);

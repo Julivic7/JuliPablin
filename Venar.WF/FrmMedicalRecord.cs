@@ -26,11 +26,16 @@ namespace Venar.WF
             txtMedicalCoverage.Text = patient.MedicalCoverage != null ? patient.MedicalCoverage.NameCover : "No especificada";
             txtDateOfBirth.Text = patient.DateOfBirth.ToShortDateString(); // Formato de fecha corta
             txtGender.Text = patient.Gender != null ? patient.Gender.NameGender : "No especificado";
-        
-            string medicName = medicalRecordSVC.GetInfoMedic(medicId);
-            txtMedicName.Text = medicName.Trim();
-            txtTicket.Text = null;
+
+            Medic medic = medicalRecordSVC.GetInfoMedic(medicId);
+
+            if (medic != null)
+            {
+                txtMedicName.Text = medic.Name.Trim();
+                txtMedicLastName.Text = medic.LastName.Trim();
+            }
         }
+
         private void btnSend_Click(object sender, EventArgs e)
         {
             medicalHistory = new MedicalHistory()
@@ -71,6 +76,21 @@ namespace Venar.WF
         {
             // Actualizar el cuadro de texto txtSymptoms con los síntomas seleccionados
             txtSymtoms.Text = string.Join(", ", selectedSymptoms);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void boxPatientInfo_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

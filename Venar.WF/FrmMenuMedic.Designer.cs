@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DgvPatients = new DataGridView();
             colPatientId = new DataGridViewTextBoxColumn();
             colName = new DataGridViewTextBoxColumn();
@@ -43,6 +46,7 @@
             btnCreatePatient = new Button();
             btnShowPatient = new Button();
             btnClinicalHistory = new Button();
+            lblMedicName = new Label();
             ((System.ComponentModel.ISupportInitialize)DgvPatients).BeginInit();
             SuspendLayout();
             // 
@@ -50,15 +54,39 @@
             // 
             DgvPatients.AllowUserToAddRows = false;
             DgvPatients.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            DgvPatients.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            DgvPatients.Anchor = AnchorStyles.None;
+            DgvPatients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DgvPatients.BackgroundColor = Color.White;
+            DgvPatients.BorderStyle = BorderStyle.None;
+            DgvPatients.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(61, 90, 128);
+            dataGridViewCellStyle2.Font = new Font("Poppins", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ButtonHighlight;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            DgvPatients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DgvPatients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvPatients.Columns.AddRange(new DataGridViewColumn[] { colPatientId, colName, colLastname, colDni, colDateOfBirth, colGender, colMedicalCoverage, colLocation });
-            DgvPatients.Location = new Point(12, 78);
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(206, 232, 255);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            DgvPatients.DefaultCellStyle = dataGridViewCellStyle3;
+            DgvPatients.EnableHeadersVisualStyles = false;
+            DgvPatients.Location = new Point(12, 39);
             DgvPatients.Margin = new Padding(3, 4, 3, 4);
             DgvPatients.Name = "DgvPatients";
             DgvPatients.ReadOnly = true;
             DgvPatients.RowHeadersWidth = 51;
             DgvPatients.RowTemplate.Height = 25;
-            DgvPatients.Size = new Size(986, 343);
+            DgvPatients.Size = new Size(986, 318);
             DgvPatients.TabIndex = 1;
             DgvPatients.CellContentClick += DgvPatients_CellContentClick;
             // 
@@ -69,7 +97,6 @@
             colPatientId.MinimumWidth = 6;
             colPatientId.Name = "colPatientId";
             colPatientId.ReadOnly = true;
-            colPatientId.Width = 80;
             // 
             // colName
             // 
@@ -78,7 +105,6 @@
             colName.MinimumWidth = 6;
             colName.Name = "colName";
             colName.ReadOnly = true;
-            colName.Width = 125;
             // 
             // colLastname
             // 
@@ -87,7 +113,6 @@
             colLastname.MinimumWidth = 6;
             colLastname.Name = "colLastname";
             colLastname.ReadOnly = true;
-            colLastname.Width = 125;
             // 
             // colDni
             // 
@@ -96,7 +121,6 @@
             colDni.MinimumWidth = 6;
             colDni.Name = "colDni";
             colDni.ReadOnly = true;
-            colDni.Width = 120;
             // 
             // colDateOfBirth
             // 
@@ -105,7 +129,6 @@
             colDateOfBirth.MinimumWidth = 6;
             colDateOfBirth.Name = "colDateOfBirth";
             colDateOfBirth.ReadOnly = true;
-            colDateOfBirth.Width = 130;
             // 
             // colGender
             // 
@@ -114,7 +137,6 @@
             colGender.MinimumWidth = 6;
             colGender.Name = "colGender";
             colGender.ReadOnly = true;
-            colGender.Width = 125;
             // 
             // colMedicalCoverage
             // 
@@ -123,7 +145,6 @@
             colMedicalCoverage.MinimumWidth = 6;
             colMedicalCoverage.Name = "colMedicalCoverage";
             colMedicalCoverage.ReadOnly = true;
-            colMedicalCoverage.Width = 125;
             // 
             // colLocation
             // 
@@ -132,77 +153,125 @@
             colLocation.MinimumWidth = 6;
             colLocation.Name = "colLocation";
             colLocation.ReadOnly = true;
-            colLocation.Width = 125;
             // 
             // btnFinishSession
             // 
-            btnFinishSession.Location = new Point(912, 459);
+            btnFinishSession.Anchor = AnchorStyles.None;
+            btnFinishSession.BackColor = Color.FromArgb(77, 100, 141);
+            btnFinishSession.FlatAppearance.BorderSize = 0;
+            btnFinishSession.FlatStyle = FlatStyle.Flat;
+            btnFinishSession.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnFinishSession.ForeColor = SystemColors.ButtonHighlight;
+            btnFinishSession.Location = new Point(915, 366);
             btnFinishSession.Margin = new Padding(3, 4, 3, 4);
             btnFinishSession.Name = "btnFinishSession";
-            btnFinishSession.Size = new Size(86, 31);
+            btnFinishSession.Size = new Size(83, 31);
             btnFinishSession.TabIndex = 13;
             btnFinishSession.Text = "Cerrar";
-            btnFinishSession.UseVisualStyleBackColor = true;
+            btnFinishSession.UseVisualStyleBackColor = false;
             btnFinishSession.Click += btnFinishSession_Click_1;
             // 
             // btnDeleatPatient
             // 
-            btnDeleatPatient.Location = new Point(274, 458);
+            btnDeleatPatient.Anchor = AnchorStyles.None;
+            btnDeleatPatient.BackColor = Color.FromArgb(77, 100, 141);
+            btnDeleatPatient.FlatAppearance.BorderSize = 0;
+            btnDeleatPatient.FlatStyle = FlatStyle.Flat;
+            btnDeleatPatient.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnDeleatPatient.ForeColor = SystemColors.ButtonHighlight;
+            btnDeleatPatient.Location = new Point(348, 366);
             btnDeleatPatient.Margin = new Padding(3, 4, 3, 4);
             btnDeleatPatient.Name = "btnDeleatPatient";
-            btnDeleatPatient.Size = new Size(125, 30);
+            btnDeleatPatient.Size = new Size(160, 30);
             btnDeleatPatient.TabIndex = 12;
             btnDeleatPatient.Text = "Eliminar Paciente";
-            btnDeleatPatient.UseVisualStyleBackColor = true;
+            btnDeleatPatient.UseVisualStyleBackColor = false;
             btnDeleatPatient.Click += btnDeleatPatient_Click;
             // 
             // btnModifyPatient
             // 
-            btnModifyPatient.Location = new Point(143, 459);
+            btnModifyPatient.Anchor = AnchorStyles.None;
+            btnModifyPatient.BackColor = Color.FromArgb(77, 100, 141);
+            btnModifyPatient.FlatAppearance.BorderSize = 0;
+            btnModifyPatient.FlatStyle = FlatStyle.Flat;
+            btnModifyPatient.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnModifyPatient.ForeColor = SystemColors.ButtonHighlight;
+            btnModifyPatient.Location = new Point(180, 367);
             btnModifyPatient.Margin = new Padding(3, 4, 3, 4);
             btnModifyPatient.Name = "btnModifyPatient";
-            btnModifyPatient.Size = new Size(125, 30);
+            btnModifyPatient.Size = new Size(160, 30);
             btnModifyPatient.TabIndex = 11;
             btnModifyPatient.Text = "Modificar Paciente";
-            btnModifyPatient.UseVisualStyleBackColor = true;
+            btnModifyPatient.UseVisualStyleBackColor = false;
             btnModifyPatient.Click += btnModifyPatient_Click_1;
             // 
             // btnCreatePatient
             // 
-            btnCreatePatient.Location = new Point(12, 459);
+            btnCreatePatient.Anchor = AnchorStyles.None;
+            btnCreatePatient.BackColor = Color.FromArgb(77, 100, 141);
+            btnCreatePatient.FlatAppearance.BorderSize = 0;
+            btnCreatePatient.FlatStyle = FlatStyle.Flat;
+            btnCreatePatient.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCreatePatient.ForeColor = SystemColors.ButtonHighlight;
+            btnCreatePatient.Location = new Point(12, 367);
             btnCreatePatient.Margin = new Padding(3, 4, 3, 4);
             btnCreatePatient.Name = "btnCreatePatient";
-            btnCreatePatient.Size = new Size(125, 30);
+            btnCreatePatient.Size = new Size(160, 30);
             btnCreatePatient.TabIndex = 10;
             btnCreatePatient.Text = "Crear Paciente";
-            btnCreatePatient.UseVisualStyleBackColor = true;
+            btnCreatePatient.UseVisualStyleBackColor = false;
             btnCreatePatient.Click += btnCreatePatient_Click_1;
             // 
             // btnShowPatient
             // 
-            btnShowPatient.Location = new Point(1014, 78);
+            btnShowPatient.Anchor = AnchorStyles.None;
+            btnShowPatient.BackColor = Color.FromArgb(77, 100, 141);
+            btnShowPatient.FlatAppearance.BorderSize = 0;
+            btnShowPatient.FlatStyle = FlatStyle.Flat;
+            btnShowPatient.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnShowPatient.ForeColor = SystemColors.ButtonHighlight;
+            btnShowPatient.Location = new Point(1004, 39);
             btnShowPatient.Margin = new Padding(3, 4, 3, 4);
             btnShowPatient.Name = "btnShowPatient";
-            btnShowPatient.Size = new Size(70, 30);
+            btnShowPatient.Size = new Size(83, 31);
             btnShowPatient.TabIndex = 15;
             btnShowPatient.Text = "Refresh";
-            btnShowPatient.UseVisualStyleBackColor = true;
+            btnShowPatient.UseVisualStyleBackColor = false;
             btnShowPatient.Click += btnShowPatient_Click;
             // 
             // btnClinicalHistory
             // 
-            btnClinicalHistory.Location = new Point(405, 458);
+            btnClinicalHistory.Anchor = AnchorStyles.None;
+            btnClinicalHistory.BackColor = Color.FromArgb(77, 100, 141);
+            btnClinicalHistory.FlatAppearance.BorderSize = 0;
+            btnClinicalHistory.FlatStyle = FlatStyle.Flat;
+            btnClinicalHistory.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnClinicalHistory.ForeColor = SystemColors.ButtonHighlight;
+            btnClinicalHistory.Location = new Point(516, 366);
             btnClinicalHistory.Margin = new Padding(3, 4, 3, 4);
             btnClinicalHistory.Name = "btnClinicalHistory";
             btnClinicalHistory.Size = new Size(160, 30);
             btnClinicalHistory.TabIndex = 16;
             btnClinicalHistory.Text = "Crear Historia Clinica";
-            btnClinicalHistory.UseVisualStyleBackColor = true;
+            btnClinicalHistory.UseVisualStyleBackColor = false;
             btnClinicalHistory.Click += btnClinicalHistory_Click;
+            // 
+            // lblMedicName
+            // 
+            lblMedicName.AutoSize = true;
+            lblMedicName.Font = new Font("Poppins", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblMedicName.ForeColor = SystemColors.ButtonHighlight;
+            lblMedicName.Location = new Point(12, 9);
+            lblMedicName.Name = "lblMedicName";
+            lblMedicName.Size = new Size(105, 26);
+            lblMedicName.TabIndex = 18;
+            lblMedicName.Text = "Bienvenido";
             // 
             // FrmMenuMedic
             // 
-            ClientSize = new Size(1096, 547);
+            BackColor = Color.FromArgb(31, 58, 95);
+            ClientSize = new Size(1096, 410);
+            Controls.Add(lblMedicName);
             Controls.Add(btnClinicalHistory);
             Controls.Add(btnShowPatient);
             Controls.Add(btnFinishSession);
@@ -213,6 +282,7 @@
             Name = "FrmMenuMedic";
             ((System.ComponentModel.ISupportInitialize)DgvPatients).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
 
@@ -233,5 +303,6 @@
         private DataGridViewTextBoxColumn colMedicalCoverage;
         private DataGridViewTextBoxColumn colLocation;
         private Button btnClinicalHistory;
+        private Label lblMedicName;
     }
 }

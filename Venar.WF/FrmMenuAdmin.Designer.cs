@@ -54,12 +54,12 @@
             DgvMedics.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             DgvMedics.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             DgvMedics.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DgvMedics.BackgroundColor = Color.FromArgb(230, 242, 255);
+            DgvMedics.BackgroundColor = Color.White;
             DgvMedics.BorderStyle = BorderStyle.None;
             DgvMedics.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(51, 133, 255);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(61, 90, 128);
+            dataGridViewCellStyle2.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = SystemColors.ButtonHighlight;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlLight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText;
@@ -68,7 +68,7 @@
             DgvMedics.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvMedics.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2 });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(230, 242, 255);
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(206, 232, 255);
             dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
@@ -76,14 +76,13 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             DgvMedics.DefaultCellStyle = dataGridViewCellStyle3;
             DgvMedics.EnableHeadersVisualStyles = false;
-            DgvMedics.Location = new Point(14, 47);
-            DgvMedics.Margin = new Padding(3, 4, 3, 4);
+            DgvMedics.Location = new Point(12, 35);
             DgvMedics.MultiSelect = false;
             DgvMedics.Name = "DgvMedics";
             DgvMedics.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.Font = new Font("Poppins", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
@@ -91,7 +90,7 @@
             DgvMedics.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             DgvMedics.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             DgvMedics.RowTemplate.Height = 25;
-            DgvMedics.Size = new Size(981, 361);
+            DgvMedics.Size = new Size(1034, 417);
             DgvMedics.TabIndex = 0;
             // 
             // Column1
@@ -111,17 +110,16 @@
             // btnCreateMedic
             // 
             btnCreateMedic.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnCreateMedic.BackColor = Color.FromArgb(51, 133, 255);
+            btnCreateMedic.BackColor = Color.FromArgb(77, 100, 141);
             btnCreateMedic.Cursor = Cursors.Hand;
             btnCreateMedic.FlatAppearance.BorderSize = 0;
             btnCreateMedic.FlatAppearance.MouseDownBackColor = Color.FromArgb(65, 150, 224);
             btnCreateMedic.FlatStyle = FlatStyle.Flat;
             btnCreateMedic.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnCreateMedic.ForeColor = SystemColors.ButtonHighlight;
-            btnCreateMedic.Location = new Point(13, 416);
-            btnCreateMedic.Margin = new Padding(3, 4, 3, 4);
+            btnCreateMedic.Location = new Point(12, 458);
             btnCreateMedic.Name = "btnCreateMedic";
-            btnCreateMedic.Size = new Size(125, 41);
+            btnCreateMedic.Size = new Size(171, 31);
             btnCreateMedic.TabIndex = 1;
             btnCreateMedic.Text = "Crear Medico";
             btnCreateMedic.UseVisualStyleBackColor = false;
@@ -130,17 +128,16 @@
             // btnModifyMedic
             // 
             btnModifyMedic.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnModifyMedic.BackColor = Color.FromArgb(51, 133, 255);
+            btnModifyMedic.BackColor = Color.FromArgb(77, 100, 141);
             btnModifyMedic.Cursor = Cursors.Hand;
             btnModifyMedic.FlatAppearance.BorderSize = 0;
             btnModifyMedic.FlatAppearance.MouseDownBackColor = Color.FromArgb(65, 150, 224);
             btnModifyMedic.FlatStyle = FlatStyle.Flat;
             btnModifyMedic.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnModifyMedic.ForeColor = SystemColors.ButtonHighlight;
-            btnModifyMedic.Location = new Point(144, 416);
-            btnModifyMedic.Margin = new Padding(3, 4, 3, 4);
+            btnModifyMedic.Location = new Point(191, 458);
             btnModifyMedic.Name = "btnModifyMedic";
-            btnModifyMedic.Size = new Size(125, 41);
+            btnModifyMedic.Size = new Size(171, 31);
             btnModifyMedic.TabIndex = 2;
             btnModifyMedic.Text = "Modificar Medico";
             btnModifyMedic.UseVisualStyleBackColor = false;
@@ -149,17 +146,16 @@
             // btnDeleatMedic
             // 
             btnDeleatMedic.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnDeleatMedic.BackColor = Color.FromArgb(51, 133, 255);
+            btnDeleatMedic.BackColor = Color.FromArgb(77, 100, 141);
             btnDeleatMedic.Cursor = Cursors.Hand;
             btnDeleatMedic.FlatAppearance.BorderSize = 0;
             btnDeleatMedic.FlatAppearance.MouseDownBackColor = Color.FromArgb(65, 150, 224);
             btnDeleatMedic.FlatStyle = FlatStyle.Flat;
             btnDeleatMedic.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnDeleatMedic.ForeColor = SystemColors.ButtonHighlight;
-            btnDeleatMedic.Location = new Point(274, 416);
-            btnDeleatMedic.Margin = new Padding(3, 4, 3, 4);
+            btnDeleatMedic.Location = new Point(370, 458);
             btnDeleatMedic.Name = "btnDeleatMedic";
-            btnDeleatMedic.Size = new Size(125, 41);
+            btnDeleatMedic.Size = new Size(171, 31);
             btnDeleatMedic.TabIndex = 3;
             btnDeleatMedic.Text = "Eliminar Medico";
             btnDeleatMedic.UseVisualStyleBackColor = false;
@@ -168,16 +164,15 @@
             // BtnCerrar
             // 
             BtnCerrar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            BtnCerrar.BackColor = Color.FromArgb(51, 133, 255);
+            BtnCerrar.BackColor = Color.FromArgb(77, 100, 141);
             BtnCerrar.FlatAppearance.BorderSize = 0;
             BtnCerrar.FlatAppearance.MouseDownBackColor = Color.FromArgb(65, 150, 224);
             BtnCerrar.FlatStyle = FlatStyle.Flat;
             BtnCerrar.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             BtnCerrar.ForeColor = SystemColors.ButtonHighlight;
-            BtnCerrar.Location = new Point(863, 417);
-            BtnCerrar.Margin = new Padding(3, 4, 3, 4);
+            BtnCerrar.Location = new Point(963, 459);
             BtnCerrar.Name = "BtnCerrar";
-            BtnCerrar.Size = new Size(131, 40);
+            BtnCerrar.Size = new Size(83, 31);
             BtnCerrar.TabIndex = 4;
             BtnCerrar.Text = "Cerrar";
             BtnCerrar.UseVisualStyleBackColor = false;
@@ -186,16 +181,16 @@
             // btnShowMedic
             // 
             btnShowMedic.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnShowMedic.BackColor = Color.FromArgb(51, 133, 255);
+            btnShowMedic.BackColor = Color.FromArgb(77, 100, 141);
             btnShowMedic.FlatAppearance.BorderSize = 0;
             btnShowMedic.FlatAppearance.MouseDownBackColor = Color.FromArgb(65, 150, 224);
             btnShowMedic.FlatStyle = FlatStyle.Flat;
             btnShowMedic.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnShowMedic.ForeColor = SystemColors.ButtonHighlight;
-            btnShowMedic.Location = new Point(1000, 47);
+            btnShowMedic.Location = new Point(1051, 35);
             btnShowMedic.Margin = new Padding(0);
             btnShowMedic.Name = "btnShowMedic";
-            btnShowMedic.Size = new Size(95, 41);
+            btnShowMedic.Size = new Size(83, 31);
             btnShowMedic.TabIndex = 7;
             btnShowMedic.Text = "Refresh";
             btnShowMedic.UseVisualStyleBackColor = false;
@@ -206,9 +201,9 @@
             labelAdmin.AutoSize = true;
             labelAdmin.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             labelAdmin.ForeColor = SystemColors.ButtonHighlight;
-            labelAdmin.Location = new Point(14, 12);
+            labelAdmin.Location = new Point(12, 9);
             labelAdmin.Name = "labelAdmin";
-            labelAdmin.Size = new Size(101, 20);
+            labelAdmin.Size = new Size(85, 16);
             labelAdmin.TabIndex = 8;
             labelAdmin.Text = "Bienvenido";
             labelAdmin.Click += labelAdmin_Click;
@@ -216,17 +211,16 @@
             // btnCreateLocation
             // 
             btnCreateLocation.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnCreateLocation.BackColor = Color.FromArgb(51, 133, 255);
+            btnCreateLocation.BackColor = Color.FromArgb(77, 100, 141);
             btnCreateLocation.Cursor = Cursors.Hand;
             btnCreateLocation.FlatAppearance.BorderSize = 0;
             btnCreateLocation.FlatAppearance.MouseDownBackColor = Color.FromArgb(65, 150, 224);
             btnCreateLocation.FlatStyle = FlatStyle.Flat;
             btnCreateLocation.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnCreateLocation.ForeColor = SystemColors.ButtonHighlight;
-            btnCreateLocation.Location = new Point(406, 416);
-            btnCreateLocation.Margin = new Padding(3, 4, 3, 4);
+            btnCreateLocation.Location = new Point(549, 458);
             btnCreateLocation.Name = "btnCreateLocation";
-            btnCreateLocation.Size = new Size(179, 41);
+            btnCreateLocation.Size = new Size(171, 31);
             btnCreateLocation.TabIndex = 9;
             btnCreateLocation.Text = "Cargar Localidad";
             btnCreateLocation.UseVisualStyleBackColor = false;
@@ -235,17 +229,16 @@
             // btnCreateSpecialty
             // 
             btnCreateSpecialty.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnCreateSpecialty.BackColor = Color.FromArgb(51, 133, 255);
+            btnCreateSpecialty.BackColor = Color.FromArgb(77, 100, 141);
             btnCreateSpecialty.Cursor = Cursors.Hand;
             btnCreateSpecialty.FlatAppearance.BorderSize = 0;
             btnCreateSpecialty.FlatAppearance.MouseDownBackColor = Color.FromArgb(65, 150, 224);
             btnCreateSpecialty.FlatStyle = FlatStyle.Flat;
             btnCreateSpecialty.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnCreateSpecialty.ForeColor = SystemColors.ButtonHighlight;
-            btnCreateSpecialty.Location = new Point(591, 416);
-            btnCreateSpecialty.Margin = new Padding(3, 4, 3, 4);
+            btnCreateSpecialty.Location = new Point(728, 458);
             btnCreateSpecialty.Name = "btnCreateSpecialty";
-            btnCreateSpecialty.Size = new Size(195, 41);
+            btnCreateSpecialty.Size = new Size(171, 31);
             btnCreateSpecialty.TabIndex = 10;
             btnCreateSpecialty.Text = "Crear Especialidad";
             btnCreateSpecialty.UseVisualStyleBackColor = false;
@@ -253,10 +246,10 @@
             // 
             // FrmMenuAdmin
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(102, 179, 255);
-            ClientSize = new Size(1102, 464);
+            BackColor = Color.FromArgb(31, 58, 95);
+            ClientSize = new Size(1140, 494);
             Controls.Add(btnCreateSpecialty);
             Controls.Add(btnCreateLocation);
             Controls.Add(labelAdmin);
@@ -266,7 +259,6 @@
             Controls.Add(btnModifyMedic);
             Controls.Add(btnCreateMedic);
             Controls.Add(DgvMedics);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "FrmMenuAdmin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu Administrador";

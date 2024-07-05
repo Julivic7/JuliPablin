@@ -10,7 +10,7 @@ namespace Venar.SVC
         MedicalHistory medicalHistory;
         private int medicalHistoryId;
 
-        public string GetInfoMedic(int medicId)
+        public Medic GetInfoMedic(int medicId)
         {
             string query = @"
             SELECT Name, LastName
@@ -29,7 +29,13 @@ namespace Venar.SVC
             {
                 string name = result.Rows[0]["Name"].ToString().Trim();
                 string lastName = result.Rows[0]["LastName"].ToString().Trim();
-                return $"{name}{" "}{lastName}";
+                Medic medic = new Medic
+                {
+                    Name = name,
+                    LastName = lastName
+                };
+
+                return medic;
             }
             else
             {

@@ -1,4 +1,5 @@
-﻿using Venar.SVC;
+﻿using Venar.Entities;
+using Venar.SVC;
 
 namespace Venar.WF
 {
@@ -8,6 +9,7 @@ namespace Venar.WF
         FrmModifyPatient frmModifyPatient;
         FrmCreatePatient frmCreatePatient;
         ValidCreatePatient validCreatedPatient;
+        MedicalRecordSVC medicalRecordSVC = new MedicalRecordSVC();
         private int medicId;
         private string userName;
 
@@ -73,6 +75,13 @@ namespace Venar.WF
 
             DgvPatients.DataSource = pacientesDataSource;
             DgvPatients.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+            Medic medic = medicalRecordSVC.GetInfoMedic(medicId);
+
+            if (medic != null)
+            {
+                lblMedicName.Text = "Bienvenido Dr. " + medic.Name + " " + medic.LastName;
+            }
         }
         private void DgvPatients_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
