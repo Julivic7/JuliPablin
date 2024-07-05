@@ -23,64 +23,16 @@ namespace Venar.WF
         }
         private void FillGridPatients()
         {
+            DgvPatients.DataSource = null;
+            DgvPatients.AutoGenerateColumns = true;
             DgvPatients.Columns.Clear();
-            DgvPatients.AutoGenerateColumns = false;
-            //Projection para poder imprimir en el datagrid los valores de l paciente
-            DataGridViewTextBoxColumn colDni = new DataGridViewTextBoxColumn();
-            colDni.DataPropertyName = "Dni";
-            colDni.HeaderText = "DNI";
-            DgvPatients.Columns.Add(colDni);
 
-            DataGridViewTextBoxColumn colName = new DataGridViewTextBoxColumn();
-            colName.DataPropertyName = "Name";
-            colName.HeaderText = "Nombre";
-            DgvPatients.Columns.Add(colName);
+            var patients = patientsService.GetPatients(medicId);
 
-            DataGridViewTextBoxColumn colLastName = new DataGridViewTextBoxColumn();
-            colLastName.DataPropertyName = "LastName";
-            colLastName.HeaderText = "Apellido";
-            DgvPatients.Columns.Add(colLastName);
-
-            DataGridViewTextBoxColumn colDateOfBirth = new DataGridViewTextBoxColumn();
-            colDateOfBirth.DataPropertyName = "DateOfBirth";
-            colDateOfBirth.HeaderText = "Fecha de Nacimiento";
-            DgvPatients.Columns.Add(colDateOfBirth);
-
-            DataGridViewTextBoxColumn colGenderName = new DataGridViewTextBoxColumn();
-            colGenderName.DataPropertyName = "GenderName";
-            colGenderName.HeaderText = "Género";
-            DgvPatients.Columns.Add(colGenderName);
-
-            DataGridViewTextBoxColumn colLocationName = new DataGridViewTextBoxColumn();
-            colLocationName.DataPropertyName = "LocationName";
-            colLocationName.HeaderText = "Dirección";
-            DgvPatients.Columns.Add(colLocationName);
-
-            DataGridViewTextBoxColumn colMedicalCoverageName = new DataGridViewTextBoxColumn();
-            colMedicalCoverageName.DataPropertyName = "MedicalCoverageName";
-            colMedicalCoverageName.HeaderText = "Cobertura Médica";
-            DgvPatients.Columns.Add(colMedicalCoverageName);
-
-            // Obtener datos y establecer DataSource
-            var pacientesDataSource = patientsService.GetPatients(medicId).Select(p => new
+            if (patients != null)
             {
-                p.Dni,
-                p.Name,
-                p.LastName,
-                DateOfBirth = p.DateOfBirth.ToShortDateString(),
-                GenderName = p.Gender != null ? p.Gender.NameGender : "",
-                LocationName = p.Location != null ? p.Location.LocationName : "",
-                MedicalCoverageName = p.MedicalCoverage != null ? p.MedicalCoverage.NameCover : "",
-            }).ToList();
-
-            DgvPatients.DataSource = pacientesDataSource;
-            DgvPatients.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-
-            Medic medic = medicalRecordSVC.GetInfoMedic(medicId);
-
-            if (medic != null)
-            {
-                lblMedicName.Text = "Bienvenido Dr. " + medic.Name + " " + medic.LastName;
+                DgvPatients.DataSource = patients;
+                DgvPatients.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
         }
         private void DgvPatients_CellContentClick(object sender, DataGridViewCellEventArgs e)

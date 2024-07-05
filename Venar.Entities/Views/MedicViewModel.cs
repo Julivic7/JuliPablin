@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Venar.Entities
+namespace Venar.Entities.Views
 {
     public class MedicViewModel
     {

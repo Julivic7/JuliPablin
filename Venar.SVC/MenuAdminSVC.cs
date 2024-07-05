@@ -2,6 +2,7 @@
 using Venar.Data;
 using Venar.DTO;
 using Venar.Entities;
+using Venar.Entities.Views;
 
 namespace Venar.SVC
 {

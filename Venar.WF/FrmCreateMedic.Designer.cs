@@ -96,7 +96,8 @@
             // 
             // btnRegister
             // 
-            btnRegister.BackColor = SystemColors.MenuHighlight;
+            btnRegister.BackColor = Color.FromArgb(77, 100, 141);
+            btnRegister.FlatAppearance.BorderSize = 0;
             btnRegister.FlatStyle = FlatStyle.Flat;
             btnRegister.Font = new Font("Poppins", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnRegister.ForeColor = SystemColors.ButtonHighlight;
@@ -211,7 +212,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(51, 133, 255);
+            BackColor = Color.FromArgb(31, 58, 95);
             ClientSize = new Size(772, 410);
             Controls.Add(boxSpecialty);
             Controls.Add(txtPassword);

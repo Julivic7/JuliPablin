@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using Venar.Data;
 using Venar.Entities;
+using Venar.Entities.Views;
 
 namespace Venar.SVC
 {
@@ -142,9 +143,9 @@ namespace Venar.SVC
 
             return result;
         }
-        public List<Patient> GetPatients(int medicId)
+        public List<PatientViewModel> GetPatients(int medicId)
         {
-            List<Patient> patients = new List<Patient>();
+            List<PatientViewModel> patients = new List<PatientViewModel>();
             string query = @"
              SELECT P.PatientId, P.Name, P.LastName, P.Dni, P.DateOfBirth,
                     P.GenderId, G.nombre AS GenderName,
@@ -166,46 +167,21 @@ namespace Venar.SVC
 
             var result = dataService.Selection(query, parameters);
 
-            if (result != null && result.Rows.Count > 0)
+            foreach (DataRow row in result.Rows)
             {
-                foreach (DataRow row in result.Rows)
-                {
-                    Patient patient = new Patient()
-                    {
-                        PatientId = Convert.ToInt32(row["PatientId"]),
-                        Dni = Convert.ToInt32(row["Dni"]),
-                        Name = row["Name"].ToString(),
-                        LastName = row["LastName"].ToString(),
-                        DateOfBirth = Convert.ToDateTime(row["DateOfBirth"]),
-                        MedicalHistory = row["MedicalHistoryId"].ToString(),
-                    };
-                    if (row["GenderId"] != DBNull.Value)
-                    {
-                        patient.Gender = new Gender()
-                        {
-                            IdGender = Convert.ToInt32(row["GenderId"]),
-                            NameGender = row["GenderName"].ToString()
-                        };
-                    }
-                    if (row["LocationId"] != DBNull.Value)
-                    {
-                        patient.Location = new Location()
-                        {
-                            IdLocation = Convert.ToInt32(row["LocationId"]),
-                            LocationName = row["LocationName"].ToString()
-                        };
-                    }
-                    if (row["MedicalCoverageId"] != DBNull.Value)
-                    {
-                        patient.MedicalCoverage = new MedicalCoverage()
-                        {
-                            IdCover = Convert.ToInt32(row["MedicalCoverageId"]),
-                            NameCover = row["MedicalCoverageName"].ToString()
-                        };
-                    }
-                    patients.Add(patient);
-                }
+                PatientViewModel patient = new PatientViewModel();
+                patient.PatientId = Convert.ToInt32(row["PatientId"]);
+                patient.Name = row["Name"].ToString().Trim();
+                patient.LastName = row["LastName"].ToString().Trim();
+                patient.Dni = Convert.ToInt32(row["Dni"]);
+                patient.Gender = row["GenderName"].ToString().Trim();
+                patient.Location = row["LocationName"].ToString().Trim();
+                patient.DateOfBirth = Convert.ToDateTime(row["DateOfBirth"]);
+                patient.MedicalCoverage = row["MedicalCoverageName"].ToString().Trim();
+
+                patients.Add(patient);
             }
+
             return patients;
         }
         public Patient SearchPat(int dni)
