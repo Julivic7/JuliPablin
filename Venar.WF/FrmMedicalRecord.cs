@@ -1,4 +1,5 @@
-﻿using Venar.Entities;
+﻿using System.Diagnostics;
+using Venar.Entities;
 using Venar.SVC;
 
 namespace Venar.WF
@@ -22,42 +23,83 @@ namespace Venar.WF
         }
         private void FillGridPatients()
         {
-            txtPatientName.Text = $"{patient.Name} {patient.LastName}";
-            txtMedicalCoverage.Text = patient.MedicalCoverage != null ? patient.MedicalCoverage.NameCover : "No especificada";
-            txtDateOfBirth.Text = patient.DateOfBirth.ToShortDateString(); // Formato de fecha corta
-            txtGender.Text = patient.Gender != null ? patient.Gender.NameGender : "No especificado";
-
-            Medic medic = medicalRecordSVC.GetInfoMedic(medicId);
-
-            if (medic != null)
+            // Ensure patient is not null before accessing its properties
+            if (patient != null)
             {
-                txtMedicName.Text = medic.Name.Trim();
-                txtMedicLastName.Text = medic.LastName.Trim();
+                txtPatientName.Text = $"{patient.Name} {patient.LastName}";
+                txtMedicalCoverage.Text = patient.MedicalCoverage != null ? patient.MedicalCoverage.NameCover : "No especificada";
+                txtDateOfBirth.Text = patient.DateOfBirth.ToShortDateString(); // Formato de fecha corta
+                txtGender.Text = patient.Gender != null ? patient.Gender.NameGender : "No especificado";
+                txtReason.Text = patient.MedicalHistory.Reason.Trim();
+                txtDiagnosis.Text = patient.MedicalHistory.Diagnosis.Trim();
+            }
+
+            try
+            {
+                // Ensure medicId is valid before using it
+                if (medicId > 0)
+                {
+                    Medic medic = medicalRecordSVC.GetInfoMedic(medicId);
+
+                    if (medic != null)
+                    {
+                        txtMedicName.Text = medic.Name.Trim();
+                        txtMedicLastName.Text = medic.LastName.Trim();
+                    }
+                    else
+                    {
+                        // Handle the case where no medic is found (should not happen with the current GetInfoMedic implementation)
+                        txtMedicName.Text = "No especificado";
+                        txtMedicLastName.Text = "No especificado";
+                    }
+                }
+                else
+                {
+                    // Handle invalid medicId
+                    txtMedicName.Text = "No especificado";
+                    txtMedicLastName.Text = "No especificado";
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception
+                Console.WriteLine($"Error: {ex.Message}");
+                txtMedicName.Text = "Error al obtener nombre del médico";
+                txtMedicLastName.Text = "Error al obtener apellido del médico";
             }
         }
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            medicalHistory = new MedicalHistory()
+            if (patient.MedicalHistoryId == 0)
             {
-                IdMedic = medicId,
-                IdPatient = patient.PatientId,
-                Date = dateTimePicker1.Value,
-                Reason = txtReason.Text,
-                Diagnosis = txtDiagnosis.Text,
-                ResultSymtoms = txtSymtoms.Text
-            };
 
-            int medicalHistoryId = medicalRecordSVC.CreateMedicalHistory(medicalHistory);
+                medicalHistory = new MedicalHistory()
+                {
+                    IdMedic = medicId,
+                    IdPatient = patient.PatientId,
+                    Date = dateTimePicker1.Value,
+                    Reason = txtReason.Text,
+                    Diagnosis = txtDiagnosis.Text,
+                    ResultSymtoms = txtSymtoms.Text
+                };
 
-            if (medicalHistoryId > 0)
-            {
-                MessageBox.Show("Historia clínica creada y asociada al paciente correctamente.");
-                FillGridPatients();
+                int medicalHistoryId = medicalRecordSVC.CreateMedicalHistory(medicalHistory);
+
+                if (medicalHistoryId > 0)
+                {
+                    MessageBox.Show("Historia clínica creada y asociada al paciente correctamente.");
+                    FillGridPatients();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo crear o asociar la historia clínica al paciente.");
+                }
             }
             else
             {
-                MessageBox.Show("No se pudo crear o asociar la historia clínica al paciente.");
+                //TERMINAR LOGICA DE EDICION DE HISTORIAL MEDICO
+                Debug.WriteLine("Patient does not have existing medical history.");
             }
         }
         private void btnCancel_Click(object sender, EventArgs e)

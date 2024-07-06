@@ -114,12 +114,29 @@ namespace Venar.WF
         {
             if (DgvPatients.SelectedCells.Count > 0)
             {
-                int columnIndex = 0; // Suponiendo que la columna 3 contiene el DNI
-                DataGridViewRow selectedRow = DgvPatients.Rows[DgvPatients.SelectedCells[0].RowIndex];
-                return int.Parse(selectedRow.Cells[columnIndex].Value.ToString());
+                int columnIndex = -1;
+                foreach (DataGridViewColumn column in DgvPatients.Columns)
+                {
+                    if (column.Name.Equals("Dni", StringComparison.OrdinalIgnoreCase))
+                    {
+                        columnIndex = column.Index;
+                        break;
+                    }
+                }
+
+                if (columnIndex != -1)
+                {
+                    DataGridViewRow selectedRow = DgvPatients.Rows[DgvPatients.SelectedCells[0].RowIndex];
+                    return int.Parse(selectedRow.Cells[columnIndex].Value.ToString());
+                }
+                else
+                {
+                    throw new Exception("Column 'Dni' not found.");
+                }
             }
-            return 0; 
+            return 0;
         }
+
 
     }
 }

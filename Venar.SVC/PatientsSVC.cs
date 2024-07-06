@@ -1,7 +1,11 @@
 ﻿using System.Data;
+using System.Diagnostics;
+using System.Net;
 using Venar.Data;
 using Venar.Entities;
 using Venar.Entities.Views;
+using Xceed.Wpf.AvalonDock.Themes;
+using Xceed.Wpf.Toolkit.Primitives;
 
 namespace Venar.SVC
 {
@@ -187,12 +191,20 @@ namespace Venar.SVC
         public Patient SearchPat(int dni)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
-            string query = "SELECT PatientId, Name, LastName, DateOfBirth, MedicalCoverageId, GenderId, LocationId FROM Patients WHERE Dni = @Dni";
+            string query = @"
+            SELECT p.PatientId, p.Name, p.LastName, p.DateOfBirth, p.MedicalCoverageId, p.GenderId, p.MedicalHistoryId, p.LocationId,
+                   mh.MedicalHistoryId, mh.Diagnosis, mh.Reason, mc.name AS CoverName, g.nombre AS GenderName
+            FROM Patients p
+            LEFT JOIN MedicalHistory mh ON p.MedicalHistoryId = mh.MedicalHistoryId
+            LEFT JOIN MedicalCoverage mc ON p.MedicalCoverageId = mc.MedicCoveId
+            LEFT JOIN Gender g ON p.GenderId = g.GenderId
+            WHERE p.Dni = @Dni";
 
             parameters.Add("@Dni", dni.ToString());
 
             try
             {
+
                 var result = dataService.Selection(query, parameters);
 
                 if (result != null && result.Rows.Count > 0)
@@ -206,20 +218,28 @@ namespace Venar.SVC
                         LastName = row["LastName"].ToString(),
                         DateOfBirth = row.IsNull("DateOfBirth") ? DateTime.MinValue : Convert.ToDateTime(row["DateOfBirth"]),
                         Dni = dni,
+                        MedicalHistoryId = row.IsNull("MedicalHistoryId") ? 0 : Convert.ToInt32(row["MedicalHistoryId"]),
                         MedicalCoverage = new MedicalCoverage()
                         {
-                            IdCover = row.IsNull("MedicalCoverageId") ? 0 : Convert.ToInt32(row["MedicalCoverageId"])
+                            IdCover = row.IsNull("MedicalCoverageId") ? 0 : Convert.ToInt32(row["MedicalCoverageId"]),
+                            NameCover = row.IsNull("CoverName") ? string.Empty : row["CoverName"].ToString()
                         },
                         Gender = new Gender()
                         {
-                            IdGender = row.IsNull("GenderId") ? 0 : Convert.ToInt32(row["GenderId"])
+                            IdGender = row.IsNull("GenderId") ? 0 : Convert.ToInt32(row["GenderId"]),
+                            NameGender = row["GenderName"].ToString()
                         },
                         Location = new Location()
                         {
                             IdLocation = row.IsNull("LocationId") ? 0 : Convert.ToInt32(row["LocationId"])
+                        },
+                        MedicalHistory = new MedicalHistory()
+                        {   
+                            Reason = row.IsNull("Reason") ? string.Empty : row["Reason"].ToString(),
+                            Diagnosis = row.IsNull("Diagnosis") ? string.Empty : row["Diagnosis"].ToString(),
                         }
                     };
-
+                    
                     return patient;
                 }
                 else
@@ -229,9 +249,12 @@ namespace Venar.SVC
             }
             catch (Exception ex)
             {
+                Debug.WriteLine($"Exception occurred: {ex.Message}");
                 throw new Exception("Error al buscar paciente por DNI", ex);
             }
         }
+
+
         public List<Location> GetLocation()
         {
             string query = "SELECT * FROM Location";

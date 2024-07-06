@@ -6,11 +6,11 @@ public class Patient
     public string Name { get; set; }
     public string LastName { get; set; }
     public int Dni { get; set; }
+    public int MedicalHistoryId { get; set; }
     public DateTime DateOfBirth { get; set; }
     public Gender Gender { get; set; }
     public Location Location { get; set; }
-    public MedicalCoverage MedicalCoverage{ get; set; }
-    public string MedicalHistory { get;set; }
-
+    public MedicalCoverage MedicalCoverage { get; set; }
+    public MedicalHistory MedicalHistory { get;set; }
 
 }
