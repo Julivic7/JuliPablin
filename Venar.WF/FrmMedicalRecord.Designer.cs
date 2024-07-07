@@ -373,6 +373,7 @@
             btnSend.Anchor = AnchorStyles.None;
             btnSend.BackColor = Color.FromArgb(61, 90, 128);
             btnSend.Cursor = Cursors.Hand;
+            btnSend.FlatAppearance.BorderSize = 0;
             btnSend.FlatStyle = FlatStyle.Flat;
             btnSend.Font = new Font("Poppins", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnSend.ForeColor = SystemColors.ButtonHighlight;
@@ -390,6 +391,7 @@
             btnCancel.Anchor = AnchorStyles.None;
             btnCancel.BackColor = Color.FromArgb(15, 28, 46);
             btnCancel.Cursor = Cursors.Hand;
+            btnCancel.FlatAppearance.BorderSize = 0;
             btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.Font = new Font("Poppins", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnCancel.ForeColor = SystemColors.ButtonHighlight;

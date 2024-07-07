@@ -84,16 +84,16 @@ namespace Venar.WF
                     ResultSymtoms = txtSymtoms.Text
                 };
 
-                int medicalHistoryId = medicalRecordSVC.CreateMedicalHistory(medicalHistory);
+                bool medicalHistorySuccess = medicalRecordSVC.CreateMedicalHistory(medicalHistory);
 
-                if (medicalHistoryId > 0)
+                if (medicalHistorySuccess)
                 {
-                    MessageBox.Show("Historia clínica creada y asociada al paciente correctamente.");
+                    MessageBox.Show("Consulta creada y asociada al paciente correctamente.");
                     FillGridPatients();
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo crear o asociar la historia clínica al paciente.");
+                    MessageBox.Show("No se pudo crear o asociar la consulta clínica al paciente.");
                 }
             }
             else

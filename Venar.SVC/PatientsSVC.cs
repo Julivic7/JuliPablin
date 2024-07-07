@@ -155,14 +155,14 @@ namespace Venar.SVC
                     P.GenderId, G.nombre AS GenderName,
                     P.LocationId, L.Name AS LocationName,
                     P.MedicalCoverageId, MC.name AS MedicalCoverageName,
-                    P.Status, P.CreatedAt, P.UpdateAt, P.MedicalHistoryId
+                    P.Status, P.CreatedAt, P.UpdateAt
              FROM Patients P
              INNER JOIN Patient_Medic PMR ON P.PatientId = PMR.PatientId
              INNER JOIN Medics M ON PMR.MedicId = M.MedicId
              LEFT JOIN Gender G ON P.GenderId = G.GenderId
              LEFT JOIN Location L ON P.LocationId = L.LocationId
              LEFT JOIN MedicalCoverage MC ON P.MedicalCoverageId = MC.MedicCoveId
-             LEFT JOIN MedicalHistory MH ON P.MedicalHistoryId = MH.MedicalHistoryId
+             LEFT JOIN MedicalHistory MH ON P.PatientId = MH.PatientId
              WHERE P.Status = 1
              AND M.MedicId = @MedicId";
 

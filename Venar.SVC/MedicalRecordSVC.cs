@@ -42,17 +42,17 @@ namespace Venar.SVC
                 throw new Exception($"No se encontró información para el MedicId {medicId}");
             }
         }
-        public int CreateMedicalHistory(MedicalHistory medicalHistory)
-        { 
+        public bool CreateMedicalHistory(MedicalHistory medicalHistory)
+        {
             string query = @"
-        INSERT INTO MedicalHistory (MedicId, PatientsId, Diagnosis, Reason, CreatedAt)
-        VALUES (@MedicId, @PatientsId, @Diagnosis, @Reason, GETDATE());
+        INSERT INTO MedicalHistory (MedicId, PatientId, Diagnosis, Reason, CreatedAt)
+        VALUES (@MedicId, @PatientId, @Diagnosis, @Reason, GETDATE());
         SELECT SCOPE_IDENTITY();";
 
             Dictionary<string, string> parameters = new Dictionary<string, string>
             {
                 { "@MedicId", medicalHistory.IdMedic.ToString() },
-                { "@PatientsId", medicalHistory.IdPatient.ToString() },
+                { "@PatientId", medicalHistory.IdPatient.ToString() },
                 { "@Diagnosis", medicalHistory.Diagnosis },
                 { "@Reason", medicalHistory.Reason }
             };
@@ -64,56 +64,22 @@ namespace Venar.SVC
                 {
                     if (result.Rows[0][0] != DBNull.Value)
                     {
-                        medicalHistoryId = Convert.ToInt32(result.Rows[0][0]);
+                        return true;
                     }
                     else
                     {
-                        throw new Exception("No se pudo obtener el ID de la historia clínica después de la inserción.");
+                        return false;
                     }
                 }
                 else
                 {
                     throw new Exception("No se obtuvo ningún resultado después de la inserción en MedicalHistory.");
                 }
-
-                bool success = MedicalHistoryToPatient(medicalHistory.IdPatient, medicalHistoryId);
-
-                if (!success)
-                {
-                    medicalHistoryId = 0;
-                }
-                return medicalHistoryId;
             }
             catch (FormatException ex)
             {
                 throw new Exception("Error de formato al crear la historia clínica: " + ex.Message, ex);
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al crear la historia clínica: " + ex.Message, ex);
-            }
-        }
-        private bool MedicalHistoryToPatient(int patientId, int medicalHistoryId)
-        {
-            bool success = false;
-
-            string query = @"
-                UPDATE Patients
-                SET MedicalHistoryId = @MedicalHistoryId
-                WHERE PatientId = @PatientId;";
-
-            Dictionary<string, string> parameters = new Dictionary<string, string>
-            {
-                  { "@MedicalHistoryId", medicalHistoryId.ToString() },
-                  { "@PatientId", patientId.ToString() }
-            };
-            int rowsAffected = dataService.Execute(query, parameters);
-
-            if (rowsAffected > 0)
-            {
-                success = true;
-            }
-            return success;
         }
     }
 }
