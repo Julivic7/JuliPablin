@@ -28,15 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DgvConsultation = new DataGridView();
-            colDateOfConsultation = new DataGridViewTextBoxColumn();
-            colReason = new DataGridViewTextBoxColumn();
-            colDiagnosis = new DataGridViewTextBoxColumn();
-            colMedicName = new DataGridViewTextBoxColumn();
-            colMedicalRegistration = new DataGridViewTextBoxColumn();
             btnShowHistory = new Button();
             btnPrintConsulta = new Button();
             boxPatientInfo = new GroupBox();
@@ -54,31 +49,30 @@
             // 
             DgvConsultation.AllowUserToAddRows = false;
             DgvConsultation.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            DgvConsultation.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            DgvConsultation.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             DgvConsultation.Anchor = AnchorStyles.None;
             DgvConsultation.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvConsultation.BackgroundColor = Color.White;
             DgvConsultation.BorderStyle = BorderStyle.None;
             DgvConsultation.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(61, 90, 128);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            DgvConsultation.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(61, 90, 128);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ButtonHighlight;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            DgvConsultation.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DgvConsultation.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvConsultation.Columns.AddRange(new DataGridViewColumn[] { colDateOfConsultation, colReason, colDiagnosis, colMedicName, colMedicalRegistration });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(206, 232, 255);
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            DgvConsultation.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(206, 232, 255);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            DgvConsultation.DefaultCellStyle = dataGridViewCellStyle3;
             DgvConsultation.EnableHeadersVisualStyles = false;
             DgvConsultation.Location = new Point(31, 179);
             DgvConsultation.Margin = new Padding(3, 4, 3, 4);
@@ -88,46 +82,6 @@
             DgvConsultation.RowTemplate.Height = 25;
             DgvConsultation.Size = new Size(1057, 318);
             DgvConsultation.TabIndex = 2;
-            // 
-            // colDateOfConsultation
-            // 
-            colDateOfConsultation.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            colDateOfConsultation.DataPropertyName = "Fecha Consulta";
-            colDateOfConsultation.HeaderText = "Fecha Consulta";
-            colDateOfConsultation.MinimumWidth = 6;
-            colDateOfConsultation.Name = "colDateOfConsultation";
-            colDateOfConsultation.ReadOnly = true;
-            colDateOfConsultation.Width = 125;
-            // 
-            // colReason
-            // 
-            colReason.DataPropertyName = "Motivo de Consulta";
-            colReason.HeaderText = "Motivo de Consulta";
-            colReason.MinimumWidth = 6;
-            colReason.Name = "colReason";
-            colReason.ReadOnly = true;
-            // 
-            // colDiagnosis
-            // 
-            colDiagnosis.DataPropertyName = "Diagnostico";
-            colDiagnosis.HeaderText = "Diagnostico";
-            colDiagnosis.MinimumWidth = 6;
-            colDiagnosis.Name = "colDiagnosis";
-            colDiagnosis.ReadOnly = true;
-            // 
-            // colMedicName
-            // 
-            colMedicName.HeaderText = "Atendido por";
-            colMedicName.MinimumWidth = 6;
-            colMedicName.Name = "colMedicName";
-            colMedicName.ReadOnly = true;
-            // 
-            // colMedicalRegistration
-            // 
-            colMedicalRegistration.HeaderText = "Matricula";
-            colMedicalRegistration.MinimumWidth = 6;
-            colMedicalRegistration.Name = "colMedicalRegistration";
-            colMedicalRegistration.ReadOnly = true;
             // 
             // btnShowHistory
             // 
@@ -270,10 +224,5 @@
         private Label lblMCoverage;
         private TextBox txtPatientName;
         private Label label2;
-        private DataGridViewTextBoxColumn colDateOfConsultation;
-        private DataGridViewTextBoxColumn colReason;
-        private DataGridViewTextBoxColumn colDiagnosis;
-        private DataGridViewTextBoxColumn colMedicName;
-        private DataGridViewTextBoxColumn colMedicalRegistration;
     }
 }
