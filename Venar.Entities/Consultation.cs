@@ -4,6 +4,7 @@
     {
         public int IdMedic { get; set; }
         public int IdPatient { get; set; }
+        public string MedicName { get; set; }
         public DateTime Date { get; set; }
         public string Reason { get; set; }
         public string Diagnosis { get; set; }

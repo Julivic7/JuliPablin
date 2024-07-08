@@ -93,7 +93,7 @@ namespace Venar.WF
 
             // Configure Attended by Doctor column (assuming MedicId refers to a doctor's ID)
             DataGridViewTextBoxColumn colAttended = new DataGridViewTextBoxColumn();
-            colAttended.DataPropertyName = "MedicId"; // Property name in the Consultation class
+            colAttended.DataPropertyName = "MedicName"; // Property name in the Consultation class
             colAttended.HeaderText = "Atendido por Doctor";
 
             DgvConsultation.Columns.Add(colAttended);
