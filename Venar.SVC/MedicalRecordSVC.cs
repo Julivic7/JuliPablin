@@ -12,7 +12,7 @@ namespace Venar.SVC
         {
             List<Consultation> consultations = new List<Consultation>();
             string query = @"SELECT mh.MedicId AS IdMedic, mh.PatientId AS IdPatient,
-                             mh.CreatedAt AS Date, mh.Reason, mh.Diagnosis
+                             mh.CreatedAt AS Date, mh.Reason, mh.Diagnosis, mh.MedicalHistoryId
                              FROM MedicalHistory mh
                              WHERE mh.PatientId = @PatientId";
 
@@ -33,6 +33,7 @@ namespace Venar.SVC
                         consultation.IdPatient = Convert.ToInt32(row["IdPatient"]);
                         consultation.Date = Convert.ToDateTime(row["Date"]);
                         consultation.Reason = Convert.ToString(row["Reason"]);
+                        consultation.ReportNumber = Convert.ToInt32(row["MedicalHistoryId"]);
                         consultation.Diagnosis = Convert.ToString(row["Diagnosis"]);
 
                         consultations.Add(consultation);

@@ -8,7 +8,6 @@
         public string Reason { get; set; }
         public string Diagnosis { get; set; }
         public string ResultSymtoms { get; set; }
-
-
+        public int ReportNumber { get; set; }
     }
 }

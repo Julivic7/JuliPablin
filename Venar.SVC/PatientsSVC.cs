@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Diagnostics;
+using System.Net;
 using Venar.Data;
 using Venar.DTO;
 using Venar.Entities;
@@ -225,7 +226,12 @@ namespace Venar.SVC
                         Location = new Location()
                         {
                             IdLocation = row.IsNull("LocationId") ? 0 : Convert.ToInt32(row["LocationId"])
+                        },
+                        MedicalHistory = new Consultation()
+                        {
+                            ReportNumber = Convert.ToInt32(row["MedicalHistoryId"]),
                         }
+
                     };
 
                     return patient;
@@ -300,5 +306,69 @@ namespace Venar.SVC
 
             return coverageMedicals;
         }
+
+        public Patient SearchByReportNumber(int reportNumber, int patientId)
+        {
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string query = @"
+                SELECT mh.Diagnosis, mh.Reason, mh.MedicalHistoryId, p.*, mc.name AS CoverName, g.nombre AS GenderName
+                FROM MedicalHistory mh
+                JOIN Patients p ON mh.PatientId = p.PatientId
+                JOIN MedicalCoverage mc ON p.MedicalCoverageId = mc.MedicCoveId
+                JOIN Gender g ON p.GenderId = g.GenderId
+                WHERE mh.MedicalHistoryId = @ReportNumber";
+
+            parameters.Add("@ReportNumber", reportNumber.ToString());
+
+            try
+            {
+                var result = dataService.Selection(query, parameters);
+
+                if (result != null && result.Rows.Count > 0)
+                {
+                    var row = result.Rows[0];
+
+                    Patient patient = new Patient()
+                    {
+                        Name = row["Name"].ToString(),
+                        LastName = row["LastName"].ToString(),
+                        MedicalCoverage = new MedicalCoverage()
+                        {
+                            NameCover = row.IsNull("CoverName") ? string.Empty : row["CoverName"].ToString()
+                        },
+                        Gender = new Gender()
+                        {
+                            NameGender = row["GenderName"].ToString()
+                        },
+                        //Location = new Location()
+                        //{
+                        //    IdLocation = row.IsNull("LocationId") ? 0 : Convert.ToInt32(row["LocationId"])
+                        //},
+                        MedicalHistory = new Consultation()
+                        {
+                            Reason = row["Reason"].ToString(),
+                            Diagnosis = row["Diagnosis"].ToString(),
+                            ReportNumber = Convert.ToInt32(row["MedicalHistoryId"]),
+                        }
+                    };
+
+                    // Log the patient data retrieved
+                    Debug.WriteLine($"Patient found: {patient.Name} {patient.LastName}, ReportNumber: {patient.MedicalHistory.ReportNumber}");
+
+                    return patient;
+                }
+                else
+                {
+                    Debug.WriteLine($"No patient found with ReportNumber: {reportNumber}, PatientId: {patientId}");
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Exception occurred: {ex.Message}");
+                throw new Exception("Error al buscar paciente por DNI", ex);
+            }
+        }
+
     }
 }

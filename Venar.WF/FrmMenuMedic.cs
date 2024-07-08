@@ -147,7 +147,7 @@ namespace Venar.WF
             if (dni > 0)
             {
                 var patientFound = patientsService.SearchPat(dni);
-                FrmMedicalRecord frmMedicalRecord = new FrmMedicalRecord(patientFound);
+                FrmMedicalRecord frmMedicalRecord = new FrmMedicalRecord(patientFound, medic);
                 frmMedicalRecord.Show();
                 FillGridPatients();
             }

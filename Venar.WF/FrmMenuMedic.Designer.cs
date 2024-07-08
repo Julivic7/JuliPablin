@@ -265,7 +265,7 @@
             labelMedicName.ForeColor = SystemColors.ButtonHighlight;
             labelMedicName.Location = new Point(12, 9);
             labelMedicName.Name = "labelMedicName";
-            labelMedicName.Size = new Size(71, 24);
+            labelMedicName.Size = new Size(60, 18);
             labelMedicName.TabIndex = 18;
             labelMedicName.Text = "Doctor";
             // 
@@ -293,7 +293,7 @@
             labelMedicalRegistration.ForeColor = SystemColors.ButtonHighlight;
             labelMedicalRegistration.Location = new Point(234, 9);
             labelMedicalRegistration.Name = "labelMedicalRegistration";
-            labelMedicalRegistration.Size = new Size(94, 24);
+            labelMedicalRegistration.Size = new Size(77, 18);
             labelMedicalRegistration.TabIndex = 20;
             labelMedicalRegistration.Text = "Matricula";
             // 

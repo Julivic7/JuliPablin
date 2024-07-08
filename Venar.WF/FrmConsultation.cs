@@ -29,6 +29,9 @@ namespace Venar.WF
                 txtMedicalCoverage.Text = patient.MedicalCoverage != null ? patient.MedicalCoverage.NameCover : "No especificada";
                 txtDateOfBirth.Text = patient.DateOfBirth.ToShortDateString();
                 txtGender.Text = patient.Gender != null ? patient.Gender.NameGender : "No especificado";
+                txtReason.Text = patient.MedicalHistory.Reason;
+                txtDiagnosis.Text = patient.MedicalHistory.Diagnosis;
+                txtTicket.Text = patient.MedicalHistory.ReportNumber.ToString();
             }
             try
             {
