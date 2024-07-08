@@ -265,9 +265,11 @@
             labelMedicName.ForeColor = SystemColors.ButtonHighlight;
             labelMedicName.Location = new Point(12, 9);
             labelMedicName.Name = "labelMedicName";
+            labelMedicName.RightToLeft = RightToLeft.Yes;
             labelMedicName.Size = new Size(60, 18);
             labelMedicName.TabIndex = 18;
             labelMedicName.Text = "Doctor";
+            labelMedicName.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // btnShowHistory
             // 

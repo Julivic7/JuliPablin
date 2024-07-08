@@ -44,17 +44,30 @@ namespace Venar.SVC
         public bool CreateConsultation(Consultation consultation)
         {
             string query = @"
-             INSERT INTO MedicalHistory (MedicId, PatientId, Diagnosis, Reason, CreatedAt)
-             VALUES (@MedicId, @PatientId, @Diagnosis, @Reason, GETDATE());
-             SELECT SCOPE_IDENTITY();";
+         BEGIN TRANSACTION;
+
+         INSERT INTO MedicalHistory (MedicId, PatientId, Diagnosis, Reason, CreatedAt)
+         VALUES (@MedicId, @PatientId, @Diagnosis, @Reason, GETDATE());
+
+         DECLARE @NewId INT;
+         SET @NewId = SCOPE_IDENTITY();
+
+         UPDATE Patients
+         SET HasMedicalHistory = 1
+         WHERE PatientId = @PatientId;
+
+         COMMIT TRANSACTION;
+
+         SELECT @NewId;";
 
             Dictionary<string, string> parameters = new Dictionary<string, string>
-            {
-                { "@MedicId", consultation.IdMedic.ToString() },
-                { "@PatientId", consultation.IdPatient.ToString() },
-                { "@Diagnosis", consultation.Diagnosis },
-                { "@Reason", consultation.Reason }
-            };
+    {
+        { "@MedicId", consultation.IdMedic.ToString() },
+        { "@PatientId", consultation.IdPatient.ToString() },
+        { "@Diagnosis", consultation.Diagnosis },
+        { "@Reason", consultation.Reason }
+    };
+
             try
             {
                 DataTable result = dataService.Selection(query, parameters);
@@ -79,6 +92,11 @@ namespace Venar.SVC
             {
                 throw new Exception("Error de formato al crear la historia clínica: " + ex.Message, ex);
             }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al crear la historia clínica: " + ex.Message, ex);
+            }
         }
+
     }
 }

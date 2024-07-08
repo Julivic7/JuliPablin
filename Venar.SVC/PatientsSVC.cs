@@ -149,7 +149,7 @@ namespace Venar.SVC
             List<PatientViewModel> patients = new List<PatientViewModel>();
             string query = @"
              SELECT P.PatientId, P.Name, P.LastName, P.Dni, P.DateOfBirth,
-                    P.GenderId, G.nombre AS GenderName,
+                    P.GenderId, G.nombre AS GenderName, P.HasMedicalHistory,
                     P.LocationId, L.Name AS LocationName,
                     MC.name AS MedicalCoverageName,
                     P.Status, P.CreatedAt, P.UpdateAt
@@ -178,6 +178,7 @@ namespace Venar.SVC
                 patient.Location = row["LocationName"].ToString().Trim();
                 patient.DateOfBirth = Convert.ToDateTime(row["DateOfBirth"]);
                 patient.MedicalCoverage = row["MedicalCoverageName"].ToString().Trim();
+                patient.HasMedicalHistory = Convert.ToBoolean(row["HasMedicalHistory"]) ? "Si" : "No";
 
                 patients.Add(patient);
             }
@@ -188,13 +189,13 @@ namespace Venar.SVC
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             string query = @"
-            SELECT p.PatientId, p.Name, p.LastName, p.DateOfBirth, p.MedicalCoverageId, p.GenderId, p.LocationId,
-                   mh.MedicalHistoryId, mh.Diagnosis, mh.Reason, mc.name AS CoverName, g.nombre AS GenderName
-            FROM Patients p
-            LEFT JOIN MedicalHistory mh ON p.PatientId = mh.PatientId
-            LEFT JOIN MedicalCoverage mc ON p.MedicalCoverageId = mc.MedicCoveId
-            LEFT JOIN Gender g ON p.GenderId = g.GenderId
-            WHERE p.Dni = @Dni";
+    SELECT p.PatientId, p.Name, p.LastName, p.DateOfBirth, p.HasMedicalHistory, p.MedicalCoverageId, p.GenderId, p.LocationId,
+           mh.MedicalHistoryId, mh.Diagnosis, mh.Reason, mc.name AS CoverName, g.nombre AS GenderName
+    FROM Patients p
+    LEFT JOIN MedicalHistory mh ON p.PatientId = mh.PatientId
+    LEFT JOIN MedicalCoverage mc ON p.MedicalCoverageId = mc.MedicCoveId
+    LEFT JOIN Gender g ON p.GenderId = g.GenderId
+    WHERE p.Dni = @Dni";
 
             parameters.Add("@Dni", dni.ToString());
 
@@ -221,18 +222,23 @@ namespace Venar.SVC
                         Gender = new Gender()
                         {
                             IdGender = row.IsNull("GenderId") ? 0 : Convert.ToInt32(row["GenderId"]),
-                            NameGender = row["GenderName"].ToString()
+                            NameGender = row.IsNull("GenderName") ? string.Empty : row["GenderName"].ToString()
                         },
                         Location = new Location()
                         {
                             IdLocation = row.IsNull("LocationId") ? 0 : Convert.ToInt32(row["LocationId"])
-                        },
-                        MedicalHistory = new Consultation()
+                        }
+                    };
+
+                    if (Convert.ToBoolean(row["HasMedicalHistory"]))
+                    {
+                        patient.MedicalHistory = new Consultation()
                         {
                             ReportNumber = Convert.ToInt32(row["MedicalHistoryId"]),
-                        }
-
-                    };
+                            Diagnosis = row.IsNull("Diagnosis") ? string.Empty : row["Diagnosis"].ToString(),
+                            Reason = row.IsNull("Reason") ? string.Empty : row["Reason"].ToString()
+                        };
+                    }
 
                     return patient;
                 }
@@ -247,6 +253,7 @@ namespace Venar.SVC
                 throw new Exception("Error al buscar paciente por DNI", ex);
             }
         }
+
         public List<Location> GetLocation()
         {
             string query = "SELECT * FROM Location";

@@ -6,7 +6,6 @@ namespace Venar.WF
 {
     public partial class FrmMenuMedic : Form
     {
-        public string LoggedUserName { get; set; }
         public string LoggedMedicalRegistration { get; set; }
         PatientsSVC patientsService;
         FrmModifyPatient frmModifyPatient;
@@ -21,26 +20,74 @@ namespace Venar.WF
             InitializeComponent();
             patientsService = new PatientsSVC();
             this.medic = medic;
-            LoggedUserName = medic.LastName ?? "usuario";
             LoggedMedicalRegistration = medic.MedicalRegistration ?? "Matricula";
-            labelMedicName.Text = "Doctor: " + LoggedUserName;
-            labelMedicalRegistration.Text = "Matricula: " + LoggedMedicalRegistration;
+            labelMedicName.Text = $"Doctor: {medic.Name.Trim()} {medic.LastName.Trim()}";
+            labelMedicalRegistration.Text = $"Matricula: {LoggedMedicalRegistration}";
             FillGridPatients();
         }
         private void FillGridPatients()
         {
             DgvPatients.DataSource = null;
-            DgvPatients.AutoGenerateColumns = true;
+            DgvPatients.AutoGenerateColumns = false;
             DgvPatients.Columns.Clear();
 
             var patients = patientsService.GetPatients(medic.MedicId);
 
             if (patients != null)
             {
+                DgvPatients.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "Name",
+                    HeaderText = "Nombre"
+                });
+
+                DgvPatients.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "LastName",
+                    HeaderText = "Apellido"
+                });
+
+                DgvPatients.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "Dni",
+                    HeaderText = "DNI"
+                });
+
+                DgvPatients.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "Gender",
+                    HeaderText = "Género"
+                });
+
+                DgvPatients.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "Location",
+                    HeaderText = "Dirección"
+                });
+
+                DgvPatients.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "DateOfBirth",
+                    HeaderText = "Nacimiento",
+                    DefaultCellStyle = new DataGridViewCellStyle { Format = "yyyy-MM-dd" }
+                });
+
+                DgvPatients.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "MedicalCoverage",
+                    HeaderText = "Obra social"
+                });
+
+                DgvPatients.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "HasMedicalHistory",
+                    HeaderText = "Historia medica hecha"
+                });
+
                 DgvPatients.DataSource = patients;
-                DgvPatients.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
         }
+
         private void DgvPatients_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -122,7 +169,7 @@ namespace Venar.WF
                 int columnIndex = -1;
                 foreach (DataGridViewColumn column in DgvPatients.Columns)
                 {
-                    if (column.Name.Equals("Dni", StringComparison.OrdinalIgnoreCase))
+                    if (column.HeaderText.Equals("DNI", StringComparison.OrdinalIgnoreCase))
                     {
                         columnIndex = column.Index;
                         break;

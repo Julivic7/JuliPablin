@@ -12,6 +12,7 @@ namespace Venar.Entities.Views
         public string Name { get; set; }
         public string LastName { get; set; }
         public int Dni { get; set; }
+        public string HasMedicalHistory { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Gender { get; set; }
         public string Location { get; set; }
