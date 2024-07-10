@@ -58,9 +58,9 @@
             MedicData = new GroupBox();
             txtMedicalRegistration = new TextBox();
             label6 = new Label();
-            label5 = new Label();
-            txtMedicName = new TextBox();
             txtMedicLastName = new TextBox();
+            txtMedicName = new TextBox();
+            label5 = new Label();
             boxPatientInfo.SuspendLayout();
             groupBox1.SuspendLayout();
             boxCalculator.SuspendLayout();
@@ -377,7 +377,7 @@
             // 
             // btnSend
             // 
-            btnSend.Anchor = AnchorStyles.Top;
+            btnSend.Anchor = AnchorStyles.None;
             btnSend.BackColor = Color.FromArgb(61, 90, 128);
             btnSend.Cursor = Cursors.Hand;
             btnSend.FlatAppearance.BorderSize = 0;
@@ -395,7 +395,7 @@
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = AnchorStyles.Top;
+            btnCancel.Anchor = AnchorStyles.None;
             btnCancel.BackColor = Color.FromArgb(15, 28, 46);
             btnCancel.Cursor = Cursors.Hand;
             btnCancel.FlatAppearance.BorderSize = 0;
@@ -451,15 +451,14 @@
             label6.TabIndex = 15;
             label6.Text = "Matricula";
             // 
-            // label5
+            // txtMedicLastName
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(156, 26);
-            label5.Name = "label5";
-            label5.Size = new Size(66, 22);
-            label5.TabIndex = 14;
-            label5.Text = "Apellido";
+            txtMedicLastName.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            txtMedicLastName.Location = new Point(156, 45);
+            txtMedicLastName.Margin = new Padding(3, 2, 3, 2);
+            txtMedicLastName.Name = "txtMedicLastName";
+            txtMedicLastName.Size = new Size(130, 25);
+            txtMedicLastName.TabIndex = 13;
             // 
             // txtMedicName
             // 
@@ -470,14 +469,15 @@
             txtMedicName.Size = new Size(130, 25);
             txtMedicName.TabIndex = 12;
             // 
-            // txtMedicLastName
+            // label5
             // 
-            txtMedicLastName.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtMedicLastName.Location = new Point(156, 45);
-            txtMedicLastName.Margin = new Padding(3, 2, 3, 2);
-            txtMedicLastName.Name = "txtMedicLastName";
-            txtMedicLastName.Size = new Size(130, 25);
-            txtMedicLastName.TabIndex = 13;
+            label5.AutoSize = true;
+            label5.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(156, 26);
+            label5.Name = "label5";
+            label5.Size = new Size(66, 22);
+            label5.TabIndex = 14;
+            label5.Text = "Apellido";
             // 
             // FrmConsultation
             // 
