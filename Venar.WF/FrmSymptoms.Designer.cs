@@ -66,9 +66,9 @@
             checkedListBox1.CheckOnClick = true;
             checkedListBox1.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point);
             checkedListBox1.FormattingEnabled = true;
-            checkedListBox1.Location = new Point(13, 17);
+            checkedListBox1.Location = new Point(6, 17);
             checkedListBox1.Name = "checkedListBox1";
-            checkedListBox1.Size = new Size(249, 364);
+            checkedListBox1.Size = new Size(263, 364);
             checkedListBox1.TabIndex = 5;
             // 
             // btnSend
@@ -112,7 +112,7 @@
             boxPatientInfo.BackgroundImageLayout = ImageLayout.None;
             boxPatientInfo.Controls.Add(txtResults);
             boxPatientInfo.FlatStyle = FlatStyle.Flat;
-            boxPatientInfo.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            boxPatientInfo.Font = new Font("Poppins", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             boxPatientInfo.ForeColor = SystemColors.ButtonHighlight;
             boxPatientInfo.Location = new Point(300, 14);
             boxPatientInfo.Margin = new Padding(0);
@@ -126,20 +126,20 @@
             // 
             txtResults.Anchor = AnchorStyles.Left;
             txtResults.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtResults.Location = new Point(11, 47);
+            txtResults.Location = new Point(6, 17);
             txtResults.Multiline = true;
             txtResults.Name = "txtResults";
-            txtResults.Size = new Size(404, 226);
+            txtResults.Size = new Size(415, 249);
             txtResults.TabIndex = 10;
             // 
             // groupBox1
             // 
-            groupBox1.Anchor = AnchorStyles.None;
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             groupBox1.BackColor = Color.FromArgb(61, 90, 128);
             groupBox1.BackgroundImageLayout = ImageLayout.None;
             groupBox1.Controls.Add(txtMatchPercentage);
             groupBox1.FlatStyle = FlatStyle.Flat;
-            groupBox1.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBox1.Font = new Font("Poppins", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox1.ForeColor = SystemColors.ButtonHighlight;
             groupBox1.Location = new Point(300, 299);
             groupBox1.Margin = new Padding(0);
@@ -153,10 +153,10 @@
             // 
             txtMatchPercentage.Anchor = AnchorStyles.Left;
             txtMatchPercentage.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtMatchPercentage.Location = new Point(16, 29);
+            txtMatchPercentage.Location = new Point(6, 14);
             txtMatchPercentage.Multiline = true;
             txtMatchPercentage.Name = "txtMatchPercentage";
-            txtMatchPercentage.Size = new Size(399, 77);
+            txtMatchPercentage.Size = new Size(415, 103);
             txtMatchPercentage.TabIndex = 10;
             // 
             // groupBox3
@@ -167,7 +167,7 @@
             groupBox3.Controls.Add(checkedListBox1);
             groupBox3.Controls.Add(btnCheckSymptoms);
             groupBox3.FlatStyle = FlatStyle.Flat;
-            groupBox3.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBox3.Font = new Font("Poppins", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox3.ForeColor = SystemColors.ButtonHighlight;
             groupBox3.Location = new Point(10, 14);
             groupBox3.Margin = new Padding(0);
