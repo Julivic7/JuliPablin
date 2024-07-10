@@ -15,7 +15,7 @@ namespace Venar.WF
         Consultation medicalHistory;
         PatientsSVC patientsService;
 
-        public FrmConsultation(Patient patient, MedicDto medic , DiagnosticResult diagnostic)
+        public FrmConsultation(Patient patient, MedicDto medic, DiagnosticResult diagnostic)
         {
             InitializeComponent();
             this.medic = medic;
@@ -104,10 +104,10 @@ namespace Venar.WF
         }
         private void btnDiagnostic_Click(object sender, EventArgs e)
         {
-            FrmSymptoms frmSymptoms = new FrmSymptoms(patient , medic );
+            FrmSymptoms frmSymptoms = new FrmSymptoms(patient, medic);
             frmSymptoms.SymptomsSelected += FrmSymptoms_SymptomsSelected;
             frmSymptoms.Show();
-            this.Close();  
+            this.Close();
         }
         private void FrmSymptoms_SymptomsSelected(object sender, List<string> selectedSymptoms)
         {

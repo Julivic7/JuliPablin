@@ -28,15 +28,15 @@ namespace Venar.SVC
             parameters.Add("@InputSymptomCount", symptomIds.Count.ToString());
 
             DataTable result = dataService.Selection(@"
-             SELECT i.Name, 
-                    COUNT(DISTINCT ils.SymptomId) AS MatchCount,
-                    (CAST(COUNT(DISTINCT ils.SymptomId) AS FLOAT) / @InputSymptomCount) * 100 AS MatchPercentage
-             FROM Illnesses i
-             JOIN IllnessSymptoms ils ON i.Id = ils.IllnessId
-             WHERE ils.SymptomId IN (" + string.Join(",", symptomIds.Select((id, index) => $"@symptomId{index}")) + @")
-             GROUP BY i.Name
-             HAVING COUNT(DISTINCT ils.SymptomId) > 0
-             ORDER BY MatchPercentage DESC", parameters);
+     SELECT i.Name, 
+            COUNT(DISTINCT ils.SymptomId) AS MatchCount,
+            FORMAT((CAST(COUNT(DISTINCT ils.SymptomId) AS FLOAT) / @InputSymptomCount) * 100, 'F2') AS MatchPercentage
+     FROM Illnesses i
+     JOIN IllnessSymptoms ils ON i.Id = ils.IllnessId
+     WHERE ils.SymptomId IN (" + string.Join(",", symptomIds.Select((id, index) => $"@symptomId{index}")) + @")
+     GROUP BY i.Name
+     HAVING COUNT(DISTINCT ils.SymptomId) > 0
+     ORDER BY MatchPercentage DESC", parameters);
 
             if (result != null)
             {
@@ -57,11 +57,8 @@ namespace Venar.SVC
 
             return diagnostic;
         }
-
-
-
+        }
     }
-}
 
 
 

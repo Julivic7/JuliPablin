@@ -27,12 +27,10 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private System.Windows.Forms.Button btnCheckSymptoms;
-        private System.Windows.Forms.Label lblResult;
 
         private void InitializeComponent()
         {
             btnCheckSymptoms = new Button();
-            lblResult = new Label();
             checkedListBox1 = new CheckedListBox();
             btnSend = new Button();
             btnCancel = new Button();
@@ -40,66 +38,71 @@
             txtResults = new TextBox();
             groupBox1 = new GroupBox();
             txtMatchPercentage = new TextBox();
-            label1 = new Label();
+            groupBox3 = new GroupBox();
             boxPatientInfo.SuspendLayout();
             groupBox1.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // btnCheckSymptoms
             // 
-            btnCheckSymptoms.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnCheckSymptoms.Location = new Point(304, 12);
+            btnCheckSymptoms.Anchor = AnchorStyles.Bottom;
+            btnCheckSymptoms.BackColor = Color.FromArgb(31, 58, 95);
+            btnCheckSymptoms.FlatAppearance.BorderSize = 0;
+            btnCheckSymptoms.FlatStyle = FlatStyle.Flat;
+            btnCheckSymptoms.Font = new Font("Poppins", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCheckSymptoms.Location = new Point(53, 403);
             btnCheckSymptoms.Name = "btnCheckSymptoms";
             btnCheckSymptoms.Size = new Size(168, 46);
             btnCheckSymptoms.TabIndex = 3;
             btnCheckSymptoms.TabStop = false;
             btnCheckSymptoms.Text = "Analizar Sintomas";
-            btnCheckSymptoms.UseVisualStyleBackColor = true;
+            btnCheckSymptoms.UseVisualStyleBackColor = false;
             btnCheckSymptoms.Click += btnCheck_symptoms;
-            // 
-            // lblResult
-            // 
-            lblResult.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            lblResult.AutoSize = true;
-            lblResult.ForeColor = SystemColors.ControlLight;
-            lblResult.Location = new Point(15, 40);
-            lblResult.Name = "lblResult";
-            lblResult.Size = new Size(94, 17);
-            lblResult.TabIndex = 4;
-            lblResult.Text = "Resultados:";
-            lblResult.Click += lblResult_Click;
             // 
             // checkedListBox1
             // 
-            checkedListBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            checkedListBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            checkedListBox1.CheckOnClick = true;
+            checkedListBox1.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point);
             checkedListBox1.FormattingEnabled = true;
-            checkedListBox1.Location = new Point(12, 12);
+            checkedListBox1.Location = new Point(13, 17);
             checkedListBox1.Name = "checkedListBox1";
-            checkedListBox1.Size = new Size(267, 576);
+            checkedListBox1.Size = new Size(249, 364);
             checkedListBox1.TabIndex = 5;
             // 
             // btnSend
             // 
-            btnSend.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnSend.Location = new Point(634, 557);
+            btnSend.Anchor = AnchorStyles.Top;
+            btnSend.BackColor = Color.FromArgb(61, 90, 128);
+            btnSend.FlatAppearance.BorderSize = 0;
+            btnSend.FlatStyle = FlatStyle.Flat;
+            btnSend.Font = new Font("Poppins", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSend.ForeColor = SystemColors.ButtonHighlight;
+            btnSend.Location = new Point(626, 435);
             btnSend.Name = "btnSend";
-            btnSend.Size = new Size(97, 31);
+            btnSend.Size = new Size(101, 42);
             btnSend.TabIndex = 6;
             btnSend.TabStop = false;
             btnSend.Text = "Enviar";
-            btnSend.UseVisualStyleBackColor = true;
+            btnSend.UseVisualStyleBackColor = false;
             btnSend.Click += btnSend_Click;
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnCancel.Location = new Point(531, 557);
+            btnCancel.Anchor = AnchorStyles.Top;
+            btnCancel.BackColor = SystemColors.ControlDarkDark;
+            btnCancel.FlatAppearance.BorderSize = 0;
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.Font = new Font("Poppins", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancel.ForeColor = SystemColors.ButtonHighlight;
+            btnCancel.Location = new Point(519, 435);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(97, 31);
+            btnCancel.Size = new Size(101, 42);
             btnCancel.TabIndex = 8;
             btnCancel.TabStop = false;
             btnCancel.Text = "Cancelar";
-            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += btnCancel_Click;
             // 
             // boxPatientInfo
@@ -108,11 +111,10 @@
             boxPatientInfo.BackColor = Color.FromArgb(61, 90, 128);
             boxPatientInfo.BackgroundImageLayout = ImageLayout.None;
             boxPatientInfo.Controls.Add(txtResults);
-            boxPatientInfo.Controls.Add(lblResult);
             boxPatientInfo.FlatStyle = FlatStyle.Flat;
             boxPatientInfo.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             boxPatientInfo.ForeColor = SystemColors.ButtonHighlight;
-            boxPatientInfo.Location = new Point(304, 80);
+            boxPatientInfo.Location = new Point(300, 14);
             boxPatientInfo.Margin = new Padding(0);
             boxPatientInfo.Name = "boxPatientInfo";
             boxPatientInfo.Size = new Size(427, 272);
@@ -123,10 +125,11 @@
             // txtResults
             // 
             txtResults.Anchor = AnchorStyles.Left;
-            txtResults.Location = new Point(128, 40);
+            txtResults.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            txtResults.Location = new Point(11, 47);
             txtResults.Multiline = true;
             txtResults.Name = "txtResults";
-            txtResults.Size = new Size(282, 201);
+            txtResults.Size = new Size(404, 226);
             txtResults.TabIndex = 10;
             // 
             // groupBox1
@@ -135,11 +138,10 @@
             groupBox1.BackColor = Color.FromArgb(61, 90, 128);
             groupBox1.BackgroundImageLayout = ImageLayout.None;
             groupBox1.Controls.Add(txtMatchPercentage);
-            groupBox1.Controls.Add(label1);
             groupBox1.FlatStyle = FlatStyle.Flat;
             groupBox1.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox1.ForeColor = SystemColors.ButtonHighlight;
-            groupBox1.Location = new Point(304, 365);
+            groupBox1.Location = new Point(300, 299);
             groupBox1.Margin = new Padding(0);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(427, 123);
@@ -150,39 +152,47 @@
             // txtMatchPercentage
             // 
             txtMatchPercentage.Anchor = AnchorStyles.Left;
-            txtMatchPercentage.Location = new Point(169, 45);
+            txtMatchPercentage.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            txtMatchPercentage.Location = new Point(16, 29);
             txtMatchPercentage.Multiline = true;
             txtMatchPercentage.Name = "txtMatchPercentage";
-            txtMatchPercentage.Size = new Size(241, 56);
+            txtMatchPercentage.Size = new Size(399, 77);
             txtMatchPercentage.TabIndex = 10;
             // 
-            // label1
+            // groupBox3
             // 
-            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            label1.AutoSize = true;
-            label1.ForeColor = SystemColors.ControlLight;
-            label1.Location = new Point(15, 48);
-            label1.Name = "label1";
-            label1.Size = new Size(153, 17);
-            label1.TabIndex = 4;
-            label1.Text = "Mayor Probabilidad:";
+            groupBox3.Anchor = AnchorStyles.None;
+            groupBox3.BackColor = Color.FromArgb(61, 90, 128);
+            groupBox3.BackgroundImageLayout = ImageLayout.None;
+            groupBox3.Controls.Add(checkedListBox1);
+            groupBox3.Controls.Add(btnCheckSymptoms);
+            groupBox3.FlatStyle = FlatStyle.Flat;
+            groupBox3.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBox3.ForeColor = SystemColors.ButtonHighlight;
+            groupBox3.Location = new Point(10, 14);
+            groupBox3.Margin = new Padding(0);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(275, 463);
+            groupBox3.TabIndex = 27;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Sintomas presentados";
             // 
             // FrmSymptoms
             // 
             BackColor = Color.FromArgb(31, 58, 95);
-            ClientSize = new Size(751, 629);
+            ClientSize = new Size(736, 491);
+            Controls.Add(groupBox3);
             Controls.Add(groupBox1);
             Controls.Add(boxPatientInfo);
             Controls.Add(btnCancel);
             Controls.Add(btnSend);
-            Controls.Add(btnCheckSymptoms);
-            Controls.Add(checkedListBox1);
             Name = "FrmSymptoms";
             Text = "Symptom Checker";
             boxPatientInfo.ResumeLayout(false);
             boxPatientInfo.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            groupBox3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -195,6 +205,6 @@
         private TextBox txtResults;
         private GroupBox groupBox1;
         private TextBox txtMatchPercentage;
-        private Label label1;
+        private GroupBox groupBox3;
     }
 }
